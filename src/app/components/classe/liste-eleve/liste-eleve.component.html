@@ -1,0 +1,72 @@
+<div class="container con"> 
+	<div class="row">
+
+
+		<div class="col-md-5 ">
+			<div class="table-responsive-sm liste">
+				<h1 className="ClaimListTitle">Liste d'élèves </h1>
+			  <table class="table listc">
+				<thead>
+					<tr>
+					  <th scope="col">Nom</th>
+					
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr *ngFor="let p of presence">
+					  
+					  <td>
+                        <a [routerLink]="['/profileleve/:id']">{{p.name}} </a>
+                    </td>
+					  
+					  
+					</tr>
+					
+				  </tbody>
+				  
+				
+			  </table>
+			
+			</div>
+		</div>
+		
+		<div class="col-md-5">
+			<div class="table-responsive-sm pres">
+				<h1 className="ClaimListTitle">Liste de présence</h1>
+			  <table class="table">
+				<thead>
+					<tr>
+					  <th scope="col">Nom</th>
+					  <th scope="col">Lundi</th>
+					  <th scope="col">Mardi</th>
+					  <th scope="col">Mercredi</th>
+					  <th scope="col">Jeudi</th>
+					  <th scope="col">Vendredi</th>
+					  <th scope="col">Samedi</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr *ngFor="let p of presence">
+					  
+					  <td>{{p.name}}</td>
+					  <td> <input  type="checkbox" [checked]="p.select"></td>
+					  <td> <input  type="checkbox" [checked]="p.select"></td>
+					  <td> <input  type="checkbox" [checked]="p.select"></td>
+					  <td> <input  type="checkbox" [checked]="p.select"></td>
+					  <td> <input  type="checkbox" [checked]="p.select"></td>
+					  <td> <input  type="checkbox" [checked]="p.select"></td>
+					  
+					</tr>
+					
+				  </tbody>
+				  
+				
+			  </table>
+			  <div>
+				<input class="submit" type="submit" value="envoyer" style="width:80px;">	
+			 </div>
+			</div>
+		</div>
+		
+	</div>
+</div>

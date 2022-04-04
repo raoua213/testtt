@@ -1,0 +1,35 @@
+<div class="container-fluid cl">
+  
+ 
+ 
+  <input type="checkbox" id="toggle">
+<label for="toggle" style="margin-top: 10px; margin-left: 50px;">Add</label>
+
+<dialog >
+  <p>
+    
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nihil dolore similique quis qui ad blanditiis ex eum! Enim maiores ipsam fugiat officiis earum distinctio natus reprehenderit aliquam est iusto!
+  </p>
+    
+  
+  <label for="toggle">close overlay</label>
+</dialog>
+
+  <div class="row">
+  <div class="col-sm-4" *ngFor="let c of classe">
+    <div class="card bg-light mb-3" style="max-width: 20rem;">
+      
+      <div class="card-body">
+        <a class="card-title" [routerLink]="['/liste/:id']">{{c.name}}</a>
+        <p class="card-text">{{c.nombre}}</p>
+      </div>
+    </div>
+    <!-- row 2-->
+
+  </div>
+</div>
+
+
+
+
+</div>
