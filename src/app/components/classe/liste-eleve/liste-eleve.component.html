@@ -1,8 +1,22 @@
 <div class="container con"> 
+	<div class="pop">
+		<input type="checkbox" id="toggle">
+	<label for="toggle" class="add">Add</label>
+	
+	<dialog >
+	  <p>
+		
+	  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nihil dolore similique quis qui ad blanditiis ex eum! Enim maiores ipsam fugiat officiis earum distinctio natus reprehenderit aliquam est iusto!
+	  </p>
+		
+	  
+	  <label for="toggle" >close overlay</label>
+	</dialog>
+	</div>
 	<div class="row">
 
-
-		<div class="col-md-5 ">
+		
+		<div class="col-sm-3">
 			<div class="table-responsive-sm liste">
 				<h1 className="ClaimListTitle">Liste d'élèves </h1>
 			  <table class="table listc">
@@ -17,6 +31,8 @@
 					  
 					  <td>
                         <a [routerLink]="['/profileleve/:id']">{{p.name}} </a>
+						<button class="danger" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+
                     </td>
 					  
 					  
@@ -30,7 +46,7 @@
 			</div>
 		</div>
 		
-		<div class="col-md-5">
+		<div class="col-sm-3">
 			<div class="table-responsive-sm pres">
 				<h1 className="ClaimListTitle">Liste de présence</h1>
 			  <table class="table">

@@ -11,6 +11,8 @@ import { PresenceComponent } from './components/employe/presence/presence.compon
 import { StockComponent } from './components/stock/stock.component';
 import { ActiviteComponent } from './components/classe/activite/activite.component';
 
+import { ListeEmployeComponent } from './components/employe/liste-employe/liste-employe.component';
+
 const routes: Routes = [
   { path: 'accueil', component: AccueilComponent },
   {path:'login',component:LoginComponent},
@@ -21,7 +23,7 @@ const routes: Routes = [
   {path:'employe',component: EmployeComponent},
   {path:'profilemp/:id',component:ProfilEmployeComponent},
   {path:'presence',component:PresenceComponent},
-
+  {path:'listemp/:id',component:ListeEmployeComponent},
 {path:'stock',component:StockComponent},
 ];
 

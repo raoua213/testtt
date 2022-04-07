@@ -9,7 +9,7 @@
     font-family: "montserrat";
   }
  .dash{
-    background: #0082e6;
+    background: #412ac4;
     height: 60px;
     width: 100%;
   }
@@ -73,7 +73,7 @@ text-align: center;
 .dropdown:hover .dropdown-menu{
 	display: block;
 	color: white;
-  background-color: #be4147;
+  background-color: #0082e6;
   margin-top: 0%;
 
 }
@@ -86,7 +86,7 @@ text-align: center;
         font-size: 30px;
     }
   }
-  @media (max-width: 952px){
+  @media (max-width: 1145px){
     .checkbtn{
       display: block;
     }
@@ -99,6 +99,7 @@ text-align: center;
       left: -100%;
       text-align: center;
       transition: all .5s;
+      z-index: 99;
     }
     .dash .navlinks li{
       display: block;
@@ -115,3 +116,8 @@ text-align: center;
   }
 
  
+
+
+
+
+  

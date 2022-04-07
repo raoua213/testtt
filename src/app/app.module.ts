@@ -19,6 +19,8 @@ import { PresenceComponent } from './components/employe/presence/presence.compon
 import { ProfilEmployeComponent } from './components/employe/profil-employe/profil-employe.component';
 import { LoginComponent } from './components/login/login.component';
 import { ActiviteComponent } from './components/classe/activite/activite.component';
+import { ListeEmployeComponent } from './components/employe/liste-employe/liste-employe.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ActiviteComponent } from './components/classe/activite/activite.compone
     PresenceComponent,
     ProfilEmployeComponent,
     LoginComponent,
-    ActiviteComponent
+    ActiviteComponent,
+    ListeEmployeComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -12,4 +12,14 @@ export class EmployeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  employe=[
+    {categorie:"Enseignants"},
+    {categorie:"Cuisinier"},
+    {categorie:"Nettoyeur"}
+
+    
+  
+  ]
+
 }
