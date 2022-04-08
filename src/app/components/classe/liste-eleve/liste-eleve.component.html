@@ -1,88 +1,163 @@
-<div class="container con"> 
-	<div class="pop">
-		<input type="checkbox" id="toggle">
-	<label for="toggle" class="add">Add</label>
-	
-	<dialog >
-	  <p>
-		
-	  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nihil dolore similique quis qui ad blanditiis ex eum! Enim maiores ipsam fugiat officiis earum distinctio natus reprehenderit aliquam est iusto!
-	  </p>
-		
-	  
-	  <label for="toggle" >close overlay</label>
-	</dialog>
-	</div>
-	<div class="row">
 
-		
-		<div class="col-sm-3">
-			<div class="table-responsive-sm liste">
-				<h1 className="ClaimListTitle">Liste d'élèves </h1>
-			  <table class="table listc">
-				<thead>
-					<tr>
-					  <th scope="col">Nom</th>
-					
-					</tr>
-				  </thead>
-				  <tbody>
-					<tr *ngFor="let p of presence">
-					  
-					  <td>
-                        <a [routerLink]="['/profileleve/:id']">{{p.name}} </a>
-						<button class="danger" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+  <div class="pop">
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="add">Add</label>
 
-                    </td>
-					  
-					  
-					</tr>
-					
-				  </tbody>
-				  
-				
-			  </table>
-			
-			</div>
-		</div>
-		
-		<div class="col-sm-3">
-			<div class="table-responsive-sm pres">
-				<h1 className="ClaimListTitle">Liste de présence</h1>
-			  <table class="table">
-				<thead>
-					<tr>
-					  <th scope="col">Nom</th>
-					  <th scope="col">Lundi</th>
-					  <th scope="col">Mardi</th>
-					  <th scope="col">Mercredi</th>
-					  <th scope="col">Jeudi</th>
-					  <th scope="col">Vendredi</th>
-					  <th scope="col">Samedi</th>
-					</tr>
-				  </thead>
-				  <tbody>
-					<tr *ngFor="let p of presence">
-					  
-					  <td>{{p.name}}</td>
-					  <td> <input  type="checkbox" [checked]="p.select"></td>
-					  <td> <input  type="checkbox" [checked]="p.select"></td>
-					  <td> <input  type="checkbox" [checked]="p.select"></td>
-					  <td> <input  type="checkbox" [checked]="p.select"></td>
-					  <td> <input  type="checkbox" [checked]="p.select"></td>
-					  <td> <input  type="checkbox" [checked]="p.select"></td>
-					  
-					</tr>
-					
-				  </tbody>
-				  
-				
-			  </table>
-			  <div>
-				<input class="submit" type="submit" value="envoyer" style="width:80px;">	
-			 </div>
-			</div>
-		</div>
-		
-	</div>
+    <dialog>
+      <form class="row g-3" #addForms="ngForm" (ngSubmit)="onAddeleve(addForms)">
+        <div class="col-md-6">
+          <label for="inputnom" class="form-label">Nom</label>
+          <input type="text" class="form-control" name="nom" id="inputnom" ngModel>
+        </div>
+        <div class="col-md-6">
+          <label for="inputprenom" class="form-label">Prenom</label>
+          <input type="text" class="form-control" name="prenom" id="inputprenom" ngModel>
+        </div>
+        <div class="col-md-4">
+          <label for="inputGenre" class="form-label">Genre</label>
+          <select id="inputGenre" class="form-select" name="genre" ngModel>
+            <option selected>Choisir</option>
+            <option>garçon</option>
+            <option>fille</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="inputtaille" class="form-label">Taille</label>
+          <input type="text" class="form-control" id="inputtaille" name="taille " ngModel>
+        </div>
+
+        <div class="col-md-4">
+          <label for="inputPoid" class="form-label">Poid</label>
+          <input type="text" class="form-control" id="inputPoid" name="poid" ngModel>
+        </div>
+        <div class="col-md-4">
+          <label for="inputVaccinaction" class="form-label">Vaccinaction</label>
+          <select id="inputVaccinaction" class="form-select" name="vaccination" ngModel>
+            <option selected>Choisir</option>
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="inputMaladies" class="form-label">Maladies</label>
+          <input type="text" class="form-control" id="inputMaladies" name="maladies" ngModel>
+        </div>
+
+        <div class="col-md-4">
+          <label for="inputMedicament" class="form-label">Médicament</label>
+          <input type="text" class="form-control" id="inputMedicament" name="medicament" ngModel>
+        </div>
+        <div class="col-md-6">
+          <label for="inputparent" class="form-label">Prenom parent</label>
+          <input type="text" class="form-control" id="inputparent" name="nom_parent" ngModel>
+        </div>
+        <div class="col-md-6">
+          <label for="inputtel" class="form-label">Télèphone parent</label>
+          <input type="text" class="form-control" id="inputtel" name="tel_parent" ngModel>
+        </div>
+        <div class="col-md-12">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" name="email_parent" ngModel>
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="adresse" ngModel>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="col-12">
+          <label for="toggle">close </label>
+        </div>
+      </form>
+    </dialog>
+  </div>
+
+
+
+
+
+<div class="roww">
+
+
+  <div class="columnn">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <h1 className="title">Liste d'eleves</h1>
+
+      <div class="tbl-header">
+
+
+        <tr>
+          <th scope="col">Nom</th>
+
+        </tr>
+
+
+      </div>
+      <div>
+        <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+          <tr *ngFor="let p of classeInput?.eleves">
+
+            <td class="lis">
+              <a [routerLink]="['/profileleve',p.idEleve]" style="text-decoration: none; color: black; font-size: 22px;">{{p.nom}} </a>
+             
+                
+                  <i
+                    class="fa fa-trash"></i>
+              
+            </td>
+          </tr>
+        </tbody>
+        </table>
+
+      </div>
+    </table>
 </div>
+
+    <div class="columnn tb2">
+      <table >
+        <h1 className="title">Liste de présence</h1>
+        <table cellpadding="0" cellspacing="0" border="0">
+        <div class="tbl-header">
+
+
+          <tr>
+            <th>Nom</th> 
+            <th>Lundi</th> 
+            <th>Mardi</th> 
+            <th>Mercredi</th>
+            <th>Jeudi</th>
+            <th>Vendredi</th>
+            <th>Samedi</th>
+          </tr>
+
+
+        </div>
+        </table>
+        <div class="tbl-content">
+
+          <table cellpadding="0" cellspacing="0" border="0">
+
+          <tr *ngFor="let p of classeInput?.eleves">
+            <td style="font-size: 22px;">{{p.nom}}</td>
+            <td> <input type="checkbox" [checked]="p.select"></td> 
+            <td> <input type="checkbox" [checked]="p.select"></td>
+            <td> <input type="checkbox" [checked]="p.select"></td>
+            <td> <input type="checkbox" [checked]="p.select"></td>
+            <td> <input type="checkbox" [checked]="p.select"></td>
+            <td> <input type="checkbox" [checked]="p.select"></td>
+
+          </tr>
+
+
+</table>
+        </div>
+
+
+      </table>
+      <div>
+        <button class="btn btn-primary" type="submit" value="envoyer" > envoyer</button>
+      </div>
+
+    </div>

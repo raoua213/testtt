@@ -31,11 +31,14 @@
           <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required>
         </div>
     </div>
-    <button [disabled]="addForms.invalid" type="submit" class="btn btn-primary">Save changes</button>
-</form>
+    <div class="btnn">
+      <button [disabled]="addForms.invalid" type="submit" class="btn btn-primary">Save</button>
+
+    <label for="toggle" >close</label>
+    </div>
+  </form>
     
   
-  <label for="toggle" >close overlay</label>
 </dialog>
 
   
@@ -45,7 +48,7 @@
         <div class="card bg-light mb-3" >
           
           <div class="card-body">
-            <a class="card-title" [routerLink]="['/liste/:id']" (click)="ongetEleveByClasse(c.id)">{{c.nom}}</a>
+            <a class="card-title" [routerLink]="['/liste',c.idClasse]" (click)="ongetEleveByClasse(c.idClasse)">{{c.nom}}</a>
           </div>
         </div>
         <!-- row 2-->

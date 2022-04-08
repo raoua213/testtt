@@ -1,113 +1,113 @@
 
 <div class="cl">
 
-<div class="pop">
-  <input type="checkbox" id="toggle">
-<label class="add" for="toggle" style="margin-left: 50px; width: 3%; height: 5%;">Add</label>
-
-<dialog>
-  <!--start-->
-
-
-  <form #addForm="ngForm" (ngSubmit)="onAddEmloyee(addForm)">
-    <div class="form-group row">
-      <label for="nom" class="col-sm-2 col-form-label">nom</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="prenom" class="col-sm-2 col-form-label">prenom</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="prenom" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="cin" class="col-sm-2 col-form-label">cin</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="cin" class="form-control" id="cin" placeholder="cin" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="fonction" class="col-sm-2 col-form-label">fonction</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="fonction" class="form-control" id="fonction" placeholder="fonction" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="mail" class="col-sm-2 col-form-label">mail</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="mail" class="form-control" id="mail" placeholder="mail" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="nb_jour_initiale" class="col-sm-2 col-form-label">nom</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="nb_jour_initiale" class="form-control" id="nb_jour_initiale"
-          placeholder="nb_jour_initiale" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="nb_jour_reste" class="col-sm-2 col-form-label">rest</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="nb_jour_reste" class="form-control" id="nb_jour_reste"
-          placeholder="nb_jour_reste" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="nb_jour_taken" class="col-sm-2 col-form-label">taken</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="nb_jour_taken" class="form-control" id="nb_jour_taken"
-          placeholder="nb_jour_taken" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="salaire_de_base" class="col-sm-2 col-form-label">salaire</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="salaire_de_base" class="form-control" id="salaire_de_base"
-          placeholder="salaire_de_base" required>
-      </div>
-    </div>
-
-
-    <div class="form-group row">
-      <label for="tel" class="col-sm-2 col-form-label">salaire</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel name="tel" class="form-control" id="tel" placeholder="tel" required>
-      </div>
-    </div>
-
-
-
- <div class="btn">
-  <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
-  <label for="toggle" class="close">close overlay</label>
- </div>
-  </form>
-  <!--end-->
-
-
+  <div class="pop">
+    <input type="checkbox" id="toggle">
+  <label class="add" for="toggle" style="margin-left: 20px; width: 4%; height: 4.5%;">Add</label>
   
-
-</dialog>
-</div>
+  <dialog>
+    <!--start-->
+  
+  
+    <form #addForm="ngForm" (ngSubmit)="onAddEmloyee(addForm)">
+      <div class="form-group row">
+        <label for="nom" class="col-sm-2 col-form-label">nom</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label for="prenom" class="col-sm-2 col-form-label">prenom</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="prenom" required>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label for="cin" class="col-sm-2 col-form-label">cin</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="cin" class="form-control" id="cin" placeholder="cin" required>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label for="fonction" class="col-sm-2 col-form-label">fonction</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="fonction" class="form-control" id="fonction" placeholder="fonction" required>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label for="mail" class="col-sm-2 col-form-label">mail</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="mail" class="form-control" id="mail" placeholder="mail" required>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label for="nb_jour_initiale" class="col-sm-2 col-form-label">jours conges</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="nb_jour_initiale" class="form-control" id="nb_jour_initiale"
+            placeholder="nb_jour_initiale" required>
+        </div>
+      </div>
+  <!--
+      <div class="form-group row">
+        <label for="nb_jour_reste" class="col-sm-2 col-form-label">rest</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="nb_jour_reste" class="form-control" id="nb_jour_reste"
+            placeholder="nb_jour_reste" required>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label for="nb_jour_taken" class="col-sm-2 col-form-label">taken</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="nb_jour_taken" class="form-control" id="nb_jour_taken"
+            placeholder="nb_jour_taken" required>
+        </div>
+      </div>
+    -->
+      <div class="form-group row">
+        <label for="salaire_de_base" class="col-sm-2 col-form-label">salaire</label>
+        <div class="col-sm-10">
+          <input type="text" ngModel name="salaire_de_base" class="form-control" id="salaire_de_base"
+            placeholder="salaire_de_base" required>
+        </div>
+      </div>
+  
+  
+      <div class="form-group row">
+        <label for="tel" class="col-sm-3 col-form-label">Numero de telephone</label>
+        <div class="col-sm-9">
+          <input type="text" ngModel name="tel" class="form-control" id="tel" placeholder="tel" required>
+        </div>
+      </div>
+  
+  
+  
+   <div class="btn">
+    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+    <label for="toggle" class="close">close overlay</label>
+   </div>
+    </form>
+    <!--end-->
+  
+  
+    
+  
+  </dialog>
+  </div>
 
 <div class="lemp">
   <div class="row">
-    <div class="col-sm-3" *ngFor="let e of employe">
+    <div class="col-sm-4" *ngFor="let e of employe">
      
       <div class="card bg-light mb-3" style="max-width: 20rem;">
         <img   class="image" src="assets/empl.png">
         <div class="card-body">
-          <a class="card-title" [routerLink]="['/liste/:id']">{{ e.nom }} {{ e.prenom }} </a>
+          <a class="card-title" [routerLink]="['/profilemp',e.idPersonnel]">{{ e.nom }} {{ e.prenom }} </a>
           <div class="footer">
             <p >{{ e.mail }}</p>
             <p >{{ e.tel }}</p>
@@ -136,5 +136,14 @@
           <li></li>
   </ul>
 </div >
+
+
+
+
+
+
+
+
+
 
 

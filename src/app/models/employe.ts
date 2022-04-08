@@ -1,4 +1,5 @@
 export class Employe {
+    idPersonnel:number;
 cin : String;
 nom : String;
 prenom : String;
@@ -11,6 +12,7 @@ nb_jour_taken : number;
 nb_jour_restant : number;
 
 constructor(){
+    this.idPersonnel=0;
     this.cin="";
     this.nom="";
     this.prenom="";

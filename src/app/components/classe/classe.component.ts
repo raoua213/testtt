@@ -25,7 +25,7 @@ export class ClasseComponent implements OnInit {
   
   
   ]*/
-  classee :any = {} ;
+  classee :Classee[] = [] ;
 id:any;
 eleve:any={};
   constructor(private classeService :ClasseService,private eleveService :EleveService) { }

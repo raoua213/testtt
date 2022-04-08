@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'employe',component: EmployeComponent},
   {path:'profilemp/:id',component:ProfilEmployeComponent},
   {path:'presence',component:PresenceComponent},
-  {path:'listemp/:id',component:ListeEmployeComponent},
+  {path:'listemp',component:ListeEmployeComponent},
 {path:'stock',component:StockComponent},
 ];
 

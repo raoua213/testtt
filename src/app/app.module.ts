@@ -48,6 +48,7 @@ import { ListeEmployeComponent } from './components/employe/liste-employe/liste-
     ReactiveFormsModule,
     HttpClientModule, 
     BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

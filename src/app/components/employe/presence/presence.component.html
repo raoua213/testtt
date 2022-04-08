@@ -1,12 +1,95 @@
-<input type="checkbox" id="toggle">
-<label for="toggle">Open Overlay</label>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+	<div class="row">
+		
+	
 
-<dialog >
-  <p>
-    
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nihil dolore similique quis qui ad blanditiis ex eum! Enim maiores ipsam fugiat officiis earum distinctio natus reprehenderit aliquam est iusto!
-  </p>
-    
+
+
+			<div class="col-lg-8 col2">
+				<h1 className="ClaimListTitle">Liste de présence</h1>
+				<div class="tbl-header">
+					<table cellpadding="0" cellspacing="0" border="0">
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Lundi</th>
+								<th>Mardi</th>
+								<th>Mercredi</th>
+								<th>Jeudi</th>
+								<th>Vendredi</th>
+								<th>Samedi</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div class="tbl-content">
+					<table cellpadding="0" cellspacing="0" border="0">
+						<tbody>
+							<tr *ngFor="let p of presence">
+								<td>{{p.name}}</td>
+								<td> <input  type="checkbox" [checked]="p.select"></td>
+								<td> <input  type="checkbox" [checked]="p.select"></td>
+								<td> <input  type="checkbox" [checked]="p.select"></td>
+								<td> <input  type="checkbox" [checked]="p.select"></td>
+								<td> <input  type="checkbox" [checked]="p.select"></td>
+								<td> <input  type="checkbox" [checked]="p.select"></td>
+								
+								
+
+							</tr>
+						
+
+						</tbody>
+					</table>
+					
+				</div>
+				<div>
+					<input class="submit" type="submit" value="envoyer" style="width:80px;">	
+				</div>
+			</div>
+		
+		
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="area" >
+	<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+	</ul>
+  </div >
   
-  <label for="toggle">close overlay</label>
-</dialog>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  

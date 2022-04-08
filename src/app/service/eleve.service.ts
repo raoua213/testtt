@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -10,6 +10,7 @@ import { Eleve } from '../models/eleve';
 })
 export class EleveService {
   private url=environment.apiUrl;
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
 
   constructor(private httpclient: HttpClient) {
 
@@ -20,25 +21,27 @@ export class EleveService {
 
    }
 
-   public AddEleve(eleve:Eleve):Observable<any>{
-     return this.httpclient.post(this.url+"/addEleve",eleve);
-   }
+ 
+
+   public AddEleve(employe: Eleve): Observable<any> {
+    return this.httpclient.post<any>(`${this.url}/addEleve`, employe, this.httpOptions);
+  }
 
    public updateEleve( eleve:Eleve): Observable<any> {
-    return this.httpclient.put(this.url+"/updateEleve", eleve);
+    return this.httpclient.put<any>(this.url+"/updateEleve", eleve,this.httpOptions);
   }
 
    public DeleteEleve(id:any):Observable<any>{
-     return this.httpclient.delete(this.url+"/deleteEleveById"+id)
+     return this.httpclient.delete(this.url+"/deleteEleveById/"+id)
    }
 
    public FindEleveById(id:any):Observable<any>{
-     return  this.httpclient.get<Eleve>(this.url+"findEleve"+id)
+     return  this.httpclient.get<Eleve>(this.url+"/getEleveById/"+id)
    }
 
 
    public Findbyclasse(id:any):Observable<any>{
-    return  this.httpclient.get<Eleve>(this.url+"findEleveByClasse"+id)
+    return  this.httpclient.get<Eleve>(this.url+"/findEleveByClasse/"+id)
   }
 
 

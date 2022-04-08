@@ -12,4 +12,28 @@ export class PresenceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
+
+ /* liste=[
+    {id:1,name:'sofia mihoub',image:'assets/enf.jpg'},
+    {id:1,name:'sofia mihoub',image:'assets/enf.jpg'},  
+    {id:1,name:'sofia mihoub',image:'assets/enf.jpg'},
+    {id:1,name:'sofia mihoub',image:'assets/enf.jpg'},
+    {id:1,name:'sofia mihoub',image:'assets/enf.jpg'},
+    {id:1,name:'sofia mihoub',image:'assets/enf.jpg'},
+    {id:1,name:'sofia mihoub',image:'assets/enf.jpg'},
+    {id:1,name:'sofia mihoub',image:'assets/enf.jpg'}]*/
+
+  presence=[
+    {id:1 , select:false , name: 'sofia'},
+    {id:1 , select:false , name: 'sofia'},
+    {id:1 , select:false , name: 'sofia'},
+    {id:1 , select:false , name: 'sofia'},
+    {id:1 , select:false , name: 'sofia'},
+    {id:1 , select:false , name: 'sofia'},
+    {id:1 , select:false , name: 'sofia'},
+    {id:1 , select:false , name: 'sofia'},
+    
+  ]
 }

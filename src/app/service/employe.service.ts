@@ -37,7 +37,7 @@ export class EmployeService {
   }
 
   public FindEmpById(id:number):Observable<any>{
-    return  this.httpclient.get<Employe>(this.url+"findPersonnel"+id)
+    return  this.httpclient.get<Employe>(this.url+"/getPersonnelById/"+id)
   }
 
 

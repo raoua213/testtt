@@ -105,7 +105,7 @@ height: 350px;
     gap: 0.2%;
 position: absolute;
 
-
+overflow: hidden;
 
   }
  
@@ -159,11 +159,11 @@ position: absolute;
 
 .circles{
   position: absolute;
-  top: 8%;
+  top: 0px;
   margin-bottom: 0;
   left: 0;
   width: 100%;
-  height: 90%;
+  min-height: 150vh;
   overflow: hidden;
   z-index: -1;
 }
@@ -175,7 +175,7 @@ position: absolute;
   width: 20px;
   height: 20px;
   background: #270ace;
-  animation: animate 25s linear infinite;
+  animation: animate 8s linear infinite;
   bottom: -150px;
   
 }
@@ -192,7 +192,7 @@ position: absolute;
   left: 10%;
   width: 20px;
   height: 20px;
-  animation-delay: 2s;
+  animation-delay: 1s;
   animation-duration: 12s;
 }
 
@@ -200,7 +200,7 @@ position: absolute;
   left: 70%;
   width: 20px;
   height: 20px;
-  animation-delay: 4s;
+  animation-delay: 3s;
 }
 
 .circles li:nth-child(4){
@@ -229,14 +229,14 @@ position: absolute;
   left: 35%;
   width: 150px;
   height: 150px;
-  animation-delay: 7s;
+  animation-delay: 4s;
 }
 
 .circles li:nth-child(8){
   left: 50%;
   width: 25px;
   height: 25px;
-  animation-delay: 15s;
+  animation-delay: 10s;
   animation-duration: 45s;
 }
 
@@ -267,7 +267,7 @@ position: absolute;
   }
 
   100%{
-      transform: translateY(-1000px) rotate(720deg);
+      transform: translateY(-1200px) rotate(720deg);
       opacity: 0;
       border-radius: 50%;
   }

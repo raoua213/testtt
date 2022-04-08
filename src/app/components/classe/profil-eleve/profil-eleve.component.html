@@ -1,106 +1,124 @@
-<div class="procon">
-
-    <div class="sidebar">
-        <img src="assets/enf.jpg" class="card-img-top">
-        <div class="card-body" *ngFor="let e of eleve">
-            <h5 class="card-title"> 
-                {{e.nom}}  {{e.prenom}}
-            </h5>
-            <p class="card-text"> {{e.age}}</p>
-            <button class="edit" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-
-        </div>
-    </div>
 
 
-    <div class="info">
-        <div class="data">
-            <h5 class="card-title">info</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-        </div>
-
-        <div class="progr">
-           
-            <div class="pog">
-
-               <div>
-                   <a> Active</a>
-                <div class="progress" >
-              
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                     </div>
-               </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
+    <div class="tot">
+        <div class="lig1">
+         <div class="profilcard" >
+              <div class="card-body">
+              <img src="assets/empl.png" class="card-img-top" alt="...">        
+              </div>
+             
+              <div class="card-body">
+                <a class="card-title" [routerLink]="['/liste',eleve?.idEleve]">{{ eleve?.nom }} {{ eleve?.prenom }} </a>
+                
+              </div>
             </div>
-          
-        </div>
 
-        <div class="slider">
-            
-           <div class="i">
-            
-                <input  class="sl" checked type="radio" name="s "style="background-image: url('assets/enf.jpg');">
-                <input   class="sl" type="radio" name="s" style="background-image: url('assets/enf.jpg');">
-                <input    class="sl" type="radio" name="s" style="background-image: url('assets/enf.jpg');">
-                <input  class="sl"  type="radio" name="s" style="background-image: url('assets/enf.jpg');">
-                <input   class="sl"  type="radio" name="s" style="background-image: url('assets/enf.jpg');">
-            
+
+
+           <div>
+           
+            <div class="infocard" >
+              <div class="card-body">
+                <a class="card-title" [routerLink]="['/liste',eleve?.idEleve]"> <h2>Informations</h2></a>
+                <div class="card-text">
+                  <h3>Contact</h3>
+                  Email Parent: {{ eleve?.email_parent }} <br>
+                  Tel Parent: {{ eleve?.tel_parent }} <br>
+                  Adresse : {{ eleve?.adresse }} <br>
+                  <h3>Santé</h3>
+                  Vaccinaction : {{ eleve?.vaccination }} <br>
+                  Maladies : {{ eleve?.maladie }} <br>
+                  Médicament :  {{ eleve?.medicament }}   <br>
+                  Taille : {{ eleve?.taille }} <br>
+                  Poid : {{ eleve?.poid }}
+
+
+                </div>
+                <div class="footer">
+                    <div class="pop">
+                        <input type="checkbox" id="toggle">
+                    <label for="toggle" class="add" style="width: 30px;"> <i class="fa fa-edit"></i></label>
+                    
+                    <dialog >
+                      <form class="row g-3"  #addForms="ngForm" (ngSubmit)="updateEleve(addForms)">
+                          <div class="col-md-6">
+                              <label for="inputnom" class="form-label">Nom</label>
+                              <input type="text" class="form-control" name="nom" id="inputnom" [(ngModel)]="eleve.nom">
+                          </div>
+                            <div class="col-md-6">
+                              <label for="inputprenom" class="form-label">Prenom</label>
+                              <input type="text" class="form-control" name="prenom" id="inputprenom"  [(ngModel)]="eleve.prenom">
+                            </div>
+                            <div class="col-md-4">
+                              <label for="inputGenre" class="form-label">Genre</label>
+                              <select id="inputGenre" class="form-select" name="genre" [(ngModel)]="eleve.genre">
+                                <option selected>Choisir</option>
+                                <option>garçon</option>
+                                <option>fille</option>
+                              </select>
+                            </div>
+                            <div class="col-md-4">
+                              <label for="inputtaille" class="form-label">Taille</label>
+                              <input type="text" class="form-control" id="inputtaille"  name="taille" [(ngModel)]="eleve.taille">
+                            </div>
+                            
+                            <div class="col-md-4">
+                              <label for="inputPoid" class="form-label">Poid</label>
+                              <input type="text" class="form-control" id="inputPoid"  name="poid" [(ngModel)]="eleve.poid">
+                            </div>
+                            <div class="col-md-4">
+                              <label for="inputVaccinaction" class="form-label">Vaccinaction</label>
+                              <select id="inputVaccinaction" class="form-select" name="vaccination"  [(ngModel)]="eleve.vaccination">
+                                <option selected>Choisir</option>
+                                <option>Oui</option>
+                                <option>Non</option>
+                              </select>
+                            </div>
+                            <div class="col-md-4">
+                              <label for="inputMaladies" class="form-label">Maladies</label>
+                              <input type="text" class="form-control" id="inputMaladies" name="maladie" [(ngModel)]="eleve.maladie">
+                            </div>
+                            
+                            <div class="col-md-4">
+                              <label for="inputMedicament" class="form-label">Médicament</label>
+                              <input type="text" class="form-control" id="inputMedicament" name="medicament" [(ngModel)]="eleve.medicament">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="inputparent" class="form-label">Prenom parent</label>
+                              <input type="text" class="form-control" id="inputparent" name="nom_parent" [(ngModel)]="eleve.nom_parent">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="inputtel" class="form-label">Télèphone parent</label>
+                              <input type="text" class="form-control" id="inputtel" name="tel_parent" [(ngModel)]="eleve.tel_parent">
+                            </div>
+                            <div class="col-md-12">
+                              <label for="inputEmail4" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="inputEmail4" name="email_parent" [(ngModel)]="eleve.email_parent">
+                            </div>
+                            <div class="col-12">
+                              <label for="inputAddress" class="form-label">Address</label>
+                              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="adresse" [(ngModel)]="eleve.adresse">
+                            </div>
+                            <div class="col-12">
+                              <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                            <div class="col-12">
+                              <label for="toggle" >close </label>
+                          </div>
+                      </form>
+                  </dialog>
+                    </div>
+                </div>
+              </div>
+            </div>
            </div>
-            
-         
-        </div>
-
-
-    </div>
-
-    <div class="progresss">
-        <div class="card-body">
-            <h5 class="card-title">progress</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-                Some quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                contentSome quick example text to build on the card title and make up the bulk of the card's
-                content</p>
-        </div>
-    </div>
+            <!-- row 2-->
+        
+          
+          </div>
+ </div>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-</div>

@@ -1,9 +1,10 @@
 
 export class Eleve {
+    idEleve:number
     nom : String;
     prenom: String;
     date: String;
-    sexe:String;
+    genre:String;
     taille:String;
     poid:number;
     vaccination :String;
@@ -15,10 +16,11 @@ export class Eleve {
     email_parent:String;
     adresse:String;
     constructor(){
+        this.idEleve=0;
         this.nom="";
         this.prenom="";
         this.date="";
-        this.sexe="";
+        this.genre="";
         this.taille="";
         this.poid=0;
         this.vaccination="";

@@ -55,22 +55,22 @@ dialog{
       }
       .cl{
         display:grid;
-     
         gap: 8%;
 position: absolute;
 top: 15%;
-    
+    width: 100%;
 
       }
       
       
      
       .card{
+
        margin-top: 40px;
        width: 35vh;
-       border-radius: 60%;
+       border-radius: 2%;
        box-shadow:  0 5px 15px rgba(138, 135, 135, 0.226);
-margin-left: 10px;
+margin-left: 2%;
      
 
       }
@@ -126,7 +126,7 @@ margin-left: 10px;
       width: 20px;
       height: 20px;
       background: #270ace;
-      animation: animate 25s linear infinite;
+      animation: animate 8s linear infinite;
       bottom: -150px;
       
   }
@@ -143,7 +143,7 @@ margin-left: 10px;
       left: 10%;
       width: 20px;
       height: 20px;
-      animation-delay: 2s;
+      animation-delay: 1s;
       animation-duration: 12s;
   }
   
@@ -151,7 +151,7 @@ margin-left: 10px;
       left: 70%;
       width: 20px;
       height: 20px;
-      animation-delay: 4s;
+      animation-delay: 3s;
   }
   
   .circles li:nth-child(4){
@@ -180,14 +180,14 @@ margin-left: 10px;
       left: 35%;
       width: 150px;
       height: 150px;
-      animation-delay: 7s;
+      animation-delay: 4s;
   }
   
   .circles li:nth-child(8){
       left: 50%;
       width: 25px;
       height: 25px;
-      animation-delay: 15s;
+      animation-delay: 10s;
       animation-duration: 45s;
   }
   
@@ -218,7 +218,7 @@ margin-left: 10px;
       }
   
       100%{
-          transform: translateY(-1000px) rotate(720deg);
+          transform: translateY(-1200px) rotate(720deg);
           opacity: 0;
           border-radius: 50%;
       }

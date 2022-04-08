@@ -1,0 +1,177 @@
+
+    
+    
+      <div class="tot">
+
+
+        <div class="lig1">
+            <div class="profilcard" >
+                <div class="card-body">
+                <img src="assets/empl.png" class="card-img-top" alt="...">        
+                </div>
+            </div>
+       
+        
+            <div class="infocard" >
+              <div class="card-body">
+                <h5 class="card-title">Informations Personnel</h5>
+                <div class="card-text">               
+                  {{emp.nom}} {{emp.prenom}} <br>
+                  Cin : {{emp.cin}}<br>
+                  Email : {{emp.mail}}<br>
+                  telephone : {{emp.tel}}<br>
+                  salaire de base : {{emp.salaire_de_base}}
+                </div>
+      
+              </div>
+              <input type="checkbox" id="toggle" class="mod" >
+                <label  for="toggle" class="mod">Modifier profile</label>
+      
+                <dialog>
+                  <!--start-->
+                
+                
+                  <form #addForm="ngForm" (ngSubmit)="onUpdateEmloyee(addForm)">
+                    <div class="form-group row">
+                      <label for="nom" class="col-sm-2 col-form-label">nom</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="emp.nom" name="nom" class="form-control" id="nom" placeholder="nom" required>
+                      </div>
+                    </div>
+                
+                    <div class="form-group row">
+                      <label for="prenom" class="col-sm-2 col-form-label">prenom</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="emp.prenom" name="prenom" class="form-control" id="prenom" placeholder="prenom" required>
+                      </div>
+                    </div>
+                
+                    <div class="form-group row">
+                      <label for="cin" class="col-sm-2 col-form-label">cin</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="emp.cin" name="cin" class="form-control" id="cin" placeholder="cin" required>
+                      </div>
+                    </div>
+                
+                    <div class="form-group row">
+                      <label for="fonction" class="col-sm-2 col-form-label">fonction</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="emp.fonction" name="fonction" class="form-control" id="fonction" placeholder="fonction" required>
+                      </div>
+                    </div>
+                
+                    <div class="form-group row">
+                      <label for="mail" class="col-sm-2 col-form-label">mail</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="emp.mail" name="mail" class="form-control" id="mail" placeholder="mail" required>
+                      </div>
+                    </div>
+                
+                    <div class="form-group row">
+                      <label for="nb_jour_initiale" class="col-sm-2 col-form-label">jours conges</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="emp.nb_jour_initiale" name="nb_jour_initiale" class="form-control" id="nb_jour_initiale"
+                          placeholder="nb_jour_initiale" required>
+                      </div>
+                    </div>
+                <!--
+                    <div class="form-group row">
+                      <label for="nb_jour_reste" class="col-sm-2 col-form-label">rest</label>
+                      <div class="col-sm-10">
+                        <input type="text" ngModel name="nb_jour_reste" class="form-control" id="nb_jour_reste"
+                          placeholder="nb_jour_reste" required>
+                      </div>
+                    </div>
+                
+                    <div class="form-group row">
+                      <label for="nb_jour_taken" class="col-sm-2 col-form-label">taken</label>
+                      <div class="col-sm-10">
+                        <input type="text" ngModel name="nb_jour_taken" class="form-control" id="nb_jour_taken"
+                          placeholder="nb_jour_taken" required>
+                      </div>
+                    </div>
+                  -->
+                    <div class="form-group row">
+                      <label for="salaire_de_base" class="col-sm-2 col-form-label">salaire</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="emp.salaire_de_base" name="salaire_de_base" class="form-control" id="salaire_de_base"
+                          placeholder="salaire_de_base" required>
+                      </div>
+                    </div>
+                
+                
+                    <div class="form-group row">
+                      <label for="tel" class="col-sm-2 col-form-label"> tel</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="emp.tel" name="tel" class="form-control" id="tel" placeholder="tel" required>
+                      </div>
+                    </div>
+                
+                
+                
+                 <div class="btn">
+                  <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+                  <label for="toggle" class="close">close overlay</label>
+                 </div>
+                  </form>
+                  <!--end-->
+                
+                
+                  
+                
+                </dialog>         
+          </div>
+        </div>
+      
+   
+    
+        <div class="congecard">
+          
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button class="nav-link active" id="nav-conges-tab" data-bs-toggle="tab" data-bs-target="#nav-conges" type="button" role="tab" aria-controls="nav-conges" aria-selected="true">Congés</button>
+                      <button class="nav-link " id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+                      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Disponibilité</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-conges" role="tabpanel" aria-labelledby="nav-conges-tab">
+                        <div class="card-body ">
+                           <div class="card-text">
+                            <div class="bd" >                    
+                              <div class="card-text txt1">
+                                nombre de jours initiale :
+                                <div class="conge">
+                                  {{emp.nb_jour_initiale}}
+                                </div>
+                              </div>
+                              
+                              <div class="card-text txt2">
+                                nombre de jours taken :
+                                <div class="conge">
+                                  {{emp.nb_jour_taken}}
+                        
+                                </div>
+                              </div>
+                              
+                              <div class="card-text txt3">
+                                nombre de jours reste :
+                                <div class="conge">
+                                  {{emp.nb_jour_restant}}
+                                </div>
+                            </div>
+                          </div>
+                           <button type="button" class="btn btn-primary" >enregistrer</button>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <p>bonjour</p>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                </div>
+           
+            
+        </div>
+      </div>
+   
