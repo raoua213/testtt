@@ -1,0 +1,111 @@
+#toggle{
+    visibility: hidden;
+    opacity: 0;
+    position: relative;
+    z-index: 99;
+  }
+  
+#toggle:checked ~ dialog {
+    display: block;
+  }
+.popup{
+  margin-bottom: 0px;
+  }
+  
+.add{ background: skyblue;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 4px;
+    top: 13%;
+  
+}
+
+label{
+    background: skyblue;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 2px;
+  
+  }
+@keyframes appear {
+    0%{
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  
+dialog{
+    animation: appear 350ms ease-in 1;
+    max-width: 500px;
+    z-index: 99;
+  }
+  
+.profilcard{
+    box-shadow:  0 5px 15px rgba(138, 135, 135, 0.307);
+    background-color: rgba(128, 128, 128, 0.096);
+  height: fit-content;
+    border-radius: 2%;
+      text-align: center;
+      margin-top: 10px;
+      margin-left: 10%;
+      margin-bottom: px;
+
+    }
+.paiementcard{
+        box-shadow:  0 5px 15px rgba(138, 135, 135, 0.307);
+        background-color: rgba(128, 128, 128, 0.096);
+      
+        border-radius: 2%;
+          text-align: center;
+          margin-top: 10px;
+          margin-left: 10%;
+          
+        }
+.albumcard{
+            box-shadow:  0 5px 15px rgba(138, 135, 135, 0.307);
+            background-color: rgba(128, 128, 128, 0.096);
+          
+            border-radius: 2%;
+              text-align: center;
+              margin-top: 10px;
+              margin-left: 10%;
+              
+            }
+.evaluationcard{
+                box-shadow:  0 5px 15px rgba(138, 135, 135, 0.307);
+                background-color: rgba(128, 128, 128, 0.096);
+              
+                border-radius: 2%;
+                  text-align: center;
+                  margin-top: 10px;
+                  margin-left: 10%;
+}
+.evaluationcard .card {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 20px;
+  }
+
+.row{
+    width: 100%;
+ 
+}  
+.collapse {
+    &:not(.show) {
+      display: none;
+    }
+  }
+  
+  .collapsing {
+    height: 0;
+    overflow: hidden;
+//@include transition($transition-collapse);
+  
+    &.collapse-horizontal {
+      width: 0;
+      height: auto;
+//@include transition($transition-collapse-width);
+    }
+  }

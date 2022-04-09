@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -10,13 +10,14 @@ import { PresenceEleve } from '../models/presence-eleve';
 export class PresenceEleveService {
 
   private url=environment.apiUrl;
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
 
   constructor(private httpclient: HttpClient) {
 
    }
 
-   public AddPeleve(peleve:PresenceEleve):Observable<any>{
-    return this.httpclient.post(this.url+"/addPresence_eleve",peleve);
+   public AddPeleve(peleve:any):Observable<any>{
+    return this.httpclient.post<any>(this.url+"/addPresence_eleve",peleve, this.httpOptions);
   }
 
   public updateEleve( peleve:PresenceEleve): Observable<any> {

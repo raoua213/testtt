@@ -64,6 +64,11 @@
           <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="adresse" ngModel>
         </div>
         <div class="col-12">
+          <select name="eleves" ngModel>
+            <option *ngFor="let elem of classes" [ngValue]="elem">{{elem.nom}}</option>
+          </select>
+        </div>
+        <div class="col-12">
           <button type="submit" class="btn btn-primary">Save</button>
         </div>
         <div class="col-12">
@@ -102,9 +107,11 @@
             <td class="lis">
               <a [routerLink]="['/profileleve',p.idEleve]" style="text-decoration: none; color: black; font-size: 22px;">{{p.nom}} </a>
              
-                
+              <div class="dang">
+                <button class="btn btn-danger" (click)="onDeleteEleve(p.idEleve)" title="Delete">
                   <i
-                    class="fa fa-trash"></i>
+                    class="fa fa-trash"></i></button>
+              </div>
               
             </td>
           </tr>
@@ -124,12 +131,8 @@
 
           <tr>
             <th>Nom</th> 
-            <th>Lundi</th> 
-            <th>Mardi</th> 
-            <th>Mercredi</th>
-            <th>Jeudi</th>
-            <th>Vendredi</th>
-            <th>Samedi</th>
+            <th>Etat</th>
+            <th>Action</th>
           </tr>
 
 
@@ -141,13 +144,33 @@
 
           <tr *ngFor="let p of classeInput?.eleves">
             <td style="font-size: 22px;">{{p.nom}}</td>
-            <td> <input type="checkbox" [checked]="p.select"></td> 
+            <!--td> <input type="checkbox" [checked]="p.select"></td> 
             <td> <input type="checkbox" [checked]="p.select"></td>
             <td> <input type="checkbox" [checked]="p.select"></td>
             <td> <input type="checkbox" [checked]="p.select"></td>
             <td> <input type="checkbox" [checked]="p.select"></td>
-            <td> <input type="checkbox" [checked]="p.select"></td>
+            <td> <input type="checkbox" [checked]="p.select"></td-->
+            <td><select name="eleves" (change)="presenceClick(p,$event)">
+              <option selected  value="" disabled>select etat</option>
+              <option value="true">present</option>
+              <option value="false">absent</option>
+            </select> </td> 
+            <td>
+              <div class="pop">
+                <input type="checkbox" id="toggle2">
 
+                
+                <label for="toggle2" class="add" (click)="getPresences(p)">Add</label>
+            
+                <dialog>
+                  
+                  <p *ngFor="let p of presences">{{p.etat?'Present':'absent'}} {{p.datePE}}</p>
+                  <div class="col-12">
+                    <label for="toggle2">close </label>
+                  </div>
+                </dialog>
+              </div>
+            </td>
           </tr>
 
 
@@ -156,8 +179,6 @@
 
 
       </table>
-      <div>
-        <button class="btn btn-primary" type="submit" value="envoyer" > envoyer</button>
-      </div>
+    
 
     </div>

@@ -1,3 +1,5 @@
+import { PresenceEleveService } from './../../../service/presence-eleve.service';
+import { PresenceEleve } from './../../../models/presence-eleve';
 import { Eleve } from './../../../models/eleve';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -5,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 //import * as EventEmitter from 'events';
 import { EleveService } from 'src/app/service/eleve.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ClasseService } from 'src/app/service/classe.service';
 
 @Component({
   selector: 'app-liste-eleve',
@@ -14,18 +17,25 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ListeEleveComponent implements OnInit {
   eleves:any=[];
   idClasse:any;
+  classes:any=[]
+  presences:any[]=[]
   //@Input() classeInput:any;
   classeInput:any={};
-  constructor(private eleveService: EleveService,  private activatedRoute: ActivatedRoute) { }
+  constructor(private eleveService: EleveService,  private classeService:ClasseService, private presenceService:PresenceEleveService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.idClasse = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.idClasse);
     this.geteleveByClasse(this.idClasse);
+    this.getAllClasses();
     
   }
 
- 
+ getAllClasses(){
+   this.classeService.GetAllClasses().subscribe(data=>{
+    this.classes=data;
+   })
+ }
   geteleveByClasse(id:number){
     this.eleveService.Findbyclasse(id).subscribe(
       (data) => {
@@ -43,7 +53,7 @@ export class ListeEleveComponent implements OnInit {
     console.log(serializedForm);
 
     this.eleveService.AddEleve(addForms.value).subscribe(
-       (response) => {
+       (response:Eleve) => {
          console.log(response);
          this.geteleveByClasse(this.idClasse);
          addForms.reset();
@@ -56,19 +66,34 @@ export class ListeEleveComponent implements OnInit {
    
 
   }
+  getPresences(p:any){
+    this.presences=p.presences
+  }
+
+ public presenceClick(elem:Eleve,value:any){
+  let presence:any={}
+  presence.datePE=new Date();
+  presence.etat=value.target.value;
+  presence.presence=elem;
+  console.log(presence)
+  this.presenceService.AddPeleve(presence).subscribe(data=>{
+    console.log(data)
+    this.geteleveByClasse(this.idClasse);
+  })
+ }
 
 
 
- /* public onDeleteEleve(id: number): void {
+  public onDeleteEleve(id: number): void {
     this.eleveService.DeleteEleve(id).subscribe(
-      (response: void) => {
-        console.log(response);
-        this.geteleveByClasse(id);
+      (response) => {
+        
+        this.geteleveByClasse(this.idClasse);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
-  }*/
+  }
 
 }

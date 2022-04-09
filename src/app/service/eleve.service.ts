@@ -32,7 +32,7 @@ export class EleveService {
   }
 
    public DeleteEleve(id:any):Observable<any>{
-     return this.httpclient.delete(this.url+"/deleteEleveById/"+id)
+     return this.httpclient.delete<any>(this.url+"/deleteEleveById/"+id)
    }
 
    public FindEleveById(id:any):Observable<any>{

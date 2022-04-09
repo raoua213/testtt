@@ -20,6 +20,26 @@
 
     border-radius: 4px;
   }
+
+
+
+
+
+  
+#toggle2{
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+  z-index: 99;
+}
+
+#toggle2:checked ~ dialog {
+  display: block;
+}
+
+label{ background: skyblue;
+  border-radius: 4px;}
+
   @keyframes appear {
     0%{
       opacity: 0;

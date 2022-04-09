@@ -1,3 +1,4 @@
+import { Classee } from './classee';
 
 export class Eleve {
     idEleve:number
@@ -15,6 +16,7 @@ export class Eleve {
     tel_parent:String;
     email_parent:String;
     adresse:String;
+    eleves:Classee;
     constructor(){
         this.idEleve=0;
         this.nom="";
@@ -31,6 +33,7 @@ export class Eleve {
         this.tel_parent="";
         this.email_parent="";
     this.adresse="";
+    this.eleves=new Classee();
     }
 
 }
