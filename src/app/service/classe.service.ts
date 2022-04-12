@@ -36,7 +36,7 @@ export class ClasseService {
   }
 
   public FindClasseById(id:any):Observable<any>{
-    return  this.httpclient.get<Classee>(this.url+"findClasseById"+id)
+    return  this.httpclient.get<Classee>(this.url+"/findClasseById/"+id)
   }
 
 

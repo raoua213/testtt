@@ -39,7 +39,7 @@ margin-left: 15%;
   color: white;
   padding: .5em 1em;
   border-radius: 4px;
-  position: fixed;
+ 
   top: 8%;
 
 }
@@ -99,6 +99,10 @@ height: 350px;
 
 
   }
+
+  .row{
+    width: 100vw;
+  }
   .cl{
     display:grid;
 
@@ -133,9 +137,7 @@ overflow: hidden;
 
  @media screen and (max-width: 1145px) and (min-width: 953px) {
 
-  .row{
-    width: 100%;
-  }
+
  }
 
 
@@ -153,7 +155,7 @@ overflow: hidden;
 }
 @media screen and (max-width: 1149px){
   dialog{
-    margin-left:5%;
+    margin-left:2%;
   }
 }
 

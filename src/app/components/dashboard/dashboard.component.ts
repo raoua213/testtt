@@ -7,15 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  show:boolean=true;
+
   constructor(private route: Router) { }
 
   ngOnInit(): void {
-    if(window.location.href==="http://localhost:4200/login"){
-      this.show=false;
-    }else{
-      this.show=true;
-    }
+   
   }
 
 

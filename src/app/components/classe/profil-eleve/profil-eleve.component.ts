@@ -13,20 +13,21 @@ import { NgForm } from '@angular/forms';
 export class ProfilEleveComponent implements OnInit {
   eleve=new Eleve() ;
   id:any;
-  
+  show1:boolean=false;
+  show2:boolean=false;
   constructor(private eleveService: EleveService  ,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getElevebyid(this.id)
   }
-
- /* eleve=[
-    {nom:'Telli',prenom:'Syrine', date_nais:'14/06/2015',age:'7ans' ,taille:'1m',poid:'20kg',medicament:'aucun',maladie:'aucune',nom_parent:'lilia',tel_parent:'55883423',
-    email_parent:'leila@gmail.com',image:'assets/enf.jpg' },
-  
-  ]*/
+collapse(){
+  this.show1=!this.show1
+}
  
+collapse2(){
+  this.show2=!this.show2
+}
 
 
   public getElevebyid(id:any): void{

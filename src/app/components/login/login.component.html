@@ -1,42 +1,73 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - A Pen by Mohithpoojary</title>
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
 
-</head>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 <body>
-<!-- partial:index.partial.html -->
-<div class="container">
-	<div class="screen">
-		<div class="screen__content">
-			<form class="login">
-				<div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-					<input type="text" name="email" [(ngModel)]="email" value="" class="login__input" placeholder="User name / Email"  pInputText>
-				</div>
-             
+  <div class="container">
+    <span class="mytext1">Bienvenue dans </span>
+    <span class="mytext2"> Rama Solution </span>
 
-				<div class="login__field">
-					<i class="login__icon fas fa-lock"></i>
-					<input type="password" name="password" [(ngModel)]="password" value="" class="login__input" placeholder="Password"  pInputText>
-				</div>
-				<button pButton type="button" class="button login__submit" (click)="login()">
-					<span class="button__text">Log In Now</span>
-					<i class="button__icon fas fa-chevron-right"></i>
-				</button>				
-			</form>
-			
-		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>		
-	</div>
+    <div>
+     
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
 </div>
+      
+
+    <div class="pop">
+      <input type="checkbox" id="toggle">
+      <label for="toggle" class=" btn-primary add">Se connecter</label>
+    
+    <dialog >
+      <form class="row ">
+        <div class="col-sm-12">
+          <label for="toggle" class="close" >x</label>
+        </div>
+          <div class="col-sm-5">
+              
+                <label for="exampleInputEmail1" class="form-label">Email </label></div>
+                <div class="col-sm-6">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+               
+          
+            <div class="col-sm-5">
+              
+                <label for="exampleInputPassword1" class="form-label">Password</label></div>
+                <div class="col-sm-6">
+                <input type="password" class="form-control" id="exampleInputPassword1" minlength="6" required></div>
+                <div class="col-sm-12">
+                  <span id="passwordHelpInline" class="form-text">
+                    Must be 6-20 characters long.
+                  </span>
+                </div>
+            
+            
+            
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Connexion</button>
+            </div>
+           
+      </form>
+    </dialog>
+    </div>  
+
+    </div>
+  </div>
 </body>
-</html>

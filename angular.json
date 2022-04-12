@@ -35,10 +35,20 @@
               "C:/Users/RAOUA/Desktop/frontt/front/node_modules/bootstrap/dist/css/bootstrap.min.css",
               "C:/Users/RAOUA/Desktop/frontt/front/node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "C:/Users/RAOUA/Desktop/frontt/front/node_modules/font-awesome/css/font-awesome.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",             
+"C:/Users/RAOUA/Desktop/frontt/front/node_modules/primeicons/primeicons.css",
+"C:/Users/RAOUA/Desktop/frontt/front/node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+"C:/Users/RAOUA/Desktop/frontt/front/node_modules/primeng/resources/primeng.min.css"
+
+
             ],
             "scripts": [
-              "C:/Users/RAOUA/Desktop/frontt/front/node_modules/jquery/dist/jquery.min.js"
+              "C:/Users/RAOUA/Desktop/frontt/front/node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/cjs/popper.js",
+              "node_modules/@popperjs/core/dist/umd/popper.js",
+              "node_modules/@popperjs/core/dist/esm/popper.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             
             ]
           },

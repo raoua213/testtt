@@ -1,14 +1,14 @@
 export class Admin {
     idAdmin:String;
-    email:String;
-    password:String;
+    name:String;
+    pass:String;
 
 
 
     constructor(){
         this.idAdmin="";
-        this.email="";
-        this.password="";
+        this.name="";
+        this.pass="";
 
 
 

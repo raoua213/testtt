@@ -4,7 +4,7 @@ export class Eleve {
     idEleve:number
     nom : String;
     prenom: String;
-    date: String;
+    date!:Date
     genre:String;
     taille:String;
     poid:number;
@@ -21,7 +21,7 @@ export class Eleve {
         this.idEleve=0;
         this.nom="";
         this.prenom="";
-        this.date="";
+      
         this.genre="";
         this.taille="";
         this.poid=0;

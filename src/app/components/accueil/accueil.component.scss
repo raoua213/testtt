@@ -3,55 +3,58 @@
     opacity: 0;
     position: relative;
     z-index: 99;
+  
   }
   
-#toggle:checked ~ dialog {
+  #toggle:checked ~ dialog {
     display: block;
   }
-.popup{
+  .popup{
   margin-bottom: 0px;
   }
   
-.add{ background: skyblue;
+  .add{ background: skyblue;
     color: white;
     padding: .5em 1em;
     border-radius: 4px;
     top: 13%;
   
-}
-
-label{
+  }
+  .close{
+  margin-left: 90%;
+  }
+  
+  label{
     background: skyblue;
     color: white;
     padding: .5em 1em;
     border-radius: 2px;
   
   }
-@keyframes appear {
+  @keyframes appear {
     0%{
       opacity: 0;
       transform: translateY(-10px);
     }
   }
   
-dialog{
+  dialog{
     animation: appear 350ms ease-in 1;
     max-width: 500px;
     z-index: 99;
   }
   
-.profilcard{
+  .profilcard{
     box-shadow:  0 5px 15px rgba(138, 135, 135, 0.307);
     background-color: rgba(128, 128, 128, 0.096);
-  height: fit-content;
+  
     border-radius: 2%;
       text-align: center;
       margin-top: 10px;
       margin-left: 10%;
       margin-bottom: px;
-
     }
-.paiementcard{
+  .paiementcard{
         box-shadow:  0 5px 15px rgba(138, 135, 135, 0.307);
         background-color: rgba(128, 128, 128, 0.096);
       
@@ -61,7 +64,7 @@ dialog{
           margin-left: 10%;
           
         }
-.albumcard{
+  .albumcard{
             box-shadow:  0 5px 15px rgba(138, 135, 135, 0.307);
             background-color: rgba(128, 128, 128, 0.096);
           
@@ -71,7 +74,7 @@ dialog{
               margin-left: 10%;
               
             }
-.evaluationcard{
+  .evaluationcard{
                 box-shadow:  0 5px 15px rgba(138, 135, 135, 0.307);
                 background-color: rgba(128, 128, 128, 0.096);
               
@@ -79,20 +82,19 @@ dialog{
                   text-align: center;
                   margin-top: 10px;
                   margin-left: 10%;
-}
-.evaluationcard .card {
+  }
+  .evaluationcard .card {
     text-align: center;
     margin-top: 10px;
     margin-left: 10%;
     margin-right: 10%;
     font-size: 20px;
   }
-
-.row{
+  
+  .row{
     width: 100%;
- 
-}  
-.collapse {
+  }  
+  .collapse {
     &:not(.show) {
       display: none;
     }
@@ -101,11 +103,11 @@ dialog{
   .collapsing {
     height: 0;
     overflow: hidden;
-//@include transition($transition-collapse);
+  //@include transition($transition-collapse);
   
     &.collapse-horizontal {
       width: 0;
       height: auto;
-//@include transition($transition-collapse-width);
+  //@include transition($transition-collapse-width);
     }
   }

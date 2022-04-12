@@ -21,6 +21,10 @@ import { LoginComponent } from './components/login/login.component';
 import { ActiviteComponent } from './components/classe/activite/activite.component';
 import { ListeEmployeComponent } from './components/employe/liste-employe/liste-employe.component';
 
+//primeNg
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import {MenuItem} from 'primeng/api'; 
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,6 @@ import { ListeEmployeComponent } from './components/employe/liste-employe/liste-
     AccueilComponent,
     EmployeComponent,
     ClasseComponent,
-  
     PaiementComponent,
     StockComponent,
     ProfilEleveComponent,
@@ -48,6 +51,9 @@ import { ListeEmployeComponent } from './components/employe/liste-employe/liste-
     ReactiveFormsModule,
     HttpClientModule, 
     BrowserAnimationsModule,
+
+    AccordionModule,
+  
     
   ],
   providers: [],

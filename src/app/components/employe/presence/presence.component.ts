@@ -2,6 +2,7 @@ import { EmployeService } from './../../../service/employe.service';
 import { PresenceEmployeService } from './../../../service/presence-employe.service';
 import { Employe } from './../../../models/employe';
 import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-presence',
@@ -29,8 +30,8 @@ presences:any[]=[]
       console.log(data)
     })*/
   }
-  public presenceClick(elem:Employe,value:any){
-    let presence:any={}
+  public presenceClick(elem:any,value:any){
+    /*let presence:any={}
     presence.date=new Date();
     presence.etat=value.target.value;
     presence.presence=elem;
@@ -38,7 +39,30 @@ presences:any[]=[]
     this.presenceService.AddPemploye(presence).subscribe(data=>{
       console.log(data);
       this.getAllEmp();
-    })
+    })*/
+    let d=formatDate(new Date(),'yyyy-MM-dd', 'en-US');
+    let index = elem.presences.findIndex((x: { date: any; }) => x.date==d);
+    if(index!=-1){
+      let presence=elem.presences[index]
+      presence.etat=value.target.value;
+     
+      presence.presence={idPersonnel:elem.idPersonnel}
+      console.log(presence)
+      this.presenceService.updateEleve(presence).subscribe(data=>{
+        console.log(data)
+        this.getAllEmp();
+      })
+    }else{
+      let presence:any={}
+      presence.date=new Date();
+      presence.etat=value.target.value;
+     
+      presence.presence={idPersonnel:elem.idPersonnel}
+      this.presenceService.AddPemploye(presence).subscribe(data=>{
+        console.log(data)
+        this.getAllEmp();
+      })
+    }
    }
 
 

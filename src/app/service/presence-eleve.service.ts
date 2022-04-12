@@ -20,7 +20,7 @@ export class PresenceEleveService {
     return this.httpclient.post<any>(this.url+"/addPresence_eleve",peleve, this.httpOptions);
   }
 
-  public updateEleve( peleve:PresenceEleve): Observable<any> {
+  public updatePeleve( peleve:PresenceEleve): Observable<any> {
     return this.httpclient.put(this.url+"/updatePresence_eleve", peleve);
   }
 

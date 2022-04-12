@@ -1,3 +1,4 @@
+import { Classee } from './../../../models/classee';
 import { PresenceEleveService } from './../../../service/presence-eleve.service';
 import { PresenceEleve } from './../../../models/presence-eleve';
 import { Eleve } from './../../../models/eleve';
@@ -8,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EleveService } from 'src/app/service/eleve.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ClasseService } from 'src/app/service/classe.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-liste-eleve',
@@ -17,7 +19,7 @@ import { ClasseService } from 'src/app/service/classe.service';
 export class ListeEleveComponent implements OnInit {
   eleves:any=[];
   idClasse:any;
-  classes:any=[]
+  classe=new Classee;
   presences:any[]=[]
   //@Input() classeInput:any;
   classeInput:any={};
@@ -27,13 +29,15 @@ export class ListeEleveComponent implements OnInit {
     this.idClasse = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.idClasse);
     this.geteleveByClasse(this.idClasse);
-    this.getAllClasses();
+    this.getClassesById(this.idClasse);
     
   }
 
- getAllClasses(){
-   this.classeService.GetAllClasses().subscribe(data=>{
-    this.classes=data;
+ getClassesById(id:number){
+   this.classeService.FindClasseById(id).subscribe(data=>{
+    console.log(data)
+    this.classe=data;
+    
    })
  }
   geteleveByClasse(id:number){
@@ -49,6 +53,7 @@ export class ListeEleveComponent implements OnInit {
 
   public onAddeleve(addForms: NgForm): void {
     // document.getElementById('add-employee-form').click();
+    addForms.value.eleves=this.classe;
     let serializedForm = JSON.stringify(addForms.value);
     console.log(serializedForm);
 
@@ -70,8 +75,8 @@ export class ListeEleveComponent implements OnInit {
     this.presences=p.presences
   }
 
- public presenceClick(elem:Eleve,value:any){
-  let presence:any={}
+ public presenceClick(elem:any,value:any){
+ /* let presence:any={}
   presence.datePE=new Date();
   presence.etat=value.target.value;
   presence.presence=elem;
@@ -79,7 +84,34 @@ export class ListeEleveComponent implements OnInit {
   this.presenceService.AddPeleve(presence).subscribe(data=>{
     console.log(data)
     this.geteleveByClasse(this.idClasse);
-  })
+  })*/
+
+  let d=formatDate(new Date(),'yyyy-MM-dd', 'en-US');
+  let index = elem.presences.findIndex((x: { datePE: any; }) => x.datePE==d);
+  console.log(elem.presences)
+  console.log(index)
+  if(index!=-1){
+    let presence=elem.presences[index]
+    presence.etat=value.target.value;
+   
+    presence.presence={idEleve:elem.idEleve}
+    console.log(presence)
+    this.presenceService.updatePeleve(presence).subscribe(data=>{
+      console.log(data)
+      this.geteleveByClasse(this.idClasse);
+    })
+  }
+  else{
+    let presence:any={}
+    presence.datePE=new Date();
+    presence.etat=value.target.value;
+   
+    presence.presence={idEleve:elem.idEleve}
+    this.presenceService.AddPeleve(presence).subscribe(data=>{
+      console.log(data)
+      this.geteleveByClasse(this.idClasse);
+    })
+  }
  }
 
 
