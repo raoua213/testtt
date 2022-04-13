@@ -1,3 +1,4 @@
+import { Facture } from './facture';
 import { Classee } from './classee';
 
 export class Eleve {
@@ -17,6 +18,8 @@ export class Eleve {
     email_parent:String;
     adresse:String;
     eleves:Classee;
+    img!:any;
+    factures!:Facture[]
     constructor(){
         this.idEleve=0;
         this.nom="";

@@ -1,0 +1,51 @@
+.tot{
+    display: grid;
+    grid-template-columns: 650px auto;
+    gap: 2%;
+    margin: 1%;
+    
+}
+.one{
+   
+    display: grid;
+    grid-template-rows: 50% 50%;
+    gap: 2%;
+}
+.liste{
+    background-color: #A8C3D0;
+}
+.calen{
+    background-color: #A8C3D0;
+}
+.two{
+    background-color: #A8C3D0;
+}
+.full{
+    margin-top:2%;
+    margin-bottom: 2%;
+    margin-left: 15%;
+    width: 73%;
+
+}
+#toggle{
+    visibility: hidden;
+    opacity: 0;
+    position: relative;
+    z-index: 99;
+  }
+  
+  #toggle:checked ~ dialog {
+    display: block;
+    z-index: 99;
+  }
+
+  label{ 
+    border-radius: 4px;}
+  .add{
+   
+    color: white;
+    margin-top: 4.2%;
+    margin-right: 4%;
+
+    border-radius: 4px;
+  }

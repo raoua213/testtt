@@ -10,17 +10,19 @@
     display: block;
   }
 
-  label{ background: skyblue;
+  label{ 
     border-radius: 4px;}
   .add{
-    background: skyblue;
+   
     color: white;
     margin-top: 1%;
     margin-left: 3px;
 
     border-radius: 4px;
   }
-
+td:hover{
+  background-color: white;
+}
 
 
   
@@ -35,7 +37,7 @@
   display: block;
 }
 
-label{ background: skyblue;
+label{ 
   border-radius: 4px;}
 
   @keyframes appear {
@@ -127,4 +129,21 @@ th, td {
   .tb2{
     width: 10%;
   }
+}
+
+
+.tot{
+  display: grid;
+  grid-template-columns: 650px  auto;
+  gap: 1%;
+  margin: 1%;
+  height: 88vh;
+ 
+}
+.one{
+  background-color: #A8C3D0;
+}
+.two{
+  background-color: #A8C3D0;
+
 }

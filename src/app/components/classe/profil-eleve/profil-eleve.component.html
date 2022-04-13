@@ -2,117 +2,248 @@
 
 
 <div class="tot">
- 
- <div class="one">
-  <div class="ligne1">
 
-    <div class="card-body">
-      <img src="assets/empl.png" class="card-img-top" style="width: 250px;" alt="...">
-    </div>
-    <div class="card-text">
-      <p> Nom : {{ eleve?.nom }} {{ eleve?.prenom }}</p>
-      <p> date Naissance : {{ eleve?.date}} </p>
+  <div class="one">
+    <div class="ligne1">
 
-      <div class="pop">
-        <input type="checkbox" id="toggle2">
-        <label for="toggle2" class="add" style="width: 30px;"> <i class="fa fa-edit"></i></label>
-  
-        <dialog>
-          <form class="row g-3" #addForms="ngForm" (ngSubmit)="updateEleve(addForms)">
-            <div class="col-md-6">
-              <label for="inputnom" class="form-label">Nom</label>
-              <input type="text" class="form-control" name="nom" id="inputnom" [(ngModel)]="eleve.nom">
-            </div>
-            <div class="col-md-6">
-              <label for="inputprenom" class="form-label">Prenom</label>
-              <input type="text" class="form-control" name="prenom" id="inputprenom" [(ngModel)]="eleve.prenom">
-            </div>
-            <div class="col-md-4">
-              <label for="inputGenre" class="form-label">Genre</label>
-              <select id="inputGenre" class="form-select" name="genre" [(ngModel)]="eleve.genre">
-                <option selected>Choisir</option>
-                <option>garçon</option>
-                <option>fille</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <label for="inputtaille" class="form-label">Taille</label>
-              <input type="text" class="form-control" id="inputtaille" name="taille" [(ngModel)]="eleve.taille">
-            </div>
-  
-            <div class="col-md-4">
-              <label for="inputPoid" class="form-label">Poid</label>
-              <input type="text" class="form-control" id="inputPoid" name="poid" [(ngModel)]="eleve.poid">
-            </div>
-            <div class="col-md-4">
-              <label for="inputVaccinaction" class="form-label">Vaccinaction</label>
-              <select id="inputVaccinaction" class="form-select" name="vaccination" [(ngModel)]="eleve.vaccination">
-                <option selected>Choisir</option>
-                <option>Oui</option>
-                <option>Non</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <label for="inputMaladies" class="form-label">Maladies</label>
-              <input type="text" class="form-control" id="inputMaladies" name="maladie" [(ngModel)]="eleve.maladie">
-            </div>
-  
-            <div class="col-md-4">
-              <label for="inputMedicament" class="form-label">Médicament</label>
-              <input type="text" class="form-control" id="inputMedicament" name="medicament"
-                [(ngModel)]="eleve.medicament">
-            </div>
-            <div class="col-md-6">
-              <label for="inputparent" class="form-label">Prenom parent</label>
-              <input type="text" class="form-control" id="inputparent" name="nom_parent" [(ngModel)]="eleve.nom_parent">
-            </div>
-            <div class="col-md-6">
-              <label for="inputtel" class="form-label">Télèphone parent</label>
-              <input type="text" class="form-control" id="inputtel" name="tel_parent" [(ngModel)]="eleve.tel_parent">
-            </div>
-            <div class="col-md-12">
-              <label for="inputEmail4" class="form-label">Email</label>
-              <input type="email" class="form-control" id="inputEmail4" name="email_parent"
-                [(ngModel)]="eleve.email_parent">
-            </div>
-            <div class="col-12">
-              <label for="inputAddress" class="form-label">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="adresse"
-                [(ngModel)]="eleve.adresse">
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-            <div class="col-12">
-              <label for="toggle2">close </label>
-            </div>
-          </form>
-        </dialog>
+      <div class="card-body">
+       
+        <img [src]="retrievedImage"
+        class="card-img-top" style="width: 250px;" alt="...">
+      </div>
+      <div class="card-text">
+        <div class="info">
+          <p> Nom : {{ eleve?.nom }} {{ eleve?.prenom }}</p>
+        <p> date Naissance : {{ eleve?.date}} </p>
+        </div>
+
+        <div class="pop">
+          <input type="checkbox" id="toggle2">
+          <label for="toggle2" class=" btn-primary mod"> <i class="pi pi-fw pi-pencil"></i></label>
+
+          <dialog>
+            <form class="row g-3" #addForms="ngForm" (ngSubmit)="updateEleve(addForms)">
+              <div class="col-12">
+                <label for="toggle2" class="close">X </label>
+              </div>
+              <input type="hidden" class="form-control" name="idEleve" id="inputnom" [(ngModel)]="eleve.idEleve">
+
+              <div class="col-md-6">
+                <label for="inputnom" class="form-label">Nom</label>
+                <input type="text" class="form-control" name="nom" id="inputnom" [(ngModel)]="eleve.nom">
+              </div>
+              <div class="col-md-6">
+                <label for="inputprenom" class="form-label">Prenom</label>
+                <input type="text" class="form-control" name="prenom" id="inputprenom" [(ngModel)]="eleve.prenom">
+              </div>
+              <div class="col-md-4">
+                <label for="inputGenre" class="form-label">Genre</label>
+                <select id="inputGenre" class="form-select" name="genre" [(ngModel)]="eleve.genre">
+                  <option selected>Choisir</option>
+                  <option>garçon</option>
+                  <option>fille</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label for="inputtaille" class="form-label">Taille</label>
+                <input type="text" class="form-control" id="inputtaille" name="taille" [(ngModel)]="eleve.taille">
+              </div>
+
+              <div class="col-sm-4">
+                <label for="inputPoid" class="form-label">Poid</label>
+                <input type="text" class="form-control" id="inputPoid" name="poid" [(ngModel)]="eleve.poid">
+              </div>
+              <div class="col-sm-4">
+                <label for="inputVaccinaction" class="form-label">Vaccinaction</label>
+                <select id="inputVaccinaction" class="form-select" name="vaccination" [(ngModel)]="eleve.vaccination">
+                  <option selected>Choisir</option>
+                  <option>Oui</option>
+                  <option>Non</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label for="inputMaladies" class="form-label">Maladies</label>
+                <input type="text" class="form-control" id="inputMaladies" name="maladie" [(ngModel)]="eleve.maladie">
+              </div>
+
+              <div class="col-sm-4">
+                <label for="inputMedicament" class="form-label">Médicament</label>
+                <input type="text" class="form-control" id="inputMedicament" name="medicament"
+                  [(ngModel)]="eleve.medicament">
+              </div>
+              <div class="col-sm-6">
+                <label for="inputparent" class="form-label">Prenom parent</label>
+                <input type="text" class="form-control" id="inputparent" name="nom_parent"
+                  [(ngModel)]="eleve.nom_parent">
+              </div>
+              <div class="col-sm-6">
+                <label for="inputtel" class="form-label">Télèphone parent</label>
+                <input type="text" class="form-control" id="inputtel" name="tel_parent" [(ngModel)]="eleve.tel_parent">
+              </div>
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" name="email_parent"
+                  [(ngModel)]="eleve.email_parent">
+              </div>
+              <div class="col-sm-6">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="adresse"
+                  [(ngModel)]="eleve.adresse">
+              </div>
+              <label for="img">
+                Image
+            </label>
+            <input id="img" type="file" (change)="onFileChanged($event)">
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+
+            </form>
+          </dialog>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="collapse1">
-   <div>
-    <p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Button with data-target
-      </button>
-    </p>
-   </div>
-    <div class="collapse" id="collapseExample">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-    
+    <div class="collapse1">
+
+      <div class="contact">
+        <div>
+          <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+              aria-expanded="false" aria-controls="collapseExample">
+              Contact
+            </button>
+          </p>
+        </div>
+        <div class="collapse" id="collapseExample">
+          Nom Parent: {{ eleve?.nom_parent }} <br>
+          Tel Parent: {{ eleve?.tel_parent }} <br>
+          Email Parent: {{ eleve?.email_parent }} <br>
+          Adresse : {{ eleve?.adresse }} <br>
+        </div>
+      </div>
+
+
+      <div class="dossier">
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button"
+            aria-expanded="false" aria-controls="multiCollapseExample1">Dossier Médicale</a>
+        </p>
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+              <div class="card card-body" style="background-color: #A8C3D0; border: none;">
+                Taille : {{ eleve?.taille}} <br>
+                Poid : {{ eleve?.poid }} <br>
+                Vaccination : {{ eleve?.vaccination }} <br>
+                Maladie : {{ eleve?.maladie }} <br>
+                Médicament : {{ eleve?.medicament }} <br>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
     </div>
   </div>
- </div>
-   
 
- 
+
   <div class="two">
-    
+    <div class="act">
+      <input type="checkbox" id="toggle" class="evaluer">
+      <label for="toggle" class=" btn btn-primary evaluer">
+        Evaluer </label>
+      <dialog>
+        <!--start-->
+
+        <label for="toggle" class="close">X</label>
+        <form #addForm="ngForm" class="row g-3">
+
+          <div class="col-sm-6 ">
+            <label for="date">Date</label>
+            <input type="date" name="date" class="form-control" id="date" placeholder="date" required>
+          </div>
+          <div class="col-sm-6 ">
+            <label for="note">Note</label>
+            <input type="text" name="note" class="form-control" id="note" placeholder="note" required>
+          </div>
+
+          <div class="col-sm-12">
+            <label for="remarque">Remarque</label>
+            <input type="text" name="remarque" class="form-control" id="remarque" placeholder="remarque" required>
+          </div>
+
+
+        </form>
+      </dialog>
+
+      <div class="remarquebody" style="margin-left: 2%; margin-top: 1%;">
+<h4>
+  Remarques : 
+
+</h4>   
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nom Activité</th>
+      <th scope="col">Remarque</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>         </th>
+        <th>         </th>
+      </tr>
+    </tbody>
+</table>   
+</div>
+
+    </div>
+
+    <div class="photo">
+    </div>
   </div>
 
   <div class="three">
-    nbhjj
+    <input type="checkbox" id="toggle3" class="paiement">
+    <label for="toggle3" class=" btn btn-primary evaluer">
+    Add Paiement </label>
+    <dialog>
+      <!--start-->
+
+      <label for="toggle3" class="close">X</label>
+      <form #addForm="ngForm" class="row g-3">
+
+        <div class="col-sm-6 ">
+          <label for="fdate"> From Date</label>
+          <input type="date" name="from_date" [(ngModel)]="facture.from_date" class="form-control" id="fdate" placeholder="From Date" required>
+        </div>
+        
+        <div class="col-sm-6 ">
+          <label for="todate"> From Date</label>
+          <input type="date" name="to_date"[(ngModel)]="facture.to_date" class="form-control" id="todate" placeholder="To Date" required>
+        </div>
+        <div class="col-sm-12">
+          <label for="montant">Montant</label>
+          <input type="number" name="montent" [(ngModel)]="facture.montent" class="form-control" id="montant" placeholder="Montant" required>
+        </div>
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary" (click)="addMontant()">Save</button>
+        </div>
+      </form>
+    </dialog>
+    <div class="card" >
+
+      <form #dateForm="ngForm" (ngSubmit)="findDate(dateForm)" class="row g-3">
+        <input name="date" class="form-control search" type="date" data-date-format="YYYY MM DD" placeholder="Search" aria-label="Search" style="width: 70%;" ngModel>
+        <button class="btn-primary col-2"  type="submit" style="width: max-content;  border-radius: 4px;height: max-content; margin-top: 6%; ">Search</button>
+      </form>
+      <div *ngFor="let f of eleve.factures">
+        <p>{{f.idFacture}} {{f.from_date}} {{f.to_date}} {{f.montent}}</p>
+      </div>
+
+    </div>
   </div>
 </div>

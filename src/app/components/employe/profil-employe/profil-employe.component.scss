@@ -1,260 +1,79 @@
 
 .tot{
   display: grid;
-  grid-template-columns: 800px 500px;
-  gap: 5%;
-  margin-top: 1.5%;
+  grid-template-columns:auto auto;
+  gap: 1%;
+  margin: 1%;
 }
 .one{
+
   display: grid;
-  gap: 4%;
-  margin-left: 8%;
+  grid-template-rows: 350px 350px;
+  gap: 3%;
+}
+.collap{
+  background-color: #A8C3D0;
+  font-family:'Mukta', sans-serif;
+  font-size: large; 
+   padding: 16px;
+}
+.info{
+
+}
+.act{
+  background-color: #A8C3D0;
+}
+.ligne1{
+  background-color: #A8C3D0;
+  display: grid;
+  grid-template-columns: 250px 250px;
+ 
+  gap: 8%;
+
+}
+.card-text{
+  font-family:'Mukta', sans-serif;
+  font-size: large; 
+  line-height: 30px;
+  margin-top: 8%;
+}
+
+
+#toggle{
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+  z-index: -1;
+}
+
+#toggle:checked ~ dialog {
+  display: block;
+}
+#toggle3{
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+
+}
+
+#toggle3:checked ~ dialog {
+  display: block;
   
+}
+label{
+
+  color: black;
+  padding: .5em 1em;
+  border-radius: 4px;
+  
+}
+
+.mod{
+
+  padding: 0em 1em;
+  float: right;
 }
 .close{
   margin-left: 90%;
  
   }
-  
-.profilcard{
-  box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-  background-color:#A8C3D0;
-
-  border-radius: 2%;
-   
-    margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: 250px auto;
-    gap: 8%;
-  }
-  .card-text{
-    font-family:'Mukta', sans-serif;
-font-size: large; 
-line-height: 30px;
-margin-top: 5%;
-display: grid;
-grid-template-columns: auto auto;
-  }
-.act{
-  background-color: #A8C3D0;
- 
-  border-radius: 2%;
-  font-family:'Mukta', sans-serif;
-  font-size: large;
-    margin-bottom: 0px;
-}
-
-.lig1{
-    display: grid;
-    grid-template-columns: 350px  auto;
-gap:2%
-}
-
-.conge{
-    background-color: white;
-width: 4%;
-    border-radius: 2%;
-    box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-}
-  .txt1{
-    display: flex;
-      flex-direction: row;
-    gap : 30px;
-    font-family:'Mukta', sans-serif;
-      font-size: large;
-  }
-  .txt2{
-    display: flex;
-      flex-direction: row;
-    gap : 30px;
-    font-family:'Mukta', sans-serif;
-      font-size: large;
-  }
-  .txt3{
-    display: flex;
-      flex-direction: row;
-    gap : 30px;
-    font-family:'Mukta', sans-serif;
-      font-size: large;
-  }
-  .bd{
-      display: grid;
-      gap: 5%;
-  }
-  .btn-primary{
-      float: right;
-  }
-  .mod{
-    background-color: #24a0ed;
-    padding: .0em 1em;
-    float: right;
-  }
-  .congecard{
-    border: 1px ;
-    box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-    background-color:#A8C3D0;
-    border-radius: 2%;
-    color: black;
-    
-    text-align: center;
-    align-items: center;
-     padding: 16px;
-     
-    }
-    #toggle{
-        visibility: hidden;
-        opacity: 0;
-        position: relative;
-        z-index: -1;
-      }
-     
-      #toggle:checked ~ dialog {
-        display: block;
-      }
-      label{
-     
-        color: black;
-        padding: .5em 1em;
-        border-radius: 4px;
-        
-      }
-     
-      .btn-primary{
-        background-color: #24a0ed;
-      }
-      .modif{
-          float: right;
-      }
-      @keyframes appear {
-        0%{
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-      }
-      
-      dialog{
-        animation: appear 50ms ease-in 1;
-        width: 700px;
-      }
-
-      @media screen and (max-width: 1168px) { 
-        .lig1{
-            display: grid;
-            grid-template-columns: 300px  450px;
-        gap: 3%;
-        }
-
-      
-        .infocard{
-            background-color: rgb(246, 163, 221);
-           border-radius: 5%;
-           text-align: center;
-           margin-top: 10px;
-           margin-bottom: 20px;
-     
-          }
-      }
-
-      @media screen and(min-width: 780px) and (max-width: 985px)  { 
-        .lig1{
-            display: grid;
-            grid-template-columns: 300px  450px;
-        gap: 2%;
-        }
-
-      
-        .infocard{
-          box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-          background-color: rgba(128, 128, 128, 0.096);
-          border-radius: 2%;
-           text-align: center;
-           margin-top: 10px;
-           margin-bottom: 20px;
-     
-          }
-      }
-
-
-      @media screen and(min-width: 687px) and (max-width: 780px)  { 
-        .lig1{
-            display: flex;
-           flex-direction: column;
-           width: 100%;
-        gap: 2%;
-        }
-
-      
-        .infocard{
-          box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-          background-color: rgba(128, 128, 128, 0.096);
-          border-radius: 2%;
-           text-align: center;
-           margin-top: 10px;
-           margin-left: 70px;
-           margin-bottom: 20px;
-     
-          }
-      }
-      
-      @media screen and(max-width: 687px)  { 
-        .lig1{
-            display: flex;
-           flex-direction: column;
-           width: 100%;
-        gap: 2%;
-        }
-
-      
-        .infocard{
-          box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-          background-color: rgba(128, 128, 128, 0.096);
-          border-radius: 2%;
-           text-align: center;
-           margin-top: 10px;
-           margin-left: 70px;
-           margin-bottom: 20px;
-     
-          }
-          .congecard{
-            border: 1px ;
-            box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-            background-color: rgba(128, 128, 128, 0.096);
-            border-radius: 2%;            color: black;
-            margin-left: 3%;
-            text-align: center;
-            align-items: center;
-             padding: 12px;
-         
-            }
-      }
-
-
-      @media screen and(max-width: 580px)  { 
-        .lig1{
-            display: flex;
-           flex-direction: column;
-           width: 100%;
-        gap: 2%;
-        }
-
-      
-        .infocard{
-          box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-          background-color: rgba(128, 128, 128, 0.096);
-          border-radius: 2%;
-           text-align: center;
-           margin-top: 10px;
-           margin-left: 70px;
-           margin-bottom: 20px;
-     
-          }
-        .conge{
-          width: 20px;
-
-        }
-        .btn-primary{
-          background-color: #24a0ed;
-          margin-top: 18px;
-
-        }
-        }

@@ -1,3 +1,4 @@
+import { PaiementComponent } from './components/paiement/paiement.component';
 import { ProfilEleveComponent } from './components/classe/profil-eleve/profil-eleve.component';
 import { ClasseComponent } from './components/classe/classe.component';
 import { LoginComponent } from './components/login/login.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'presence',component:PresenceComponent},
   {path:'listemp',component:ListeEmployeComponent},
 {path:'stock',component:StockComponent},
+{path:'paiement', component:PaiementComponent}
 ];
 
 @NgModule({

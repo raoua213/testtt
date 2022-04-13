@@ -1,1 +1,77 @@
 <app-dashboard></app-dashboard>
+<div class="tot">
+    <div class="paiement">
+        <div class="card" >
+
+            <form class="row g-3">
+              <input class="form-control search" type="search" placeholder="Search" aria-label="Search" style="width: 70%;">
+              <button class="btn-primary col-2"  type="submit" style="width: max-content;  border-radius: 4px;height: max-content; margin-top: 6%; ">Search</button>
+            </form>
+         
+            <div class="tab">
+              <h1 className="title">Liste d'eleves</h1>
+              <table class="table table-hover" style="margin-right: 1.2%; ">
+        
+        
+                <thead>
+        
+        
+                  <tr>
+                    <th scope="col">Nom</th>
+
+                     
+                     <th scope="col">Action</th>
+                  </tr>
+        
+        
+                </thead>
+        
+                <tbody>
+                  <tr *ngFor="let e of eleves">
+        
+                    <td class="lis">
+                     <a [routerLink]="['/profileleve',e.idEleve]" style="text-decoration: none; color: black;">{{e.nom}} {{e.prenom}}</a> 
+                    </td>
+                    <td class="lis">
+                      <input type="checkbox" id="toggle3" class="paiement">
+                      <label for="toggle3" class=" btn btn-primary evaluer">
+                      Add Paiement </label>
+                      <dialog>
+                        <!--start-->
+                  
+                        <label for="toggle3" class="close">X</label>
+                        <form #addForm="ngForm" class="row g-3">
+                  
+                          <div class="col-sm-6 ">
+                            <label for="fdate"> From Date</label>
+                            <input type="date" name="from_date" [(ngModel)]="facture.from_date" class="form-control" id="fdate" placeholder="From Date" required>
+                          </div>
+                          
+                          <div class="col-sm-6 ">
+                            <label for="todate"> From Date</label>
+                            <input type="date" name="to_date"[(ngModel)]="facture.to_date" class="form-control" id="todate" placeholder="To Date" required>
+                          </div>
+                          <div class="col-sm-12">
+                            <label for="montant">Montant</label>
+                            <input type="number" name="montent" [(ngModel)]="facture.montent" class="form-control" id="montant" placeholder="Montant" required>
+                          </div>
+                          <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary" (click)="addMontant(e)">Save</button>
+                          </div>
+                        </form>
+                      </dialog>
+                    </td>
+                  </tr>
+                </tbody>
+        
+        
+        
+              </table>
+            </div>
+      
+          </div>
+    </div>
+    <div class="stat">
+<h3 style="margin:2%"> Statistiques</h3>
+    </div>
+</div>

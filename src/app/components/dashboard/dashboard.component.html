@@ -9,10 +9,10 @@
       </label>
       <label class="logo">Welcome</label>
       <ul class="navlinks">
-        <li> <a [routerLink]="['/accueil']">Home</a></li>
+        <li class="pi pi-home" style="color: white;"> <a [routerLink]="['/accueil']">Home</a></li>
 
         <li class="dropdown">
-          <a  href="#">Employe
+          <a  class=" pi pi-chevron-down" href="#">Employe
           <span class="caret"></span></a>
           <ul class="dropdown-menu" >
             <li class="divider"></li>
@@ -21,10 +21,10 @@
           </ul>
         </li>
       
-           <li><a [routerLink]="['/classe']">Classe</a></li> 
-            <li><a [routerLink]="['/activite/:id']">Activités</a></li> 
-              <li><a [routerLink]="['/paiement']">Paiement</a></li> 
-                <li><a [routerLink]="['/stock']">Stock</a></li> 
+           <li class="pi pi-plus" style="color: white;"><a [routerLink]="['/classe']">Classe</a></li> 
+            <li class="pi pi-plus"style="color: white;"><a [routerLink]="['/activite/:id']">Activités</a></li> 
+              <li class="pi pi-money-bill" style="color: white;"><a [routerLink]="['/paiement']">Paiement</a></li> 
+                <li class="pi pi-shopping-cart" style="color: white;"><a [routerLink]="['/stock']">Stock</a></li> 
                 <li><a class="nav-link" (click)="deconnecter()" ><p class="text-right"><i class="fa fa-sign-out"></i>Log Out </p></a> 
                 </li>
             </ul>

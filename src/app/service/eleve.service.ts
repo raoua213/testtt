@@ -10,25 +10,25 @@ import { Eleve } from '../models/eleve';
 })
 export class EleveService {
   private url=environment.apiUrl;
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data'}) };
 
   constructor(private httpclient: HttpClient) {
 
    }
 
    public GetAllEleve():Observable<Eleve[]>{
-     return this.httpclient.get<Eleve[]>(this.url+"/findAllEleves");
+     return this.httpclient.get<Eleve[]>(this.url+"/getAllEleves");
 
    }
 
  
 
-   public AddEleve(employe: Eleve): Observable<any> {
+   public AddEleve(employe: any): Observable<any> {
     return this.httpclient.post<any>(`${this.url}/addEleve`, employe, this.httpOptions);
   }
 
-   public updateEleve( eleve:Eleve): Observable<any> {
-    return this.httpclient.put<any>(this.url+"/updateEleve", eleve,this.httpOptions);
+   public updateEleve( eleve:any): Observable<any> {
+    return this.httpclient.put<any>(this.url+"/updateEleve", eleve);
   }
 
    public DeleteEleve(id:any):Observable<any>{

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,9 +23,29 @@ import { ListeEmployeComponent } from './components/employe/liste-employe/liste-
 
 //primeNg
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import {MenuItem} from 'primeng/api'; 
+import {MenuModule} from 'primeng/menu';
+import {MenuItem} from 'primeng/api';
+import {MegaMenuItem} from 'primeng/api'; 
+
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {CalendarModule} from 'primeng/calendar';
+import {CheckboxModule} from 'primeng/checkbox';
+import {ButtonModule} from 'primeng/button';
+import {TabViewModule} from 'primeng/tabview';
 
 
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+  timeGridPlugin
+]);
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +62,8 @@ import {MenuItem} from 'primeng/api';
     LoginComponent,
     ActiviteComponent,
     ListeEmployeComponent,
+      
+
 
   ],
   imports: [
@@ -49,14 +71,28 @@ import {MenuItem} from 'primeng/api';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    FullCalendarModule,
     HttpClientModule, 
     BrowserAnimationsModule,
-
     AccordionModule,
-  
+    MenuModule,
+    DialogModule,
+    ButtonModule,
+    TabViewModule,
+    InputTextModule,
+    CommonModule,
+    CheckboxModule,
+    CalendarModule
+
+ 
+
+
+
     
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

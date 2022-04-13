@@ -1,0 +1,34 @@
+.tot{
+    display: grid;
+    grid-template-columns: 650px auto;
+    gap: 2%;
+    margin: 1%;
+    height: 89vh;
+}
+.paiement{
+    background-color: #A8C3D0;
+}
+.stat{
+    background-color: #A8C3D0;
+   
+}
+.card{
+    margin: 3%;
+    background-color: #ECEFF1;
+    height: 90%;
+  }
+  .search{
+    margin: 4%;
+    margin-top: 5%;
+  }
+  #toggle3{
+    visibility: hidden;
+    opacity: 0;
+    position: relative;
+    z-index: 99;
+  }
+  
+  
+  #toggle3:checked ~ dialog {
+    display: block;
+  }
