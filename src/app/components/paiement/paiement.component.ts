@@ -12,6 +12,7 @@ import { Eleve } from 'src/app/models/eleve';
 export class PaiementComponent implements OnInit {
   eleves:Eleve[]=[];
   facture=new Facture;
+  eleve:Eleve=new Eleve();
   constructor(private es:EleveService, private fs:FactureService) { }
 
   ngOnInit(): void {
@@ -22,8 +23,14 @@ export class PaiementComponent implements OnInit {
       this.eleves=data
     })
   }
-  addMontant(eleve:Eleve){
-    this.facture.factures=eleve;
+  setEleve(e:any){
+    this.eleve=e;
+    console.log(this.eleve)
+  }
+  addMontant(){
+   
+    this.facture.factures=this.eleve;
+    console.log(this.facture)
     this.fs.AddFacture(this.facture).subscribe(data=>{
     //this.getElevebyid(this.id);
   });

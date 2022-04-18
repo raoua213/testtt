@@ -1,5 +1,7 @@
 import { Facture } from './facture';
 import { Classee } from './classee';
+import { Album } from './album';
+
 
 export class Eleve {
     idEleve:number
@@ -20,6 +22,7 @@ export class Eleve {
     eleves:Classee;
     img!:any;
     factures!:Facture[]
+    galleries!:Album[];
     constructor(){
         this.idEleve=0;
         this.nom="";

@@ -133,7 +133,8 @@
         <tr>
           <th>Nom</th>
           <th>Etat</th>
-          <th>Action</th>
+          
+          <th *ngFor="let day of week"> {{ day }}</th>
         </tr>
 
 
@@ -154,8 +155,8 @@
             <td> <input type="checkbox" [checked]="p.select"></td>
             <td> <input type="checkbox" [checked]="p.select"></td>
             <td> <input type="checkbox" [checked]="p.select"></td-->
-            <td><select name="eleves" (change)="presenceClick(p,$event)">
-                <option selected value="" disabled>select etat</option>
+            <td *ngFor="let day of week"><select name="eleves" (change)="presenceClick(p,$event,day)">
+                <option selected value="" disabled>select etat {{day}}</option>
                 <option value="true">present</option>
                 <option value="false">absent</option>
               </select> </td>

@@ -1,4 +1,57 @@
 <app-dashboard></app-dashboard>
+<div style="position:absolute;margin-left: 20%;margin-top: 10%;" *ngIf="showModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" class="row g-3" (submit)="saveEvent(addForm)">
+
+          <div class="col-sm-6 ">
+              <label for="exampleFormControlSelect1">Personnels</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              
+           
+                       </div>
+          <div class="col-sm-6 ">
+            <label for="Date">To Date {{selectedDate}}</label>
+          </div>
+          <input type="hidden" name="idActivite" [(ngModel)]="event.idActivite">
+          <div class="col-sm-6 ">
+              <label for="Salle">Salle</label>
+              <input type="Salle" name="Salle" class="form-control" id="Salle" placeholder="Salle" required ngModel>
+            </div>
+            <div class="col-sm-6 ">
+              <label for="Horaire">Horaire </label>
+              <input type="text" name="horaire_act" class="form-control" id="Horaire" placeholder="Horaire" required [(ngModel)]="event.horaire_act">
+            </div>
+        
+
+            <div class="col-sm-6 ">
+              <label for="type">Type</label>
+              <input type="type" name="type" class="form-control" id="type" placeholder="Type Activité" required [(ngModel)]="event.type">
+            </div>
+            <div class="col-sm-6 ">
+              <label for="Nom">Nom Activité</label>
+              <input type="Nom" name="nom_activite" class="form-control" id="Nom" placeholder="Nom" required [(ngModel)]="event.nom_activite">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+            </div>
+      </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
 <div class="tot">
     <div class="one">
 <div class="liste">
@@ -10,63 +63,12 @@ jjkj
 </div>
     </div>
     <div class="two">
-        <div class="pop">
-            <input type="checkbox" id="toggle">
-            <label for="toggle" class=" btn btn-primary add" style="float: right;">Add</label>
-      
-            <dialog>
-                <!--start-->
-      
-                <label for="toggle" class="close">X</label>
-                <form #addForm="ngForm" class="row g-3">
-
-                    <div class="col-sm-6 ">
-                        <label for="exampleFormControlSelect1">Personnels</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                        
-                     
-                                 </div>
-                    <div class="col-sm-6 ">
-                      <label for="Date">To Date</label>
-                      <input type="text" name="Date" class="form-control" id="Date" placeholder="Date" required>
-                    </div>
-          
-                    <div class="col-sm-6 ">
-                        <label for="Salle">Salle</label>
-                        <input type="Salle" name="Salle" class="form-control" id="Salle" placeholder="Salle" required>
-                      </div>
-                      <div class="col-sm-6 ">
-                        <label for="Horaire">Horaire </label>
-                        <input type="text" name="Horaire" class="form-control" id="Horaire" placeholder="Horaire" required>
-                      </div>
-                  
-
-                      <div class="col-sm-6 ">
-                        <label for="type">Type</label>
-                        <input type="type" name="type" class="form-control" id="type" placeholder="Type Activité" required>
-                      </div>
-                      <div class="col-sm-6 ">
-                        <label for="Nom">Nom Activité</label>
-                        <input type="Nom" name="Nom" class="form-control" id="Nom" placeholder="Nom" required>
-                      </div>
-                </form>
-                <!--end-->
-      
-      
-      
-      
-              </dialog>
-          </div>
+        
         <full-calendar [options]="calendarOptions" class="full">
             
         </full-calendar>
         
     </div>
-
+    
 </div>
+

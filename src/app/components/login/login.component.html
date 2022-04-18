@@ -44,14 +44,14 @@
               
                 <label for="exampleInputEmail1" class="form-label">Email </label></div>
                 <div class="col-sm-6">
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></div>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="ad.email"></div>
                
           
             <div class="col-sm-5">
               
                 <label for="exampleInputPassword1" class="form-label">Password</label></div>
                 <div class="col-sm-6">
-                <input type="password" class="form-control" id="exampleInputPassword1" minlength="6" required></div>
+                <input type="password" class="form-control" id="exampleInputPassword1"  required name="pass" [(ngModel)]="ad.pass"></div>
                 <div class="col-sm-12">
                   <span id="passwordHelpInline" class="form-text">
                     Must be 6-20 characters long.
@@ -61,7 +61,7 @@
             
             
             <div class="col-12">
-              <button type="submit" class="btn btn-primary">Connexion</button>
+              <button type="submit" class="btn btn-primary" (click)="login()">Connexion</button>
             </div>
            
       </form>

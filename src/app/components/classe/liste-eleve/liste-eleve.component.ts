@@ -10,6 +10,8 @@ import { EleveService } from 'src/app/service/eleve.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ClasseService } from 'src/app/service/classe.service';
 import { formatDate } from '@angular/common';
+import { CalendarOptions } from '@fullcalendar/angular';
+
 
 @Component({
   selector: 'app-liste-eleve',
@@ -21,8 +23,11 @@ export class ListeEleveComponent implements OnInit {
   idClasse:any;
   classe=new Classee;
   presences:any[]=[]
+  curr = new Date();
+  week : string[]=[];
   //@Input() classeInput:any;
   classeInput:any={};
+ 
   constructor(private eleveService: EleveService,  private classeService:ClasseService, private presenceService:PresenceEleveService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -30,9 +35,16 @@ export class ListeEleveComponent implements OnInit {
     console.log(this.idClasse);
     this.geteleveByClasse(this.idClasse);
     this.getClassesById(this.idClasse);
-    
+  
+    this.getWeek();
   }
-
+  getWeek(){
+    for (let i = 1; i <= 5; i++) {
+      let first = this.curr.getDate() - this.curr.getDay() + i 
+      let day = new Date(this.curr.setDate(first)).toISOString().slice(0, 10)
+      this.week.push(day)
+    }
+  }
  getClassesById(id:number){
    this.classeService.FindClasseById(id).subscribe(data=>{
     console.log(data)
@@ -75,7 +87,7 @@ export class ListeEleveComponent implements OnInit {
     this.presences=p.presences
   }
 
- public presenceClick(elem:any,value:any){
+ public presenceClick(elem:any,value:any,day:string){
  /* let presence:any={}
   presence.datePE=new Date();
   presence.etat=value.target.value;
@@ -86,8 +98,10 @@ export class ListeEleveComponent implements OnInit {
     this.geteleveByClasse(this.idClasse);
   })*/
 
-  let d=formatDate(new Date(),'yyyy-MM-dd', 'en-US');
-  let index = elem.presences.findIndex((x: { datePE: any; }) => x.datePE==d);
+  //let d=formatDate(new Date(),'yyyy-MM-dd', 'en-US');
+  console.log(day);
+  
+  let index = elem.presences.findIndex((x: { datePE: any; }) => x.datePE==day);
   console.log(elem.presences)
   console.log(index)
   if(index!=-1){
@@ -103,7 +117,7 @@ export class ListeEleveComponent implements OnInit {
   }
   else{
     let presence:any={}
-    presence.datePE=new Date();
+    presence.datePE=day;
     presence.etat=value.target.value;
    
     presence.presence={idEleve:elem.idEleve}

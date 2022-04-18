@@ -1,3 +1,5 @@
+import { AlbumService } from './../../../service/album.service';
+import { Album } from './../../../models/album';
 import { Facture } from './../../../models/facture';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -16,15 +18,18 @@ export class ProfilEleveComponent implements OnInit {
   eleve=new Eleve() ;
   id:any;
   selectedFile!: File;
+  selectedFile2!: File;
   show1:boolean=false;
   show2:boolean=false;
   retrievedImage:any;
   facture=new Facture;
-  constructor(private eleveService: EleveService  ,private fs:FactureService, private activatedRoute: ActivatedRoute) { }
+  galleries:Album[]=[];
+  constructor(private eleveService: EleveService,private albumService:AlbumService  ,private fs:FactureService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getElevebyid(this.id)
+
   }
 collapse(){
   this.show1=!this.show1
@@ -45,6 +50,13 @@ public onFileChanged(event: any) {
   this.selectedFile = event.target.files[0];
   let x = JSON.stringify(this.selectedFile);
 }
+
+public onFileChanged2(event: any) {
+
+  //Select File
+  this.selectedFile2 = event.target.files[0];
+  let x = JSON.stringify(this.selectedFile2);
+}
 findDate(dateForm:NgForm){
   console.log(dateForm.value)
   this.eleve.factures=this.eleve.factures.filter(x=>x.to_date==dateForm.value.date);
@@ -55,7 +67,7 @@ findDate(dateForm:NgForm){
       (response: Eleve)=>{
         this.eleve = response;
         this.retrievedImage = 'data:image/jpg;base64,' + this.eleve.img;
-        
+
         console.log(response)
       },
       (error: HttpErrorResponse)=>{
@@ -74,6 +86,14 @@ findDate(dateForm:NgForm){
       this.eleve=data;
       console.log(this.eleve)
     })
+  }
+  addImage(addForms:NgForm){
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile2, this.selectedFile2.name);
+    let x = JSON.stringify(this.eleve);
+    uploadImageData.append('eleve', x)
+    this.albumService.AddAlbum(uploadImageData).subscribe(data=>{
+    });
   }
 
 }
