@@ -2,27 +2,33 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
-#toggle{
-  visibility: hidden;
-  opacity: 0;
-  position: relative;
-  z-index: 99;
+.tot{
+  display: grid;
+  grid-template-columns: 650px  auto;
+  gap: 1%;
+  margin: 1%;
+  height: 88vh;
+ 
+}
+.one{
+  background-color: #A8C3D0;
+}
+.two{
+  background-color: #A8C3D0;
 
 }
-
-#toggle:checked ~ dialog {
-  display: block;
-}
-.popup{
-margin-bottom: 0px;
-}
-.pop{
-  width: 500px;
+form{
+margin-top: 6%;
+margin-left: 3%;
+display: grid;
+gap: 3%;
+font-family:'Mukta', sans-serif;
+font-size: large; 
 }
 .btn{
-  display:flex;
-  align-items: center;
-margin-left: 15%;
+
+ float: right;
+margin-right: 4%;
 }
 .btn .close{
   margin-left: 1%;
@@ -44,75 +50,35 @@ margin-left: 15%;
 
 }
 label{
-  background: skyblue;
+ 
   color: white;
-  padding: .5em 1em;
-  border-radius: 4px;
-
 }
-@keyframes appear {
-  0%{
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+ 
+.card{
+  margin: 8%;
 }
-
-dialog{
-  animation: appear 50ms ease-in 1;
-  width: 700px;
-  z-index: 99;
-  padding: 10px 50px 10px 50px;
-  margin-left: 40%;
-}
-  dialog .form-group{
-margin-top: 15px;
-  } 
 
   .footer{
     display: flex;
-    flex-direction: row;
-    gap: 0.1%;
-  align-self: center;
+    flex-direction: column;
+  
+ text-align: center;
     align-content: center;
     
     
 
     
   }
-  .lemp{
-  margin-bottom: 0;
-    margin-left: 10%;
-    width: 100%;
-  }
+ 
 .card-footer{
  margin-left: auto;
  margin-right: auto;
  color: #270ace;
 }
 
-  .card {
   
-    box-shadow:  0 5px 30px rgba(138, 135, 135, 0.705);
-    border-radius: 10px;
-    border: 0;
-height: 350px;
 
-
-  }
-
-  .row{
-    width: 100vw;
-  }
-  .cl{
-    display:grid;
-
-    gap: 0.2%;
-position: absolute;
-
-overflow: hidden;
-
-  }
- 
+  
   .card-body{
   display: grid;
   gap: 0.2%;
@@ -143,156 +109,5 @@ overflow: hidden;
 
 
 
- 
- .area{
-  background: #2600ff17;  
-  background: -webkit-linear-gradient(to left, #040fe6 #040fe6);  
-  width: 100%;
-  height:auto;
-  z-index: -1;
-  
- 
-}
-@media screen and (max-width: 1149px){
-  dialog{
-    margin-left:2%;
-  }
-}
-
-.circles{
-  position: absolute;
-  top: 0px;
-  margin-bottom: 0;
-  left: 0;
-  width: 100%;
-  min-height: 150vh;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.circles li{
-  position: absolute;
-  display: block;
-  list-style: none;
-  width: 20px;
-  height: 20px;
-  background: #270ace;
-  animation: animate 8s linear infinite;
-  bottom: -150px;
-  
-}
-
-.circles li:nth-child(1){
-  left: 25%;
-  width: 80px;
-  height: 80px;
-  animation-delay: 0s;
-}
 
 
-.circles li:nth-child(2){
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 1s;
-  animation-duration: 12s;
-}
-
-.circles li:nth-child(3){
-  left: 70%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 3s;
-}
-
-.circles li:nth-child(4){
-  left: 40%;
-  width: 60px;
-  height: 60px;
-  animation-delay: 0s;
-  animation-duration: 18s;
-}
-
-.circles li:nth-child(5){
-  left: 65%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-}
-
-.circles li:nth-child(6){
-  left: 75%;
-  width: 110px;
-  height: 110px;
-  animation-delay: 3s;
-}
-
-.circles li:nth-child(7){
-  left: 35%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 4s;
-}
-
-.circles li:nth-child(8){
-  left: 50%;
-  width: 25px;
-  height: 25px;
-  animation-delay: 10s;
-  animation-duration: 45s;
-}
-
-.circles li:nth-child(9){
-  left: 20%;
-  width: 15px;
-  height: 15px;
-  animation-delay: 2s;
-  animation-duration: 35s;
-}
-
-.circles li:nth-child(10){
-  left: 85%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 0s;
-  animation-duration: 11s;
-}
-
-
-
-@keyframes animate {
-
-  0%{
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
-      border-radius: 0;
-  }
-
-  100%{
-      transform: translateY(-1200px) rotate(720deg);
-      opacity: 0;
-      border-radius: 50%;
-  }
-
-}
-@media all and(max-width: 574px) {
-.area{
- display: none;
-  
- 
-}
-.cl{
-display:grid;
-min-height: auto;
-width: 100vw;
-gap: 8%;
-position: absolute;
-
-
-
-
-}
-
-
-
-}

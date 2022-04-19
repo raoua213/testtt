@@ -23,6 +23,7 @@ export class ListeEleveComponent implements OnInit {
   idClasse:any;
   classe=new Classee;
   presences:any[]=[]
+  
   curr = new Date();
   week : string[]=[];
   //@Input() classeInput:any;
@@ -37,6 +38,42 @@ export class ListeEleveComponent implements OnInit {
     this.getClassesById(this.idClasse);
   
     this.getWeek();
+    //this.getWeekPresence();
+    
+    console.log(this.classe)
+  }
+
+  changeEtatPresence(elem:any,e:any){
+    console.log(e.target.checked)
+    console.log(elem)
+    console.log(this.classeInput)
+    let index = this.classeInput.eleves.findIndex((x: { idEleve: any; }) => x.idEleve==elem.idEleve);
+    console.log(this.classeInput.eleves[index])
+    let index2 = this.classeInput.eleves[index].presences.findIndex((x: { datePE: any; }) => x.datePE==elem.datePE);
+    console.log(index2)
+    console.log(this.classeInput.eleves[index].presences[index2].etat)
+    this.classeInput.eleves[index].presences[index2].etat=e.target.checked
+    this.geteleveByClasse(this.idClasse);
+  }
+  getWeekPresence(){
+    let elem:any
+    
+    let p=this.classeInput.eleves
+    for(let j=0;j<p.length;j++){
+      
+      let tab=[]
+      for(let i=0;i<this.week.length;i++){
+        let index = p[j].presences.findIndex((x: { datePE: any; }) => x.datePE==this.week[i]);
+        
+        if(index!=-1){
+          tab.push({etat:p[j].presences[index].etat,datePE:this.week[i],idEleve:p[j].idEleve})
+        }else{
+         tab.push({etat:false,datePE:this.week[i],idEleve:p[j].idEleve})
+        }
+      }
+      p[j].weekPresence=tab
+      tab=[]
+    }
   }
   getWeek(){
     for (let i = 1; i <= 5; i++) {
@@ -58,6 +95,7 @@ export class ListeEleveComponent implements OnInit {
 
         console.log('here fined student', data);
         this.classeInput.eleves= data;
+        this.getWeekPresence()
 
       }
     );
@@ -77,7 +115,7 @@ export class ListeEleveComponent implements OnInit {
        },
        (error: HttpErrorResponse) => {
       console.log(error);
-         addForms.reset();
+      addForms.reset();
        }
      );
    

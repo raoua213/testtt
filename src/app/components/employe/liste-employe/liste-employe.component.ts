@@ -44,6 +44,17 @@ export class ListeEmployeComponent implements OnInit {
     );
   }
  
+  public onDeleteEmploye(id: number): void {
+    this.employeService.deleteEmployee(id).subscribe(
+      (response) => {
+        
+        this.getEmployees();
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
+  }
 
   
 }

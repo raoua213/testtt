@@ -79,4 +79,16 @@ eleve:any={};
   }
 
 
+
+  public onDeleteClasse(id: number): void {
+    this.classeService.DeleteClasse(id).subscribe(
+      (response) => {
+        
+        this.getClasses();
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
+  }
 }

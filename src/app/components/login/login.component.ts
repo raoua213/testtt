@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem("ad",JSON.stringify(response));
         {
-          this.route.navigate(['/classe']);
+          this.route.navigate(['/accueil']);
         }
        
       },

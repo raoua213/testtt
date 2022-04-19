@@ -31,9 +31,12 @@ export class ClasseService {
   public updateClasse( classe:Classee): Observable<any> {
     return this.httpclient.put(this.url+"/updateClasses", classe);
   }
-    public DeleteClasse(id:any):Observable<any>{
-    return this.httpclient.delete(this.url+"/deleteCalsseByID"+id)
+   
+ 
+  public DeleteClasse(id:number):Observable<any>{
+    return this.httpclient.delete(this.url+"/deleteCalsseByID/"+id)
   }
+
 
   public FindClasseById(id:any):Observable<any>{
     return  this.httpclient.get<Classee>(this.url+"/findClasseById/"+id)
