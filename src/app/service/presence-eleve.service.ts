@@ -10,7 +10,7 @@ import { PresenceEleve } from '../models/presence-eleve';
 export class PresenceEleveService {
 
   private url=environment.apiUrl;
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json','accept':'application/json'}) };  
 
   constructor(private httpclient: HttpClient) {
 
@@ -21,7 +21,7 @@ export class PresenceEleveService {
   }
 
   public updatePeleve( peleve:PresenceEleve): Observable<any> {
-    return this.httpclient.put(this.url+"/updatePresence_eleve", peleve);
+    return this.httpclient.put<any>(this.url+"/updatePresence_eleve", peleve, this.httpOptions);
   }
 
   public Deletepeleve(id:number):Observable<any>{

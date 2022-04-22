@@ -29,7 +29,7 @@ export class ClasseService {
   }
 
   public updateClasse( classe:Classee): Observable<any> {
-    return this.httpclient.put(this.url+"/updateClasses", classe);
+    return this.httpclient.put(this.url+"/updateClasse", classe);
   }
    
  

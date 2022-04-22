@@ -30,6 +30,9 @@ export class EleveService {
    public updateEleve( eleve:any): Observable<any> {
     return this.httpclient.put<any>(this.url+"/updateEleve", eleve);
   }
+  public updateEleve2( eleve:Eleve): Observable<any> {
+    return this.httpclient.put<Eleve>(this.url+"/updateEleve2", eleve);
+  }
 
    public DeleteEleve(id:any):Observable<any>{
      return this.httpclient.delete<any>(this.url+"/deleteEleveById/"+id)

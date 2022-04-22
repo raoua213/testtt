@@ -8,7 +8,8 @@
     <div class="ligne1">
 
       <div class="card-body">
-        <img src="assets/empl.png" class="card-img-top" style="width: 250px;" alt="...">
+        <img [src]="retrievedImage"
+        class="card-img-top" style="width: 250px;" alt="...">
       </div>
       <div class="card-text">
 
@@ -26,7 +27,7 @@
             <!--start-->
   
             <label for="toggle" class="close">X</label>
-            <form #addForm="ngForm" (ngSubmit)="onUpdateEmloyee(addForm)">
+            <form #addForms="ngForm" (ngSubmit)="updateEmploye(addForms)">
               <div class="form-group row">
                 <label for="nom" class="col-sm-2 col-form-label">nom</label>
                 <div class="col-sm-10">
@@ -108,7 +109,7 @@
                 </div>
               </div>
   
-  
+              <input id="img" type="file" (change)="onFileChanged($event)">
   
               <div class="btn">
                 <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
@@ -142,7 +143,30 @@
       </ul>
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-          
+         
+          <input type="checkbox" id="toggle4" class="paiement">
+          <label for="toggle4" class=" btn btn-primary evaluer">
+         ajout </label>
+          <dialog>
+            <!--start-->
+      
+            <label for="toggle4" class="close">X</label>
+            <form #addForm2="ngForm" class="row g-3" (ngSubmit)="addConget(addForm2)">
+      
+              <div class="col-sm-4 ">
+                <label for="fdate">From Date</label>
+                <input type="date" name="fdate"  class="form-control" id="fdate" placeholder="From Date" required ngModel>
+              </div>
+              
+              <div class="col-sm-4">
+                <label for="todate"> To Date</label>
+                <input type="date" name="todate" class="form-control" id="todate" placeholder="To Date" required ngM>
+              </div>
+            
+            <button type="submit">send</button>
+      
+            </form>
+          </dialog>
          <div class="card-text">
           <p> Nombre De Jour Totale: {{emp.nb_jour_initiale}}  </p>
           <p> Nombre De Jour Pris : {{emp.nb_jour_taken}}</p>
@@ -203,5 +227,8 @@
   <div class="act">
 
     <h4 style="margin: 2%;"> Activités Réalisées : </h4>
+    <full-calendar [options]="calendarOptions" class="full">
+            
+    </full-calendar>
   </div>
 </div>

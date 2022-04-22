@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -10,6 +10,7 @@ import { Employe } from '../models/employe';
 export class EmployeService {
 
   private url=environment.apiUrl;
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data'}) };
 
   constructor(private httpclient: HttpClient) {
 
@@ -27,8 +28,8 @@ export class EmployeService {
   }
   
 
-  public updateEmploye( employe:Employe): Observable<any> {
-    return this.httpclient.put(this.url+"/updatePersonnel", employe);
+  public updateEmploye( employe:any): Observable<any> {
+    return this.httpclient.put<any>(this.url+"/updatePersonnel", employe);
   }
 
   
@@ -36,7 +37,7 @@ export class EmployeService {
     return this.httpclient.delete<void>(`${this.url}/deletePersonnelById/${employeeId}`);
   }
 
-  public FindEmpById(id:number):Observable<any>{
+  public FindEmpById(id:any):Observable<any>{
     return  this.httpclient.get<Employe>(this.url+"/getPersonnelById/"+id)
   }
 

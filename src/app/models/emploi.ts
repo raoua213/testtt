@@ -1,8 +1,9 @@
 export class Emploi {
-    idEmploi:number;
+    idEmploi!:number;
     salle:String;
+    date_emp!:Date;
     constructor(){
-        this.idEmploi=0;
+        
         this.salle="";
     }
 }

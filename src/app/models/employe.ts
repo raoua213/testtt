@@ -1,3 +1,4 @@
+
 export class Employe {
     idPersonnel:number;
 cin : String;
@@ -5,6 +6,7 @@ nom : String;
 prenom : String;
 mail : String;
 tel : String;
+img!:any;
 fonction : String;
 salaire_de_base : number;
 nb_jour_initiale : number;

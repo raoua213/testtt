@@ -22,7 +22,7 @@ export class ListeEleveComponent implements OnInit {
   eleves:any=[];
   idClasse:any;
   classe=new Classee;
-  presences:any[]=[]
+  listPresences:any[]=[]
   
   curr = new Date();
   week : string[]=[];
@@ -34,47 +34,32 @@ export class ListeEleveComponent implements OnInit {
   ngOnInit(): void {
     this.idClasse = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.idClasse);
-    this.geteleveByClasse(this.idClasse);
+    
     this.getClassesById(this.idClasse);
-  
+    this.geteleveByClasse(this.idClasse);
     this.getWeek();
     //this.getWeekPresence();
     
-    console.log(this.classe)
+    console.log(this.classeInput)
   }
 
-  changeEtatPresence(elem:any,e:any){
-    console.log(e.target.checked)
-    console.log(elem)
-    console.log(this.classeInput)
-    let index = this.classeInput.eleves.findIndex((x: { idEleve: any; }) => x.idEleve==elem.idEleve);
-    console.log(this.classeInput.eleves[index])
-    let index2 = this.classeInput.eleves[index].presences.findIndex((x: { datePE: any; }) => x.datePE==elem.datePE);
-    console.log(index2)
-    console.log(this.classeInput.eleves[index].presences[index2].etat)
-    this.classeInput.eleves[index].presences[index2].etat=e.target.checked
+   changeEtatPresence(day:any,e:any,p:Eleve){
+    //objet presence
+    let presence=new PresenceEleve;
+    presence.datePE=day;
+    presence.etat=e.target.checked;
+    presence.presence=p;
+    //add object to listPresence
+    this.listPresences.push(presence);
+  }
+ 
+  getPresences(){}
+  //button save
+  saveNewPresence(){
+    this.listPresences.forEach(element => this.presenceService.AddPeleve(element).subscribe());
     this.geteleveByClasse(this.idClasse);
   }
-  getWeekPresence(){
-    let elem:any
-    
-    let p=this.classeInput.eleves
-    for(let j=0;j<p.length;j++){
-      
-      let tab=[]
-      for(let i=0;i<this.week.length;i++){
-        let index = p[j].presences.findIndex((x: { datePE: any; }) => x.datePE==this.week[i]);
-        
-        if(index!=-1){
-          tab.push({etat:p[j].presences[index].etat,datePE:this.week[i],idEleve:p[j].idEleve})
-        }else{
-         tab.push({etat:false,datePE:this.week[i],idEleve:p[j].idEleve})
-        }
-      }
-      p[j].weekPresence=tab
-      tab=[]
-    }
-  }
+
   getWeek(){
     for (let i = 1; i <= 5; i++) {
       let first = this.curr.getDate() - this.curr.getDay() + i 
@@ -87,6 +72,7 @@ export class ListeEleveComponent implements OnInit {
     console.log(data)
     this.classe=data;
     
+    
    })
  }
   geteleveByClasse(id:number){
@@ -95,8 +81,6 @@ export class ListeEleveComponent implements OnInit {
 
         console.log('here fined student', data);
         this.classeInput.eleves= data;
-        this.getWeekPresence()
-
       }
     );
   }
@@ -121,53 +105,7 @@ export class ListeEleveComponent implements OnInit {
    
 
   }
-  getPresences(p:any){
-    this.presences=p.presences
-  }
-
- public presenceClick(elem:any,value:any,day:string){
- /* let presence:any={}
-  presence.datePE=new Date();
-  presence.etat=value.target.value;
-  presence.presence=elem;
-  console.log(presence)
-  this.presenceService.AddPeleve(presence).subscribe(data=>{
-    console.log(data)
-    this.geteleveByClasse(this.idClasse);
-  })*/
-
-  //let d=formatDate(new Date(),'yyyy-MM-dd', 'en-US');
-  console.log(day);
-  
-  let index = elem.presences.findIndex((x: { datePE: any; }) => x.datePE==day);
-  console.log(elem.presences)
-  console.log(index)
-  if(index!=-1){
-    let presence=elem.presences[index]
-    presence.etat=value.target.value;
-   
-    presence.presence={idEleve:elem.idEleve}
-    console.log(presence)
-    this.presenceService.updatePeleve(presence).subscribe(data=>{
-      console.log(data)
-      this.geteleveByClasse(this.idClasse);
-    })
-  }
-  else{
-    let presence:any={}
-    presence.datePE=day;
-    presence.etat=value.target.value;
-   
-    presence.presence={idEleve:elem.idEleve}
-    this.presenceService.AddPeleve(presence).subscribe(data=>{
-      console.log(data)
-      this.geteleveByClasse(this.idClasse);
-    })
-  }
- }
-
-
-
+ 
   public onDeleteEleve(id: number): void {
     this.eleveService.DeleteEleve(id).subscribe(
       (response) => {

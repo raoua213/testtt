@@ -48,6 +48,7 @@
 
 #toggle:checked ~ dialog {
   display: block;
+  z-index: 99;
 }
 #toggle3{
   visibility: hidden;
@@ -58,6 +59,18 @@
 
 #toggle3:checked ~ dialog {
   display: block;
+  
+}
+#toggle4{
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+z-index: 99;
+}
+
+#toggle4:checked ~ dialog {
+  display: block;
+  z-index: 99;
   
 }
 label{

@@ -124,7 +124,7 @@
   </div>
 
   <div class="two">
-    <h1 className="title">Liste de présence</h1>
+    <h1 className="title">Liste de présence<button (click)="saveNewPresence()">save Presence</button></h1>
 
     <table >
       
@@ -145,42 +145,8 @@
        
      
       <div class="tbl-content">
+<!-- -->
 
-      <table>
-
-          <tr *ngFor="let p of classeInput?.eleves">
-            <td style="font-size: 22px;">{{p.nom}}</td>
-            <!--td> <input type="checkbox" [checked]="p.select"></td> 
-            <td> <input type="checkbox" [checked]="p.select"></td>
-            <td> <input type="checkbox" [checked]="p.select"></td>
-            <td> <input type="checkbox" [checked]="p.select"></td>
-            <td> <input type="checkbox" [checked]="p.select"></td>
-            <td> <input type="checkbox" [checked]="p.select"></td-->
-            <td *ngFor="let day of week"><select name="eleves" (change)="presenceClick(p,$event,day)">
-                <option selected value="" disabled>select etat </option>
-                <option value="true">present</option>
-                <option value="false">absent</option>
-              </select> </td>
-            <td>
-              <div class="pop">
-                <input type="checkbox" id="toggle2">
-
-
-                <label for="toggle2" class="view" (click)="getPresences(p)"><li class="pi pi-search" style="color: white;"></li></label>
-
-                <dialog>
-
-                  <p *ngFor="let p of presences">{{p.etat?'Present':'absent'}} {{p.datePE}}</p>
-                  <div class="col-12">
-                    <label for="toggle2">close </label>
-                  </div>
-                </dialog>
-              </div>
-            </td>
-          </tr>
-
-
-        </table>
       </div>
 <!--tabV2-->
 <div class="tbl-content">
@@ -195,19 +161,19 @@
         <td> <input type="checkbox" [checked]="p.select"></td>
         <td> <input type="checkbox" [checked]="p.select"></td>
         <td> <input type="checkbox" [checked]="p.select"></td-->
-        <td *ngFor="let elem of p.weekPresence">
-          <input type="checkbox" [checked]="elem.etat" (click)="changeEtatPresence(elem,$event)">  
+        <td *ngFor="let day of week">
+          <input type="checkbox" [checked]="false" (click)="changeEtatPresence(day,$event,p)">  
         </td>
         <td>
           <div class="pop">
             <input type="checkbox" id="toggle2">
 
 
-            <label for="toggle2" class="view" (click)="getPresences(p)"><li class="pi pi-search" style="color: white;"></li></label>
+            <label for="toggle2" class="view" (click)="getPresences()"><li class="pi pi-search" style="color: white;"></li></label>
 
             <dialog>
 
-              <p *ngFor="let p of presences">{{p.etat?'Present':'absent'}} {{p.datePE}}</p>
+              <p *ngFor="let p of listPresences">{{p.etat?'Present':'absent'}} {{p.datePE}}</p>
               <div class="col-12">
                 <label for="toggle2">close </label>
               </div>
