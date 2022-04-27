@@ -6,7 +6,7 @@ nom_activite:String;
 type:String;
 date_act!:Date
 horaire_act:String;
-fk_emploi!:Emploi;
+fk_emploi!:Emploi[];
 
 
 constructor(){

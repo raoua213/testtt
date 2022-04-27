@@ -10,8 +10,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./liste-employe.component.scss']
 })
 export class ListeEmployeComponent implements OnInit {
-  employe :any = {} ;
-
+  employe :Employe[] = [] ;
+  selectedFile!: File;
   constructor(private employeService :EmployeService) { }
 
   ngOnInit(): void {
@@ -20,30 +20,34 @@ export class ListeEmployeComponent implements OnInit {
 
   public getEmployees(): void{
     this.employeService.GetAllEmp().subscribe(
-      (response: Employe[])=>{
+       (response: Employe[])=>{
+        
+        
         this.employe = response;
-      },
-      (error: HttpErrorResponse)=>{
-        alert(error.message)
       }
     );
   }
 
   public onAddEmloyee(addForm: NgForm): void {
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+    let x = JSON.stringify(addForm.value);
+    uploadImageData.append('personnel', x)
    // document.getElementById('add-employee-form').click();
-    this.employeService.AddEmp(addForm.value).subscribe(
+    this.employeService.AddEmp(uploadImageData).subscribe(
       (response: Employe) => {
         console.log(response);
         this.getEmployees();
         addForm.reset();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
       }
     );
   }
- 
+  public onFileChanged(event: any) {
+
+    //Select File
+    this.selectedFile = event.target.files[0];
+    let x = JSON.stringify(this.selectedFile);
+  }
   public onDeleteEmploye(id: number): void {
     this.employeService.deleteEmployee(id).subscribe(
       (response) => {

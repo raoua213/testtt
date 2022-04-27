@@ -23,7 +23,7 @@ export class EmployeService {
   }
  
 
-  public AddEmp(employe: Employe): Observable<Employe> {
+  public AddEmp(employe: any): Observable<Employe> {
     return this.httpclient.post<Employe>(`${this.url}/addPersonnel`, employe);
   }
   

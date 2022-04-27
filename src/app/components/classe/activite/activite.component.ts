@@ -1,3 +1,6 @@
+import { EmploiService } from './../../../service/emploi.service';
+import { Employe } from './../../../models/employe';
+import { EmployeService } from './../../../service/employe.service';
 import { Emploi } from './../../../models/emploi';
 import { ActiviteService } from './../../../service/activite.service';
 import { NgForm } from '@angular/forms';
@@ -13,18 +16,24 @@ import { CalendarOptions } from '@fullcalendar/angular';
 export class ActiviteComponent implements OnInit {
   showModal=false;
   selectedDate:any;
+  employees:Employe[]=[];
   events:Activite[]=[];
   events2:any[]=[];
   emplois:Emploi[]=[];
   emploi= new Emploi
   event:Activite=new Activite();
   calendarOptions: CalendarOptions ={};
-  constructor(private service:ActiviteService) { }
+  constructor(private service:ActiviteService, private ps:EmployeService, private es:EmploiService) { }
 
    ngOnInit() {
-    this.getAll();   
+    this.getAll();  
+    this.getAllEmployee(); 
   }
-
+getAllEmployee(){
+  this.ps.GetAllEmp().subscribe(data=>{
+    this.employees=data;
+  })
+}
 getAll(){
   this.service.GetAllActivities().subscribe( data=>{
   this.events2=[]
@@ -50,6 +59,10 @@ getAll(){
       this.selectedDate=this.event.date_act;
       console.log(data)
       //this.emploi=data.fk_emploi[0]
+      this.event.fk_emploi=data.fk_emploi
+      if(data.fk_emploi[0]){
+      this.emploi=data.fk_emploi[0];
+      }
     })
   }
   handleDateClick(arg: any) {
@@ -61,14 +74,19 @@ getAll(){
  
   saveEvent(form:NgForm){
     form.value.date_act=this.selectedDate
-    console.log(form.value)
+    
     this.emploi.date_emp=this.selectedDate;
+
     this.emplois.push(this.emploi)
-    form.value.fk_emploi=[...this.emplois];
+    
+        form.value.fk_emploi=[...this.emplois];
     console.log(form.value)
     if(form.value.idActivite!=null){
-
+    
       this.service.updateActivite(form.value).subscribe(data=>{
+        console.log(data)
+        this.emploi.fk_emploi=data;
+        this.es.updateEmploi(this.emploi).subscribe();
         this.getAll();
         this.closeModal();
         this.event=new Activite();
@@ -78,6 +96,8 @@ getAll(){
     }
     else{
       this.service.AddActivite(form.value).subscribe(data=>{
+        this.emploi.fk_emploi=data;
+        this.es.AddEmploi(this.emploi).subscribe();
         this.getAll();
         this.closeModal();
         this.event=new Activite();

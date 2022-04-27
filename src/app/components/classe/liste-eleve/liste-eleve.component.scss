@@ -149,3 +149,10 @@ th, td {
   background-color: #A8C3D0;
 
 }
+.titre{
+  margin-left: 2%;
+  margin-top: 2%;
+  display: grid;
+  gap: 1%;
+  grid-template-columns: 30% 15% 15%;
+}

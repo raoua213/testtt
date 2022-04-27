@@ -8,7 +8,7 @@
       <label for="toggle" class=" btn btn-primary add">Add</label>
 
       <dialog>
-        <form class="row g-3" #addForms="ngForm" (ngSubmit)="onAddeleve(addForms)">
+        <form class="row g-3" #addForms="ngForm" (ngSubmit)="addEleve(addForms)">
 
           <div class="col-md-6">
             <label for="inputnom" class="form-label">Nom</label>
@@ -72,7 +72,7 @@
             <label for="inputAddress" class="form-label">Address</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="adresse" ngModel>
           </div>
-
+          <input id="img" type="file" (change)="onFileChanged($event)">
           <div class="col-12">
             <button type="submit" class="btn btn-primary">Save</button>
           </div>
@@ -124,7 +124,18 @@
   </div>
 
   <div class="two">
-    <h1 className="title">Liste de présence<button (click)="saveNewPresence()">save Presence</button></h1>
+   <div class="titre">
+     <h1 className="title">Liste de présence</h1>
+    <button (click)="saveAllPresences()" style="font-family:'Mukta', sans-serif;
+    font-size: large;  border-radius:5px">save </button>
+    <select (change)="onChangeSelect($event)" style="font-family:'Mukta', sans-serif;
+    font-size: large; border-radius:5px">
+      <option value="">select week</option>
+      <option *ngFor="let week of listOfWeeks" value="{{week[0]}}">from {{week[0]}}</option>
+    </select></div>
+    
+     
+    
 
     <table >
       
@@ -137,7 +148,34 @@
           
           <th *ngFor="let day of week" > {{ day }}</th>
         </tr>
-
+        <tr *ngFor="let p of classeInput?.eleves">
+          <td style="font-size: 22px;">{{p.nom}}</td>
+          <!--td> <input type="checkbox" [checked]="p.select"></td> 
+          <td> <input type="checkbox" [checked]="p.select"></td>
+          <td> <input type="checkbox" [checked]="p.select"></td>
+          <td> <input type="checkbox" [checked]="p.select"></td>
+          <td> <input type="checkbox" [checked]="p.select"></td>
+          <td> <input type="checkbox" [checked]="p.select"></td-->
+          <td *ngFor="let day of p.weekPresence">
+            <input class="form-check-input" type="checkbox" [checked]="day.etat" (click)="changeEtatPresence(day,$event)" >  
+          </td>
+          <td>
+            <div class="pop">
+              <input type="checkbox" id="toggle2">
+  
+  
+              <label for="toggle2" class="view"><li class="pi pi-search" style="color: white;"></li></label>
+  
+              <dialog>
+  
+                <p *ngFor="let p of listPresences">{{p.etat?'Present':'absent'}} {{p.datePE}}</p>
+                <div class="col-12">
+                  <label for="toggle2">close </label>
+                </div>
+              </dialog>
+            </div>
+          </td>
+        </tr>
 
       </div>
     </table>
@@ -153,38 +191,12 @@
 
   <table>
 
-      <tr *ngFor="let p of classeInput?.eleves">
-        <td style="font-size: 22px;">{{p.nom}}</td>
-        <!--td> <input type="checkbox" [checked]="p.select"></td> 
-        <td> <input type="checkbox" [checked]="p.select"></td>
-        <td> <input type="checkbox" [checked]="p.select"></td>
-        <td> <input type="checkbox" [checked]="p.select"></td>
-        <td> <input type="checkbox" [checked]="p.select"></td>
-        <td> <input type="checkbox" [checked]="p.select"></td-->
-        <td *ngFor="let day of week">
-          <input type="checkbox" [checked]="false" (click)="changeEtatPresence(day,$event,p)">  
-        </td>
-        <td>
-          <div class="pop">
-            <input type="checkbox" id="toggle2">
-
-
-            <label for="toggle2" class="view" (click)="getPresences()"><li class="pi pi-search" style="color: white;"></li></label>
-
-            <dialog>
-
-              <p *ngFor="let p of listPresences">{{p.etat?'Present':'absent'}} {{p.datePE}}</p>
-              <div class="col-12">
-                <label for="toggle2">close </label>
-              </div>
-            </dialog>
-          </div>
-        </td>
-      </tr>
+      
 
 
     </table>
   </div>
+  
 
    
 

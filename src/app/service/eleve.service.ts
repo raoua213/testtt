@@ -24,7 +24,7 @@ export class EleveService {
  
 
    public AddEleve(employe: any): Observable<any> {
-    return this.httpclient.post<any>(`${this.url}/addEleve`, employe, this.httpOptions);
+    return this.httpclient.post<any>(`${this.url}/addEleve`, employe);
   }
 
    public updateEleve( eleve:any): Observable<any> {

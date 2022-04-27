@@ -12,6 +12,7 @@
 
 #toggle:checked ~ dialog {
   display: block;
+  z-index: 99;
 }
 .popup{
 margin-bottom: 0px;
@@ -27,10 +28,13 @@ margin-left: 15%;
 .btn .close{
   margin-left: 1%;
 }
+.cl{
+  height: 90vh;
+}
 .image{
   border-radius: 50%;
-  height: 150px;
-  width: 150px;
+  height: 170px;
+  width: 180px;
   margin-top: 15px;
   margin-left: 25%;
 }
