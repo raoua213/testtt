@@ -1,73 +1,22 @@
-
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<body>
-  <div class="container">
-    <span class="mytext1">Bienvenue dans </span>
-    <span class="mytext2"> Rama Solution </span>
-
-    <div>
-     
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="wrapper">
+  <div class="logo">
+      <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt="">
+  </div>
+  <div class="text-center mt-4 name">
+      Rama Solution
+  </div>
+  <form class="p-3 mt-3">
+      <div class="form-field d-flex align-items-center">
+          <span class="far fa-user"></span>
+          <input type="text" name="userName" id="userName" placeholder="Username">
       </div>
-      <div class="modal-body">
-        ...
+      <div class="form-field d-flex align-items-center">
+          <span class="fas fa-key"></span>
+          <input type="password" name="password" id="pwd" placeholder="Password">
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
+      <button class="btn mt-3">Login</button>
+  </form>
+  <div class="text-center fs-6">
+      <a href="#">Forget password?</a> or <a href="#">Sign up</a>
   </div>
 </div>
-      
-
-    <div class="pop">
-      <input type="checkbox" id="toggle">
-      <label for="toggle" class=" btn-primary add">Se connecter</label>
-    
-    <dialog >
-      <form class="row ">
-        <div class="col-sm-12">
-          <label for="toggle" class="close" >x</label>
-        </div>
-          <div class="col-sm-5">
-              
-                <label for="exampleInputEmail1" class="form-label">Email </label></div>
-                <div class="col-sm-6">
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="ad.email"></div>
-               
-          
-            <div class="col-sm-5">
-              
-                <label for="exampleInputPassword1" class="form-label">Password</label></div>
-                <div class="col-sm-6">
-                <input type="password" class="form-control" id="exampleInputPassword1"  required name="pass" [(ngModel)]="ad.pass"></div>
-                <div class="col-sm-12">
-                  <span id="passwordHelpInline" class="form-text">
-                    Must be 6-20 characters long.
-                  </span>
-                </div>
-            
-            
-            
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary" (click)="login()">Connexion</button>
-            </div>
-           
-      </form>
-    </dialog>
-    </div>  
-
-    </div>
-  </div>
-</body>

@@ -39,4 +39,9 @@ export class ActiviteService {
     return  this.httpclient.get<Activite>(this.url+"/findActiviteByIdPersonnel/"+id)
   }
 
+  public FindActiviteByIdClasse(IdClasse:any):Observable<Activite[]>{
+    return this.httpclient.get<Activite[]>(`${this.url}/findActiviteByIdClasse/${IdClasse}`);
+  }
+
+  
 }

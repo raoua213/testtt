@@ -5,27 +5,26 @@
 <div class="cl">
 
     <div class="row">
-      <input type="checkbox" id="toggle">
-      <label class="btn btn-primary add" for="toggle" style="margin-left: 50px; width: 3%; height: 5%;">Add</label>
+      <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Ajout" style="margin-top:1%; margin-left:1%"></p-button>
+<p-dialog header="Ajout Classe" [(visible)]="displayBasic" [style]="{width: '40vw'}" [baseZIndex]="10000">
+
+    <form #addForms="ngForm" (ngSubmit)="onAddCLasse(addForms)">
       
-      <dialog >
-        <label for="toggle" style="color: black;">X</label>
-        <form #addForms="ngForm" (ngSubmit)="onAddCLasse(addForms)">
-          <div class="form-group row">
-              <label for="nom"   class="col-sm-2 col-form-label">nom</label>
-              <div class="col-sm-10">
-                <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required>
-              </div>
+       
+         
+
+          <label for="nom" class="col-sm-2 col-form-label">nom</label>
+          <div class="col-sm-10">
+            <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom"
+              required>
           </div>
-          <div class="btnn">
-            <button [disabled]="addForms.invalid" type="submit" class="btn btn-primary">Save</button>
-      
-     
-          </div>
-        </form>
-          
-        
-      </dialog>s
+
+        <div class="btn" style="margin-left: 35%;">
+        <button [disabled]="addForms.invalid" type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+    </form>  
+  
+</p-dialog>
       <div class="col-sm-3" *ngFor="let c of classee">
         <div class="classe" >
           
@@ -34,8 +33,10 @@
           <div class="card-body">
             <a class="card-title" [routerLink]="['/liste',c.idClasse]" (click)="ongetEleveByClasse(c.idClasse)">
               <p>{{c.nom}}</p>
+              <p style="font-size:small">({{ c.eleves.length}}) </p>
+              <i class="fa fa-trash" style="color: black; text-align: center;font-size: medium; " (click)="onDeleteClasse(c.idClasse)"></i>
             </a>
-              <i class="fa fa-trash" style="color: black; text-align: center;" (click)="onDeleteClasse(c.idClasse)"></i>
+             
        
         </div>
         <!-- row 2-->

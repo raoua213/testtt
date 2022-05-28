@@ -47,6 +47,14 @@ export class EleveService {
     return  this.httpclient.get<Eleve>(this.url+"/findEleveByClasse/"+id)
   }
 
+  public checkEleve(form:any):Observable<any>{
+    console.log(form)
+    return this.httpclient.get<any>(this.url+"/findEleveUnique/"+form.nom+"/"+form.prenom+"/"+form.tel_parent+"/"+form.date_nais);
+
+  }
+  public FindClasseByEleveId(id:any):Observable<any>{
+    return  this.httpclient.get<any>(this.url+"/getClasseByIdEleve/"+id)
+  }
 
 
   

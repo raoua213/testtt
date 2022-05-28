@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Eleve } from './../../models/eleve';
 import { EleveService } from './../../service/eleve.service';
 
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClasseService } from 'src/app/service/classe.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-classe',
@@ -14,30 +16,29 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./classe.component.scss']
 })
 export class ClasseComponent implements OnInit {
- /* classe=[
-    {id:1, name:"jasmin",nombre:23},
-    {id:1, name:"jasmin",nombre:23},
-    {id:1, name:"jasmin",nombre:23},
-    {id:1, name:"jasmin",nombre:23},
-    {id:1, name:"jasmin",nombre:23},
-    {id:1, name:"jasmin",nombre:23},
-    {id:1, name:"jasmin",nombre:23},
-  
-  
-  ]*/
+  displayBasic= false;
   classee :Classee[] = [] ;
-id:any;
-eleve:any={};
-  constructor(private classeService :ClasseService,private eleveService :EleveService) { }
+  id:any;
+
+  eleve:any={};
+
+  constructor(private classeService :ClasseService,private router:Router,private primengConfig: PrimeNGConfig,private eleveService :EleveService) { }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     this.getClasses();
   }
-
+  showBasicDialog() {
+    this.displayBasic = true;
+  }
+  closeBasicDialog() {
+    this.displayBasic = false;
+  }
   public getClasses(): void{
     this.classeService.GetAllClasses().subscribe(
       (response: Classee[])=>{
         this.classee = response;
+        console.log(this.classee)
       },
       (error: HttpErrorResponse)=>{
         alert(error.message)
@@ -60,6 +61,7 @@ eleve:any={};
        }
      );
      console.log(addForms.value);
+     this.closeBasicDialog()
      
 
 
@@ -90,5 +92,9 @@ eleve:any={};
         console.log(error);
       }
     );
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+    this.router.navigate([currentUrl]);
+    });
   }
 }

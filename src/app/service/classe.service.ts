@@ -24,8 +24,8 @@ export class ClasseService {
 
   }
 
-  public AddClasse(activite:Classee):Observable<any>{
-    return this.httpclient.post(this.url+"/addClasse",activite);
+  public AddClasse(classe:Classee):Observable<any>{
+    return this.httpclient.post(this.url+"/addClasse",classe);
   }
 
   public updateClasse( classe:Classee): Observable<any> {
@@ -34,13 +34,15 @@ export class ClasseService {
    
  
   public DeleteClasse(id:number):Observable<any>{
-    return this.httpclient.delete(this.url+"/deleteCalsseByID/"+id)
+    return this.httpclient.delete(this.url+"/deleteClasseById/"+id)
   }
 
 
   public FindClasseById(id:any):Observable<any>{
     return  this.httpclient.get<Classee>(this.url+"/findClasseById/"+id)
   }
+
+  
 
 
 

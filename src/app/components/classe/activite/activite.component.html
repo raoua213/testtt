@@ -1,70 +1,96 @@
 <app-dashboard></app-dashboard>
+<p-toast></p-toast>
 <div style="position:absolute;margin-left: 20%;margin-top: 10%;" *ngIf="showModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h3 class="modal-title">Ajout activite</h3>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"  (click)="closeModal()">X</button>
       </div>
       <div class="modal-body">
         <form #addForm="ngForm" class="row g-3" (submit)="saveEvent(addForm)">
+        
+          <div class="col-sm-6 ">
+            <label for="exampleFormControlSelect1">Personnels</label>
+            <select class="form-control md-selected" id="exampleFormControlSelect1" name="fk_emploi2"
+              ngModel >
+              <option *ngFor="let emp of employees"  [ngValue]="emp" >{{emp.nom}}</option>
+          
+            </select>
 
+
+          </div>
           <div class="col-sm-6 ">
-              <label for="exampleFormControlSelect1">Personnels</label>
-              <select class="form-control" id="exampleFormControlSelect1" name="fk_emploi2" [(ngModel)]="emploi.fk_emploi2">
-                <option *ngFor="let emp of employees" [ngValue]="emp">{{emp.nom}}</option>
-              </select>
-              
-           
-                       </div>
-          <div class="col-sm-6 ">
-            <label for="Date">To Date {{selectedDate}}</label>
+            <label for="Date">{{selectedDate}}</label>
           </div>
           <input type="hidden" name="idActivite" [(ngModel)]="event.idActivite">
           <div class="col-sm-6 ">
-              <label for="Salle">Salle</label>
-              <input type="text" name="salle" class="form-control" id="Salle" placeholder="Salle" required [(ngModel)]="emploi.salle">
-            </div>
-            <div class="col-sm-6 ">
-              <label for="Horaire">Horaire </label>
-              <input type="text" name="horaire_act" class="form-control" id="Horaire" placeholder="Horaire" required [(ngModel)]="event.horaire_act">
-            </div>
-        
+            <label for="Salle">Salle</label>
+            <input type="text" name="salle" class="form-control" id="Salle" placeholder="Salle" required
+              [(ngModel)]="emploi.salle">
+          </div>
+          <div class="col-sm-6 ">
+            <label for="Horaire">Horaire </label>
+            <input type="text" name="horaire_act" class="form-control" id="Horaire" placeholder="Horaire" required
+              [(ngModel)]="event.horaire_act">
+          </div>
 
-            <div class="col-sm-6 ">
-              <label for="type">Type</label>
-              <input type="type" name="type" class="form-control" id="type" placeholder="Type Activité" required [(ngModel)]="event.type">
-            </div>
-            <div class="col-sm-6 ">
-              <label for="Nom">Nom Activité</label>
-              <input type="Nom" name="nom_activite" class="form-control" id="Nom" placeholder="Nom" required [(ngModel)]="event.nom_activite">
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
-            </div>
-      </form>
+
+          <div class="col-sm-6 ">
+            <label for="type">Type</label>
+            <input type="type" name="type" class="form-control" id="type" placeholder="Type Activité" required
+              [(ngModel)]="event.type">
+          </div>
+          <div class="col-sm-6 ">
+            <label for="Nom">Nom Activité</label>
+            <input type="Nom" name="nom_activite" class="form-control" id="Nom" placeholder="Nom" required
+              [(ngModel)]="event.nom_activite">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" style="margin-right: 40%;" >Enregistrer</button>
+           
+          </div>
+        </form>
       </div>
-      
+
     </div>
   </div>
 </div>
 <div class="tot">
-    <div class="one">
-<div class="liste">
-jjkj
-</div>
+  <div class="one">
 
-<div class="calen">
-    hhh
-</div>
-    </div>
-    <div class="two">
-        
-        <full-calendar [options]="calendarOptions" class="full">
+    <div class="tabb">
+      <p-table [value]="listClasse" [paginator]="true" [rows]="9" sortMode="multiple">
+        <ng-template pTemplate="header">
+          <tr style="font-family:'Mukta', sans-serif; font-size: large;">
+        <th> id</th>
+            <th>Nom</th>
+            <th>Nombre</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-listclasse>
+          <tr>
+            <td style="font-size: 22px;" >{{listclasse.idClasse}}</td>
+            <td style="font-size: 22px;"(click)="getAll(listclasse)">{{listclasse.nom}}</td>
+            <td>{{listclasse.eleves.length}}</td>
             
-        </full-calendar>
-        
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
-    
-</div>
+  
 
+  </div>
+
+  <div class="two">
+    <div style="margin-left: 2%; margin-top: 1%;font-family:'Mukta', sans-serif;
+    font-size: x-large; line-height: 1.6; text-transform: uppercase">
+       {{ selectedClass.nom }}
+    </div>
+    <full-calendar [options]="calendarOptions" class="full">
+
+    </full-calendar>
+
+  </div>
+
+</div>

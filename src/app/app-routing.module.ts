@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'classe',component:ClasseComponent},
   {path:'profileleve/:id',component:ProfilEleveComponent},
     {path:'liste/:id',component:ListeEleveComponent},
-    {path:'activite/:id',component: ActiviteComponent},
+    {path:'activite',component: ActiviteComponent},
   {path:'employe',component: EmployeComponent},
   {path:'profilemp/:id',component:ProfilEmployeComponent},
   {path:'presence',component:PresenceComponent},

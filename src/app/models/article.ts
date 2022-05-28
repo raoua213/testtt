@@ -1,13 +1,13 @@
+import { Commande } from './commande';
+import { Mouvement } from './mouvement';
 export class Article {
-    idArticle:number;
-    labelle:String;
-    prix:number;
-    categorie:String;
-
-    constructor(){
-        this.idArticle=0;
-        this.labelle="";
-        this.prix=0;
-        this.categorie=""
-    }
+    idArticle!:number;
+    labelle!:String;
+    prix!:number;
+    categorie!:String;
+    quantite!:number;
+    inventoryStatus?:string;
+    fk_Art!:Mouvement;
+    fk_Article!:Commande;
+    
 }

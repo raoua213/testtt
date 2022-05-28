@@ -8,37 +8,67 @@
 .one{
 
   display: grid;
-  grid-template-rows: 350px 350px;
+  grid-template-rows: 280px 440px;
   gap: 3%;
 }
 .collap{
-  background-color: #A8C3D0;
+  background-color: #aac8d627;
   font-family:'Mukta', sans-serif;
   font-size: large; 
-   padding: 16px;
+  
 }
-.info{
-
+.cong{
+  display: grid;
+  grid-template-columns:230px auto;
+  
+}
+.fulll{
+  height: 250px;
+  width:350px;
 }
 .act{
-  background-color: #A8C3D0;
+  background-color: #aac8d627;
+}
+.cal{
+  margin: 3%;
 }
 .ligne1{
-  background-color: #A8C3D0;
+  background-color: #aac8d627;
   display: grid;
-  grid-template-columns: 250px 250px;
+  grid-template-columns: 250px 300px 2px  ;
  
-  gap: 8%;
+  gap: 17%;
 
 }
-.card-text{
+
+.lig2{
+ 
+
+} 
+.ajout{
+  margin-top: 50px
+}
+.text{
+  display: grid;
+  grid-template-columns: 310px 30px ;
+  gap: 100%;
+ 
+}
+.t{
   font-family:'Mukta', sans-serif;
   font-size: large; 
   line-height: 30px;
   margin-top: 8%;
 }
-
-
+.nbjr{
+  font-family:'Mukta', sans-serif;
+  font-size: large; 
+  line-height: 40px;
+  margin-top: 8%;
+}
+.pop{
+  margin-top: 13px;
+}
 #toggle{
   visibility: hidden;
   opacity: 0;

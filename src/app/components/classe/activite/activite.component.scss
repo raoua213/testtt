@@ -9,20 +9,23 @@
 .one{
    
     display: grid;
-    grid-template-rows: 50% 50%;
-    gap: 2%;
+    
+ 
+}
+.modal-dialog{
+  z-index: 99;
 }
 .liste{
-    background-color: #A8C3D0;
+    background-color: #aac8d627;
 }
 .calen{
-    background-color: #A8C3D0;
+    background-color: #aac8d627;
 }
 .two{
-    background-color: #A8C3D0;
+    background-color: #aac8d627;
 }
 .full{
-    margin-top:2%;
+    margin-top:1%;
     margin-bottom: 2%;
     margin-left: 15%;
     width: 73%;

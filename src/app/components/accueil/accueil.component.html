@@ -1,1 +1,44 @@
 <app-dashboard></app-dashboard>
+
+
+<div class="cl">
+    <div class="card1">
+       
+        <p-chart type="bar" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+    </div>
+
+    <div class="two">
+        <div class="twostat">
+            <div class="stat">
+                <p-chart type="pie" [data]="data" [options]="chartOptions"  [style]="{'width': '2%'}"></p-chart>
+            </div>
+            <div class="stat2">
+                <p-chart type="pie" [data]="data" [options]="chartOptions"  [style]="{'width': '2%'}"></p-chart>
+            </div>
+        </div>
+    
+        <div class="tab">
+        <p-table  [paginator]="true" [rows]="9" sortMode="multiple">
+            <ng-template pTemplate="header">
+              <tr style="font-family:'Mukta', sans-serif; font-size: large;">
+            <th> Categorie</th>
+                <th>Libellé</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" >
+              <tr>
+                <td>Informatique</td>
+                <td>Pc HP</td>
+                <td>2</td>
+                <td>2000</td>
+                
+              </tr>
+            </ng-template>
+          </p-table>
+     </div>
+
+    </div>
+</div>
+

@@ -19,7 +19,7 @@ export class PresenceEmployeService {
     return this.httpclient.post(this.url+"/addPresence_personnel",pemp);
   }
 
-  public updateEleve( pemploye:PresenceEmp): Observable<any> {
+  public updatePemploye( pemploye:PresenceEmp): Observable<any> {
     return this.httpclient.put(this.url+"/updatePresence_personnel", pemploye);
   }
 

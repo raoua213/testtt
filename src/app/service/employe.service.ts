@@ -41,6 +41,8 @@ export class EmployeService {
     return  this.httpclient.get<Employe>(this.url+"/getPersonnelById/"+id)
   }
 
-
+  public FindEmpByCin(cin:any):Observable<any>{
+    return  this.httpclient.get<Employe>(this.url+"/findByCIN/"+cin)
+  }
   
 }

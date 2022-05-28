@@ -3,79 +3,81 @@
 
 
 <div class="tot">
+
   <div class="one">
 
     <div class="ligne1">
 
-      <div class="card-body">
-        <img [src]="retrievedImage"
-        class="card-img-top" style="width: 250px;" alt="...">
+      <div class="im">
+        <img [src]="retrievedImage" class="card-img-top" style="width: 280px; margin-top: 8%;" alt="...">
       </div>
-      <div class="card-text">
+
+      <div class="t">
 
         <p> Nom : {{emp.nom}} {{emp.prenom}} </p>
         <p> Cin : {{emp.cin}}</p>
         <p> Email : {{emp.mail}}</p>
         <p>telephone : {{emp.tel}}</p>
-        <p> salaire de base : {{emp.salaire_de_base}} <br></p>
+        <p> salaire de base : {{emp.salaire_de_base}}</p>
+      </div>
 
-        <div>
-          <input type="checkbox" id="toggle" class="mod">
-          <label for="toggle" class=" btn-primary mod"  style="margin-left: 100%;">
-            <i class="pi pi-fw pi-pencil"></i></label>
-          <dialog>
-            <!--start-->
-  
-            <label for="toggle" class="close">X</label>
-            <form #addForms="ngForm" (ngSubmit)="updateEmploye(addForms)">
-              <div class="form-group row">
-                <label for="nom" class="col-sm-2 col-form-label">nom</label>
-                <div class="col-sm-10">
-                  <input type="text" [(ngModel)]="emp.nom" name="nom" class="form-control" id="nom" placeholder="nom"
-                    required>
-                </div>
+      <div class="pop">
+        <p-button (click)="showBasicDialog()" icon="pi pi-pencil"  class="addd" ></p-button>
+        <p-dialog header="Modifier" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+
+
+          <!--start-->
+
+          <form #addForms="ngForm" (ngSubmit)="updateEmploye(addForms)">
+            <input type="hidden" [(ngModel)]="emp.idPersonnel" name="idPersonnel" class="form-control">
+            <div class="form-group row">
+              <label for="nom" class="col-sm-2 col-form-label">nom</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="emp.nom" name="nom" class="form-control" id="nom" placeholder="nom"
+                  required>
               </div>
-  
-              <div class="form-group row">
-                <label for="prenom" class="col-sm-2 col-form-label">prenom</label>
-                <div class="col-sm-10">
-                  <input type="text" [(ngModel)]="emp.prenom" name="prenom" class="form-control" id="prenom"
-                    placeholder="prenom" required>
-                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="prenom" class="col-sm-2 col-form-label">prenom</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="emp.prenom" name="prenom" class="form-control" id="prenom"
+                  placeholder="prenom" required>
               </div>
-  
-              <div class="form-group row">
-                <label for="cin" class="col-sm-2 col-form-label">cin</label>
-                <div class="col-sm-10">
-                  <input type="text" [(ngModel)]="emp.cin" name="cin" class="form-control" id="cin" placeholder="cin"
-                    required>
-                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="cin" class="col-sm-2 col-form-label">cin</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="emp.cin" name="cin" class="form-control" id="cin" placeholder="cin"
+                  required>
               </div>
-  
-              <div class="form-group row">
-                <label for="fonction" class="col-sm-2 col-form-label">fonction</label>
-                <div class="col-sm-10">
-                  <input type="text" [(ngModel)]="emp.fonction" name="fonction" class="form-control" id="fonction"
-                    placeholder="fonction" required>
-                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="fonction" class="col-sm-2 col-form-label">fonction</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="emp.fonction" name="fonction" class="form-control" id="fonction"
+                  placeholder="fonction" required>
               </div>
-  
-              <div class="form-group row">
-                <label for="mail" class="col-sm-2 col-form-label">mail</label>
-                <div class="col-sm-10">
-                  <input type="text" [(ngModel)]="emp.mail" name="mail" class="form-control" id="mail" placeholder="mail"
-                    required>
-                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="mail" class="col-sm-2 col-form-label">mail</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="emp.mail" name="mail" class="form-control" id="mail" placeholder="mail"
+                  required>
               </div>
-  
-              <div class="form-group row">
-                <label for="nb_jour_initiale" class="col-sm-2 col-form-label">jours conges</label>
-                <div class="col-sm-10">
-                  <input type="text" [(ngModel)]="emp.nb_jour_initiale" name="nb_jour_initiale" class="form-control"
-                    id="nb_jour_initiale" placeholder="nb_jour_initiale" required>
-                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="nb_jour_initiale" class="col-sm-2 col-form-label">jours conges</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="emp.nb_jour_initiale" name="nb_jour_initiale" class="form-control"
+                  id="nb_jour_initiale" placeholder="nb_jour_initiale" required>
               </div>
-              <!--
+            </div>
+            <!--
                           <div class="form-group row">
                             <label for="nb_jour_reste" class="col-sm-2 col-form-label">rest</label>
                             <div class="col-sm-10">
@@ -92,133 +94,166 @@
                             </div>
                           </div>
                         -->
-              <div class="form-group row">
-                <label for="salaire_de_base" class="col-sm-2 col-form-label">salaire</label>
-                <div class="col-sm-10">
-                  <input type="text" [(ngModel)]="emp.salaire_de_base" name="salaire_de_base" class="form-control"
-                    id="salaire_de_base" placeholder="salaire_de_base" required>
-                </div>
+            <div class="form-group row">
+              <label for="salaire_de_base" class="col-sm-2 col-form-label">salaire</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="emp.salaire_de_base" name="salaire_de_base" class="form-control"
+                  id="salaire_de_base" placeholder="salaire_de_base" required>
               </div>
-  
-  
-              <div class="form-group row">
-                <label for="tel" class="col-sm-2 col-form-label"> tel</label>
-                <div class="col-sm-10">
-                  <input type="text" [(ngModel)]="emp.tel" name="tel" class="form-control" id="tel" placeholder="tel"
-                    required>
-                </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label for="tel" class="col-sm-2 col-form-label"> tel</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="emp.tel" name="tel" class="form-control" id="tel" placeholder="tel"
+                  required>
               </div>
-  
-              <input id="img" type="file" (change)="onFileChanged($event)">
-  
-              <div class="btn">
-                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
-  
-              </div>
-            </form>
-            <!--end-->
-  
-  
-  
-  
-          </dialog>
-        </div>
+            </div>
+
+            <input id="img" type="file" (change)="onFileChanged($event)">
+
+            <div class="btn">
+              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Enregistrer</button>
+
+            </div>
+          </form>
+          <!--end-->
+
+
+
+
+        </p-dialog>
+
       </div>
-      
+
 
     </div>
     <div class="collap">
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="pills-home-tab" 
-      data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
-       aria-selected="true" style="text-decoration: none; color: white;">Congés</a>
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+            aria-controls="pills-home" aria-selected="true" style="text-decoration: none; color: black;">Disponibilité</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"style="text-decoration: none; color: white;" aria-selected="false">Fiche de Paie</a>
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+            aria-controls="pills-profile" style="text-decoration: none; color: black;" aria-selected="false">Fiche de
+            Paie</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false" style="text-decoration: none; color: white;">Disponibilité</a>
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+            aria-controls="pills-contact" aria-selected="false"
+            style="text-decoration: none; color: black;">Congés</a>
         </li>
       </ul>
       <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div  class="tab-pane fade cal" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
          
-          <input type="checkbox" id="toggle4" class="paiement">
-          <label for="toggle4" class=" btn btn-primary evaluer">
-         ajout </label>
-          <dialog>
-            <!--start-->
-      
-            <label for="toggle4" class="close">X</label>
-            <form #addForm2="ngForm" class="row g-3" (ngSubmit)="addConget(addForm2)">
-      
-              <div class="col-sm-4 ">
-                <label for="fdate">From Date</label>
-                <input type="date" name="fdate"  class="form-control" id="fdate" placeholder="From Date" required ngModel>
-              </div>
+          <div class="cong" style=" margin-left: 10px;">
+           
+<div class="nbjr">
+  Nombre De Jour Pris : {{emp.nb_jour_taken}}     
+  <p>Nombre De Jour Restant : {{emp.nb_jour_reste}}</p>
+
+</div>           
+
+          <div class="tabb" style="margin-left: 15%; margin-right: 5%; margin-bottom: 15px;"> 
+            <p-table [value]="listConges" [paginator]="true" [rows]="3" sortMode="multiple">
+              <ng-template pTemplate="header">
+                <tr style="font-family:'Mukta', sans-serif;
+              font-size: large;">
+                  <th>Date</th>
+                 <th></th>
+                 <th> 
+                    <p-button (click)="showBasicDialog2()" icon="pi pi-external-link" label="Ajout" class="ajout" style="width:80px;height:30px"></p-button>
+                  <p-dialog header="Congé" [(visible)]="displayBasic2" [style]="{width: '40vw'}" [baseZIndex]="10000">
+                    <!--start-->
+        
+                    <form #addForm2="ngForm" class="row g-3" (ngSubmit)="addConget(addForm2)">
+                      {{errorMessageDate}}
+                      <div class="col-sm-4 ">
+                        <label for="fdate">A partir de</label>
+                        <input type="date" name="fdate" class="form-control" id="fdate" placeholder="From Date" required
+                          ngModel>
+                      </div>
+        
+                      <div class="col-sm-4">
+                        <label for="todate"> Jusqu'a</label>
+                        <input type="date" name="todate" class="form-control" id="todate" placeholder="To Date" required
+                          ngModel>
+                      </div>
+                      <div class="btn">
+                        <button type="submit" class="btn btn-primary"[disabled]="emp.nb_jour_initiale<=emp.nb_jour_taken">Enregistrer</button>
+                      </div>
+        
+                    </form>
+                  </p-dialog></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-elem>
+                <tr>
+                  <td style=" font-family:'Mukta', sans-serif;
+                  font-size: large; 
+                  line-height: 30px;">{{elem.date}}</td>
+             
+                  <td><p-button (click)="deleteConges(elem.id)">Effacer</p-button></td>
+                  <td>
+
+                  </td></tr>
               
-              <div class="col-sm-4">
-                <label for="todate"> To Date</label>
-                <input type="date" name="todate" class="form-control" id="todate" placeholder="To Date" required ngM>
+              </ng-template>
+            </p-table>
+          </div>
+          </div>
+          <p-toast></p-toast> 
+        </div>
+
+
+
+
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <p-button (click)="showBasicDialog3()" icon="pi pi-external-link" label="Ajout" class="ajout"></p-button>
+          <p-dialog header="Fiche de paie" [(visible)]="displayBasic3" [style]="{width: '40vw'}" [baseZIndex]="10000">
+            <!--start-->
+            <form #addForm="ngForm" class="row g-3">
+
+              <div class="col-sm-4 ">
+                <label for="fdate"> Date</label>
+                <input type="date" name="fdate" class="form-control" id="fdate" placeholder="From Date" required>
               </div>
-            
-            <button type="submit">send</button>
-      
+
+              <div class="col-sm-4">
+                <label for="Cnss"> Cnss</label>
+                <input type="text" name="todate" class="form-control" id="Cnss" placeholder="Cnss" required>
+              </div>
+              <div class="col-sm-4">
+                <label for="conge">Congé payé</label>
+                <input type="number" name="conge" class="form-control" id="conge" placeholder="conge" required>
+              </div>
+              <div class="col-sm-4">
+                <label for="Impot">Impot</label>
+                <input type="number" name="Impot" class="form-control" id="Impot" placeholder="Impot" required>
+              </div>
+              <div class="col-sm-4">
+                <label for="Salaire">Salaire Brut</label>
+                <input type="number" name="Salaire" class="form-control" id="Salaire" placeholder="Salaire Brut"
+                  required>
+              </div>
+
+
             </form>
-          </dialog>
-         <div class="card-text">
-          <p> Nombre De Jour Totale: {{emp.nb_jour_initiale}}  </p>
-          <p> Nombre De Jour Pris : {{emp.nb_jour_taken}}</p>
-          <p> Nombre De Jour Restant : {{emp.nb_jour_taken}}</p>
-         </div>
-    </div>
-       
-      
-      
-      
-      
-       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <input type="checkbox" id="toggle3" class="paiement">
-        <label for="toggle3" class=" btn btn-primary evaluer">
-       ajout </label>
-        <dialog>
-          <!--start-->
-    
-          <label for="toggle3" class="close">X</label>
-          <form #addForm="ngForm" class="row g-3">
-    
-            <div class="col-sm-4 ">
-              <label for="fdate"> Date</label>
-              <input type="date" name="fdate"  class="form-control" id="fdate" placeholder="From Date" required>
-            </div>
-            
-            <div class="col-sm-4">
-              <label for="Cnss"> Cnss</label>
-              <input type="text" name="todate" class="form-control" id="Cnss" placeholder="Cnss" required>
-            </div>
-            <div class="col-sm-4">
-              <label for="conge">Congé payé</label>
-              <input type="number" name="conge" class="form-control" id="conge" placeholder="conge" required>
-            </div>
-            <div class="col-sm-4">
-              <label for="Impot">Impot</label>
-              <input type="number" name="Impot" class="form-control" id="Impot" placeholder="Impot" required>
-            </div>
-            <div class="col-sm-4">
-              <label for="Salaire">Salaire Brut</label>
-              <input type="number" name="Salaire" class="form-control" id="Salaire" placeholder="Salaire Brut" required>
-            </div>
-    
-    
-          </form>
-        </dialog>
-       </div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+          </p-dialog>
+        </div>
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="margin-left: 20%; margin-right: 10%; ">
+          <full-calendar [options]="calendarOptions2" style=" width:420px;height: 30px;">
+
+          </full-calendar>
+        </div>
       </div>
-    
-    
-    
+
+
+
     </div>
 
 
@@ -226,9 +261,10 @@
 
   <div class="act">
 
-    <h4 style="margin: 2%;"> Activités Réalisées : </h4>
+    <h2 style="margin: 2%;"> Activités Réalisées : </h2>
     <full-calendar [options]="calendarOptions" class="full">
-            
+
     </full-calendar>
   </div>
 </div>
+<p-toast></p-toast>

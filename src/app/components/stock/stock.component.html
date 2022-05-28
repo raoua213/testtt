@@ -1,1 +1,169 @@
 <app-dashboard></app-dashboard>
+<div class="two">
+
+	
+    <!--div class="titre">
+        <h1 className="title" style="margin: 6%;">Liste de Stocks</h1>
+        <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Ajout"></p-button>
+        <p-dialog header="Ajout Classe" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+        
+            <form #addForms="ngForm" (ngSubmit)="onAddStock(addForms)">
+              
+                <div class="col-md-8">
+                  <label for="nom"  >nom</label>
+                    <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required>
+                  </div>
+              <div class="col-md-12">
+                <button [disabled]="addForms.invalid" type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>  
+          
+        </p-dialog>
+        <!--p-button label="Save"  style="margin-top:10%"  icon="pi pi-check" iconPos="right"></p-button>
+        <p-multiSelect  [(ngModel)]="" optionLabel="Catégorie"></p-multiSelect>
+        <p-multiSelect  [(ngModel)]="" optionLabel="Fournisseur"></p-multiSelect>
+        <p-multiSelect  [(ngModel)]="" optionLabel="Quantité"></p-multiSelect-->
+       
+    <!--/div-->
+
+    <!--div class="tabb">
+    <p-table  [paginator]="true" [rows]="10" sortMode="multiple">
+        <[value]="">
+        <ng-template pTemplate="header">
+            <tr style="font-family:'Mukta', sans-serif;
+        font-size: large;">
+                <th>Catégorie</th>
+                <th>Réference</th>
+                <th>Libellé</th>
+                <th>Fournisseur</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Quantité Consommé</th>
+                <th>Action</th>
+
+
+
+                <!--th *ngFor="let day of week"> {{ day }}</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-p>
+            <!--tr>
+                <td style="font-size: 22px;">{{p.nom}}<img [src]="'data:image/jpg;base64,'+p.img"></td>
+                <td *ngFor="let day of p.weekPresence">
+                    <input class="form-check-input" type="checkbox" [checked]="day.etat"
+                        (click)="changeEtatPresence(day,$event)">
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p-toast></p-toast>
+
+<div class="card">
+   
+
+    <p-table #dt [value]="listArticle" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll"
+        [(selection)]="selectedArticle" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Manage Products</h5>
+                <button pButton pRipple label="Ajout" icon="pi pi-plus" class="p-button-success mr-2" (click)="showBasicDialog()"></button>
+               <p-dialog  [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+                <form #addForm="ngForm" (ngSubmit)="onAddArticle(addForm)">
+                    <input type="hidden" [(ngModel)]="article.idArticle" name="idArticle">
+                    <div class="col-md-6">
+                        <label for="categorie"  >Categorie</label>
+                        <input type="text" [(ngModel)]="article.categorie" name="categorie" class="form-control" id="categorie" placeholder="Categorie" required>
+                      </div>
+                    <div class="col-md-6">
+                      <label for="labelle"  >Labelle</label>
+                        <input type="text" [(ngModel)]="article.labelle" name="labelle" class="form-control" id="labelle" placeholder="nom" required>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="quantite"> Quantite</label>
+                          <input type="number" [(ngModel)]="article.quantite" name="quantite" class="form-control" id="quantite" placeholder="quantite" required>
+                        </div>
+
+                      <div class="col-md-6">
+                      <label for="prix"  >Prix</label>
+                      <input type="number" [(ngModel)]="article.prix" name="prix" class="form-control" id="prix" placeholder="prix" required>
+                    </div>
+
+                   
+                  <div class="col-md-12">
+                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Ajout Article</button>
+                  </div>
+                </form>  
+               </p-dialog>
+                <!--span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span-->
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="categorie">categorie <p-sortIcon field="categorie"></p-sortIcon></th>
+                <th pSortableColumn="labelle">libellé <p-sortIcon field="labelle"></p-sortIcon></th>
+                <th pSortableColumn="quantite">Quantite <p-sortIcon field="quantite"></p-sortIcon></th>
+                <th pSortableColumn="prix">Prix <p-sortIcon field="prix"></p-sortIcon></th>
+                <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
+                <th pSortableColumn="inventoryStatus">Status <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+                <th>
+
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-article>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="article"></p-tableCheckbox>
+                </td>
+                <td>{{article.categorie}}</td>
+                <td>{{article.labelle}}</td>
+                <!--td><img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td-->
+                <td>{{article.quantite}}</td>
+                
+                <td>{{article.prix | currency:'Dt'}}</td>
+                <td><span [class]="'product-badge status-' + (article.inventoryStatus ? article.inventoryStatus.toLowerCase() : '')">{{article.inventoryStatus}}</span></td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="showBasicModal2(article)"></button>
+                    
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteArticle(article.idArticle)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{listArticle ? listArticle.length : 0 }} products.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+</div>

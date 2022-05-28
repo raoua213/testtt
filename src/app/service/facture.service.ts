@@ -26,5 +26,16 @@ export class FactureService {
     return  this.httpclient.get<Facture>(`${this.url}/findFactureById/`,id)
   }
 
+  public FindFactureByIdeleve(id:any):Observable<any>{
+    return  this.httpclient.get<Facture>(this.url+"/findFactureByIdEleve/"+id)
+  }
 
+  public findFactureByIdEleve_Date(id:any,date:any):Observable<any>{
+    return  this.httpclient.get<Facture>(this.url+"/findFactureByIdEleve_Date/"+id + date)
+  }
+
+
+  public FindAllPaiement_Date(DateDb:any,dateF:any):Observable<any>{
+    return  this.httpclient.get<Facture>(this.url+"/AllPaiement_Date/"+DateDb+ dateF)
+  }
 }

@@ -11,7 +11,7 @@ fonction : String;
 salaire_de_base : number;
 nb_jour_initiale : number;
 nb_jour_taken : number;
-nb_jour_restant : number;
+nb_jour_reste : number;
 
 constructor(){
     this.idPersonnel=0;
@@ -24,7 +24,7 @@ constructor(){
     this.salaire_de_base=0;
     this.nb_jour_initiale=0;
     this.nb_jour_taken=0;
-    this.nb_jour_restant=0;
+    this.nb_jour_reste=0;
 
 
 }

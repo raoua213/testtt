@@ -7,7 +7,7 @@ export class Eleve {
     idEleve:number
     nom : String;
     prenom: String;
-    date!:Date
+    date_nais!:Date
     genre:String;
     taille:String;
     poid:number;

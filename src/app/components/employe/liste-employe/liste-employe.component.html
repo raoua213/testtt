@@ -2,137 +2,96 @@
 
 <div class="cl">
 
-  <div class="pop">
-    <input type="checkbox" id="toggle">
-  <label class="add" for="toggle" style="margin-left: 20px; width:max-content;">Add</label>
-  
-  <dialog>
-    <!--start-->
-  
-  
-    <form #addForm="ngForm" (ngSubmit)="onAddEmloyee(addForm)">
-      <div class="form-group row">
-        <label for="nom" class="col-sm-2 col-form-label">nom</label>
-        <div class="col-sm-10">
-          <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required >
+  <div class="popu" style="margin-top: 2%;">
+
+    <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Ajout" style="margin-left:3%;"></p-button>
+    <p-dialog header="Ajout" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+
+      <form class="row g-3" #addForm="ngForm" (ngSubmit)="onAddEmloyee(addForm)">
+        <div class="col-md-3">
+          <label for="nom" class="form-label">nom</label>
+          <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required>
         </div>
-      </div>
-  
-      <div class="form-group row">
-        <label for="prenom" class="col-sm-2 col-form-label">prenom</label>
-        <div class="col-sm-10">
-          <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="prenom" required >
+
+        <div class="col-md-3">
+          <label for="prenom" class="form-label">prenom</label>
+          <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="prenom" required>
         </div>
-      </div>
-  
-      <div class="form-group row">
-        <label for="cin" class="col-sm-2 col-form-label">cin</label>
-        <div class="col-sm-10">
-          <input type="text" ngModel name="cin" class="form-control" id="cin" placeholder="cin" required >
+
+
+        <div class="col-md-4">
+          <label for="cin" class="form-label">cin</label>
+          <input type="text" ngModel name="cin" class="form-control" id="cin" placeholder="cin" required>
         </div>
-      </div>
-  
-      <div class="form-group row">
-        <label for="fonction" class="col-sm-2 col-form-label">fonction</label>
-        <div class="col-sm-10">
-          <input type="text" ngModel name="fonction" class="form-control" id="fonction" placeholder="fonction" required >
+
+        <div class="col-md-4">
+          <label for="fonction" class="form-label">fonction</label>
+          <input type="text" ngModel name="fonction" class="form-control" id="fonction" placeholder="fonction" required>
         </div>
-      </div>
-  
-      <div class="form-group row">
-        <label for="mail" class="col-sm-2 col-form-label">mail</label>
-        <div class="col-sm-10">
-          <input type="text" ngModel name="mail" class="form-control" id="mail" placeholder="mail" required >
+
+        <div class="col-md-4">
+          <label for="mail" class="form-label">mail</label>
+          <input type="email" ngModel name="mail" class="form-control" id="mail" placeholder="mail" required>
         </div>
-      </div>
-  
-      <div class="form-group row">
-        <label for="nb_jour_initiale" class="col-sm-2 col-form-label">jours conges</label>
-        <div class="col-sm-10">
+
+        <div class="col-md-4">
+          <label for="tel" class="form-label">Numero de telephone</label>
+          <input type="text" ngModel name="tel" class="form-control" id="tel" placeholder="tel" required>
+        </div>
+
+        <div class="col-md-5">
+          <label for="nb_jour_initiale" class="form-label">jours conges</label>
           <input type="text" ngModel name="nb_jour_initiale" class="form-control" id="nb_jour_initiale"
-            placeholder="nb_jour_initiale" required >
+            placeholder="nb_jour_initiale"   required>
         </div>
-      </div>
-  <!--
-      <div class="form-group row">
-        <label for="nb_jour_reste" class="col-sm-2 col-form-label">rest</label>
-        <div class="col-sm-10">
-          <input type="text" ngModel name="nb_jour_reste" class="form-control" id="nb_jour_reste"
-            placeholder="nb_jour_reste" required>
+
+
+        <div class="col-md-5">
+          <label for="salaire_de_base" class="form-label">salaire</label>
+          <input type="number" ngModel name="salaire_de_base" class="form-control" id="salaire_de_base"
+            placeholder="salaire_de_base" required>
         </div>
-      </div>
-  
-      <div class="form-group row">
-        <label for="nb_jour_taken" class="col-sm-2 col-form-label">taken</label>
-        <div class="col-sm-10">
-          <input type="text" ngModel name="nb_jour_taken" class="form-control" id="nb_jour_taken"
-            placeholder="nb_jour_taken" required>
+
+
+
+
+        <input id="img" type="file" (change)="onFileChanged($event)">
+
+        <div class="btn">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
         </div>
-      </div>
-    -->
-      <div class="form-group row">
-        <label for="salaire_de_base" class="col-sm-2 col-form-label">salaire</label>
-        <div class="col-sm-10">
-          <input type="text" ngModel name="salaire_de_base" class="form-control" id="salaire_de_base"
-            placeholder="salaire_de_base" required >
-        </div>
-      </div>
-  
-  
-      <div class="form-group row">
-        <label for="tel" class="col-sm-3 col-form-label">Numero de telephone</label>
-        <div class="col-sm-9">
-          <input type="text" ngModel name="tel" class="form-control" id="tel" placeholder="tel" required >
-        </div>
-      </div>
-  
-      <input id="img" type="file" (change)="onFileChanged($event)">
-  
-   <div class="btn">
-    <button type="submit" class="btn btn-primary">Save changes</button>
-    <label for="toggle" class="close">close overlay</label>
-   </div>
-    </form>
-    <!--end[disabled]="addForm.invalid" -->
-  
-  
-    
-  
-  </dialog>
+      </form>
+
+    </p-dialog>
   </div>
 
-<div class="lemp">
-  <div class="row">
-    <div class="col-sm-4" *ngFor="let e of employe">
+  <div class="lemp">
+    <div class="row">
      
-      <div class="card bg-light mb-3" style="max-width: 20rem;">
-        
-        <img class="image" [src]="'data:image/jpg;base64,'+e.img">
-        <div class="card-body">
-          <a class="card-title" [routerLink]="['/profilemp',e.idPersonnel]">{{ e.nom }} {{ e.prenom }} </a>
-          <div class="footer">
-            <p >{{ e.mail }}</p>
-            <p >{{ e.tel }}</p>
-          </div>
-        </div>
-      </div>
-     </div>
-      <!-- row 2-->
-  
-    
+      <mat-card class="example-card" *ngFor="let e of employe">
+        <mat-card-header>
+          <img mat-card-avatar class="example-header-image" [src]="'data:image/jpg;base64,'+e.img">
+          <mat-card-title> <a [routerLink]="['/profilemp',e.idPersonnel]" style="color: black; text-decoration: none;">{{e.nom}} {{e.prenom}} </a></mat-card-title>
+          <mat-card-subtitle style="color: black;">Enseignant</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="'data:image/jpg;base64,'+e.img">
+       <div class="mil" style="font-size:15px; margin-top:40px;">
+        <mat-card-content style="font-size:15px; ">
+          <p>
+            {{ e.mail }}
+          </p>
+          <p>{{ e.tel }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+         <p (click)="onDeleteEmp(e.idPersonnel)" class="pi pi-trash" style="font-size:15px;" ></p>
+   
+        </mat-card-actions>
+       </div>
+      </mat-card>
+
+
     </div>
-</div>
+  </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
 

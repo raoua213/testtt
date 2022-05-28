@@ -1,6 +1,6 @@
 .tot{
   display: grid;
-  grid-template-columns: 550px  auto 550px;
+  grid-template-columns: 570px  auto 550px;
   gap: 1%;
   margin-top: 1%;
   height: 89vh;
@@ -8,15 +8,15 @@
 
 .ligne1{
  
-  margin-left: 2%;
+  margin-left: 1%;
   display: grid;
-  grid-template-columns: 250px auto;
-  gap: 8%;
+  grid-template-columns: 480px 20px ;
+  gap: 5%;
   
 }
 .one{
   box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-  background-color:#A8C3D0;
+  background-color:#aac8d627 ;
   gap: 8%;
   font-family:'Mukta', sans-serif;
   font-size: large; 
@@ -38,7 +38,7 @@ margin-top: 0px;
 }
 .three{
   box-shadow:  0 5px 15px rgba(138, 135, 135, 0.534);
-  background-color:#A8C3D0;
+  background-color:#aac8d627;
   margin-right: 2%;
 }
 
@@ -49,16 +49,16 @@ line-height: 30px;
 
 }
 .info{
-  margin-top: 15%;
+  margin-top: 2%;
 
 }
 
 .act{
-  background-color: #A8C3D0;
+  background-color: #aac8d627;
 }
 
 .photo{
-  background-color: #A8C3D0;
+  background-color: #aac8d627;
 }
 
 .close{

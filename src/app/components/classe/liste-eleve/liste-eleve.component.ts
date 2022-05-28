@@ -4,19 +4,23 @@ import { PresenceEleve } from './../../../models/presence-eleve';
 import { Eleve } from './../../../models/eleve';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 //import * as EventEmitter from 'events';
 import { EleveService } from 'src/app/service/eleve.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ClasseService } from 'src/app/service/classe.service';
 import { formatDate } from '@angular/common';
 import { CalendarOptions } from '@fullcalendar/angular';
-
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {Message} from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-liste-eleve',
   templateUrl: './liste-eleve.component.html',
-  styleUrls: ['./liste-eleve.component.scss']
+  styleUrls: ['./liste-eleve.component.scss'],
+  providers: [ConfirmationService]
 })
 export class ListeEleveComponent implements OnInit {
   eleves:any=[];
@@ -27,27 +31,27 @@ export class ListeEleveComponent implements OnInit {
   selectedFile!: File;
   curr = new Date();
   week : string[]=[];
+  msgs: Message[] = [];
+  displayModal=false;
+  displayBasic= false;
   //@Input() classeInput:any;
   classeInput:any={};
   listOfWeeks:string[][]=[];
-  constructor(private eleveService: EleveService,  private classeService:ClasseService, private presenceService:PresenceEleveService, private activatedRoute: ActivatedRoute) { }
+  constructor(private eleveService: EleveService,  private classeService:ClasseService, private presenceService:PresenceEleveService, private activatedRoute: ActivatedRoute,private router: Router,private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     this.idClasse = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.idClasse);
-    
+  
     this.getClassesById(this.idClasse);
     this.geteleveByClasse(this.idClasse);
     this.week=this.getWeek(this.curr);
-    
-    
-    
-    console.log(this.classeInput)
     this.listOfWeeks=this.getListOfWeeks()
   }
 
-  
-
+showBasicDialog() {
+    this.displayBasic = true;
+}
 
   getWeekPresence(){
     let elem:any
@@ -69,6 +73,32 @@ export class ListeEleveComponent implements OnInit {
       tab=[]
     }
   }
+
+  confirm2(id:number) {
+    console.log('test liste eleve confirm');
+    this.confirmationService.confirm({
+        message: 'Do you want to delete this record?',
+        header: 'Delete Confirmation',
+        icon: 'pi pi-info-circle',
+        accept: () => {
+          this.eleveService.DeleteEleve(id).subscribe(
+            (response) => {
+              
+              this.geteleveByClasse(this.idClasse);
+            },
+            (error: HttpErrorResponse) => {
+              console.log(error);
+            }
+          );
+          this.msgs = [{severity:'info', summary:'Confirmed', detail:'You have accepted'}];
+          console.log('ok')
+        },
+        reject: () => {
+          this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
+          console.log('!ok')
+        }
+    });
+}
   getListOfWeeks(){
     //matrice of weeks
     let listWeeks:string[][]=[]
@@ -98,6 +128,7 @@ export class ListeEleveComponent implements OnInit {
     }
     return week
   }
+  
  getClassesById(id:number){
    this.classeService.FindClasseById(id).subscribe(data=>{
     console.log(data)
@@ -106,20 +137,37 @@ export class ListeEleveComponent implements OnInit {
     
    })
  }
+
  public addEleve(addForms:NgForm){
-  addForms.value.eleves=this.classe;
-  addForms.value.eleves.eleves=[]
-  const uploadImageData = new FormData();
-  uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-  let x = JSON.stringify(addForms.value);
-  uploadImageData.append('eleve', x)
-  this.eleveService.AddEleve(uploadImageData).subscribe(data=>{
-    console.log(addForms)
+  
+  this.eleveService.checkEleve(addForms.value).subscribe(data=>{
     console.log(data)
-    this.eleve=data;
-    console.log(this.eleve)
-    this.geteleveByClasse(this.idClasse)
+    if(data.length>0){
+      alert('exiqt')
+    }else{
+    addForms.value.eleves=this.classe;
+    addForms.value.eleves.eleves=[]
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+    let x = JSON.stringify(addForms.value);
+    uploadImageData.append('eleve', x)
+    this.eleveService.AddEleve(uploadImageData).subscribe(data=>{
+      console.log(addForms)
+      console.log(data)
+      this.eleve=data;
+      console.log(this.eleve)
+      addForms.reset();
+      this.geteleveByClasse(this.idClasse)
+    })
+    }
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+    this.router.navigate([currentUrl]);
+    });
   })
+  
+    
+  
 }
 
  saveAllPresences(){
@@ -138,7 +186,13 @@ export class ListeEleveComponent implements OnInit {
       }
     }
   }
-  this.geteleveByClasse(this.idClasse);
+  //this.geteleveByClasse(this.idClasse);
+  //reload page
+  let currentUrl = this.router.url;
+  this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+  this.router.navigate([currentUrl]);
+  });
+  //
  }
  changeEtatPresence(elem:any,e:any){
    console.log(elem)
@@ -146,9 +200,7 @@ export class ListeEleveComponent implements OnInit {
   let index2 = this.classeInput.eleves[index].presences.findIndex((x: { datePE: any; }) =>
    x.datePE==elem.datePE); 
   if(index2==-1){
-    let p=new PresenceEleve()
-    p.datePE=elem.datePE;
-    p.etat=true;
+    
     this.classeInput.eleves[index].presences.push({idPE:0,datePE:elem.datePE,etat:true})
   }else{
    this.classeInput.eleves[index].presences[index2].etat= e.target.checked
@@ -204,6 +256,10 @@ export class ListeEleveComponent implements OnInit {
         console.log(error);
       }
     );
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+    this.router.navigate([currentUrl]);
+    });
   }
   onChangeSelect(e:any){
     console.log(e.target.value)

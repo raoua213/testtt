@@ -8,65 +8,57 @@
               <button class="btn-primary col-2"  type="submit" style="width: max-content;  border-radius: 4px;height: max-content; margin-top: 6%; ">Search</button>
             </form>
          
-            <div class="tab">
-              <h1 className="title">Liste d'eleves</h1>
-              <table class="table table-hover" style="margin-right: 1.2%; ">
-        
-        
-                <thead>
-        
-        
-                  <tr>
-                    <th scope="col">Nom</th>
+            
 
-                     
-                     <th scope="col">Action</th>
+
+            <div class="tabb">
+              <p-table [value]="eleves" [paginator]="true" [rows]="10" sortMode="multiple">
+                <ng-template pTemplate="header">
+                  <tr style="font-family:'Mukta', sans-serif;
+                font-size: large;">
+                    <th>Nom</th>
+                    <th> Action</th>
                   </tr>
-        
-        
-                </thead>
-        
-                <tbody>
-                  <tr *ngFor="let e of eleves">
-        
-                    <td class="lis">
-                     <a [routerLink]="['/profileleve',e.idEleve]" style="text-decoration: none; color: black;">{{e.nom}} {{e.prenom}}</a> 
-                    </td>
-                    <td class="lis">
-                      <input type="checkbox" id="toggle3" class="paiement">
-                      <label for="toggle3" class=" btn btn-primary evaluer" (click)="setEleve(e)">
-                      Add Paiement </label>
-                      <dialog>
-                        <!--start-->
-                  
-                        <label for="toggle3" class="close">X</label>
-                        <form #addForm="ngForm" class="row g-3">
-                  
-                          <div class="col-sm-6 ">
-                            <label for="fdate"> From Date</label>
-                            <input type="date" name="from_date" [(ngModel)]="facture.from_date" class="form-control" id="fdate" placeholder="From Date" required>
-                          </div>
-                          
-                          <div class="col-sm-6 ">
-                            <label for="todate"> From Date</label>
-                            <input type="date" name="to_date"[(ngModel)]="facture.to_date" class="form-control" id="todate" placeholder="To Date" required>
-                          </div>
-                          <div class="col-sm-12">
-                            <label for="montant">Montant</label>
-                            <input type="number" name="montent" [(ngModel)]="facture.montent" class="form-control" id="montant" placeholder="Montant" required>
-                          </div>
-                          <div class="col-sm-12">
-                            <button type="submit" class="btn btn-primary" (click)="addMontant()">Save</button>
-                          </div>
-                        </form>
-                      </dialog>
-                    </td>
+                </ng-template>
+                <ng-template pTemplate="body" let-e>
+                  <tr>
+                 
+                   <td>
+                     <a [routerLink]="['/profileleve',e.idEleve]" style="text-decoration: none; color: black;"> {{e.nom}} {{e.prenom}} </a>
+                   </td>
+                   <td class="lis">
+                    <input type="checkbox" id="toggle3" class="paiement">
+                    <label for="toggle3" class=" btn btn-primary evaluer" (click)="setEleve(e)">
+                    Ajout Paiement </label>
+                    
+                    <dialog>
+                      <!--start-->
+                
+                      <label for="toggle3" class="close" style="float: right;">X</label>
+                      <form #addForm="ngForm" class="row g-3">
+                
+                        <div class="col-sm-6 ">
+                          <label for="fdate"> A partir de</label>
+                          <input type="date" name="from_date" [(ngModel)]="facture.from_date" class="form-control" id="fdate" placeholder="From Date" required>
+                        </div>
+                        
+                        <div class="col-sm-6 ">
+                          <label for="todate"> jusqu'a</label>
+                          <input type="date" name="to_date" class="form-control" id="todate" placeholder="To Date" value="{{ newDate }}" required>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="montant">Montant</label>
+                          <input type="number" name="montent" [(ngModel)]="facture.montent" class="form-control" id="montant" placeholder="Montant" required>
+                        </div>
+                        <div class="col-sm-12" style="margin-left: 40%;">
+                          <button type="submit" class="btn btn-primary" (click)="addMontant()">Enregistrer</button>
+                        </div>
+                      </form>
+                    </dialog>
+                  </td>
                   </tr>
-                </tbody>
-        
-        
-        
-              </table>
+                </ng-template>
+              </p-table>
             </div>
       
           </div>

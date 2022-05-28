@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FullCalendarModule } from '@fullcalendar/angular';
-
+import {TableModule} from 'primeng/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -23,10 +23,15 @@ import { ListeEmployeComponent } from './components/employe/liste-employe/liste-
 
 //primeNg
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+
 import {MenuModule} from 'primeng/menu';
 import {MenuItem} from 'primeng/api';
 import {MegaMenuItem} from 'primeng/api'; 
+import {CascadeSelectModule} from 'primeng/cascadeselect';
+import {CarouselModule} from 'primeng/carousel';
+import {ChartModule} from 'primeng/chart';
 
+import {ToolbarModule} from 'primeng/toolbar';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -39,7 +44,16 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from 'primeng/tabview';
 
+import { MessagesModule } from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
+
+
+import {FileUploadModule} from 'primeng/fileupload';
+//material
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ToastModule} from 'primeng/toast';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -66,10 +80,20 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 
 
   ],
-  imports: [
+  imports: [MatCardModule,
+    ChartModule,
+    FileUploadModule,
+    ToolbarModule,
+    CarouselModule,
+    ToastModule,
+    MatFormFieldModule,
     BrowserModule,
+    TableModule,
     AppRoutingModule,
+    MessagesModule,
+    ConfirmDialogModule,
     FormsModule,
+    CascadeSelectModule,
     ReactiveFormsModule,
     FullCalendarModule,
     HttpClientModule, 
@@ -82,7 +106,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     InputTextModule,
     CommonModule,
     CheckboxModule,
-    CalendarModule
+    CalendarModule,
+  
 
  
 
@@ -91,6 +116,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     
   ],
   providers: [
+    
 
   ],
   bootstrap: [AppComponent]
