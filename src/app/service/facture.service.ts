@@ -36,6 +36,12 @@ export class FactureService {
 
 
   public FindAllPaiement_Date(DateDb:any,dateF:any):Observable<any>{
-    return  this.httpclient.get<Facture>(this.url+"/AllPaiement_Date/"+DateDb+ dateF)
+    return  this.httpclient.get<Facture>(this.url+"/AllPaiement_Date/"+DateDb+"/"+ dateF)
   }
+
+
+  public statElevesPayed(DateDb:any):Observable<any>{
+    return  this.httpclient.get<number>(this.url+"/statElevesPayed/"+DateDb)
+  }
+
 }

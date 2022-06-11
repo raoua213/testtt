@@ -70,13 +70,13 @@
      
       <mat-card class="example-card" *ngFor="let e of employe">
         <mat-card-header>
-          <img mat-card-avatar class="example-header-image" [src]="'data:image/jpg;base64,'+e.img">
+          <img mat-card-avatar class="example-header-image" [src]="'data:image/jpg;base64,'+e.img" >
           <mat-card-title> <a [routerLink]="['/profilemp',e.idPersonnel]" style="color: black; text-decoration: none;">{{e.nom}} {{e.prenom}} </a></mat-card-title>
           <mat-card-subtitle style="color: black;">Enseignant</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="'data:image/jpg;base64,'+e.img">
-       <div class="mil" style="font-size:15px; margin-top:40px;">
-        <mat-card-content style="font-size:15px; ">
+        <img mat-card-image [src]="'data:image/jpg;base64,'+e.img" >
+       <div class="mil" style="font-size:15px;">
+        <mat-card-content style="font-size:15px; margin-top: 100px; text-decoration:solid; font-weight: bold;">
           <p>
             {{ e.mail }}
           </p>

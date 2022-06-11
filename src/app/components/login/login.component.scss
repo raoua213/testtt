@@ -7,20 +7,29 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+   
 }
 
-body {
-    background: #aac8d627;
-}
+
 
 .wrapper {
     max-width: 350px;
-    min-height: 500px;
-    margin: 80px auto;
+ margin-top:7%;
+    margin-left: 40%;
     padding: 40px 30px 30px 30px;
     background-color: #ecf0f3;
     border-radius: 15px;
+    overflow-y: hidden;
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+}
+.container{
+    display: grid;
+  grid-template-columns: 1700px ;
+  gap: 1%;
+ height: 80vh;
+ margin-left: 1%;
+ width: 100%;
+
 }
 
 .logo {
@@ -70,11 +79,11 @@ body {
     color: #555;
 }
 
-.wrapper .btn {
+.wrapper .p-btn {
     box-shadow: none;
     width: 100%;
     height: 40px;
-    background-color: #03A9F4;
+    margin-left: 15%;
     color: #fff;
     border-radius: 25px;
     box-shadow: 3px 3px 3px #b1b1b1,

@@ -229,6 +229,11 @@ export class ProfilEmployeComponent implements OnInit {
       conges.presence=this.emp
       
       this.serviceConges.addConges(conges).subscribe();
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+      });
+      
     }
       
       this.getEmployeeById(this.id)})

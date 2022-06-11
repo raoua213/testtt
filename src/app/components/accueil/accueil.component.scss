@@ -1,32 +1,31 @@
 .card1{
-  margin-left:3%;
-  margin-top:8%;
-  width: 900px;
+  margin-left:5%;
+  margin-top:2%;
+
+  width: 820px;
  
 }
 .cl{
   display: grid;
-  grid-template-columns: 900px 600px;
-  gap: 5%;
- height: 87vh;
+  grid-template-columns: 70% 10%;
+  gap: 2px;
+ height: 88vh;
  margin-left: 1%;
  width: 98%;
 background-color:#aac8d627;
 }
-.twostat{
-  display: grid;
-  grid-template-columns:10% 10%;
-  gap: 50%;
-}
+
 .two{
   margin-top: 12%;
-  display: grid;
-  grid-template-rows: 45% 55%;
-  gap: 5%;
+ 
+
 }
 .stat{
-  width: 300px;
+  width: 250px;
+  margin-top: 2%;
 }
-.stat2{
-  width: 300px;
+
+.tab{
+
+  margin-left: 40%;
 }

@@ -39,7 +39,14 @@ export class PresenceEmployeService {
   }
   
 
-  
+  public GetAllpresences( dateDb:any,dateF:any):Observable<any>{
+    return this.httpclient.get<PresenceEmp>(this.url+"/findAllAbsentByIdPersonnel_Date/"+dateDb+"/"+dateF);
 
+  } 
+
+  public GetAllpresencess( dateDb:any,dateF:any):Observable<any>{
+    return this.httpclient.get<PresenceEmp>(this.url+"/findAllPresencetByIdPersonnel_Date/"+dateDb+"/"+dateF);
+
+  } 
 
 }

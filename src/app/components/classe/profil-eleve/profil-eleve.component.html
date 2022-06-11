@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-sm-4">
                   <label for="inputMaladies" class="form-label">Maladies</label>
-                  <input type="text" class="form-control" id="inputMaladies" name="maladie" [(ngModel)]="eleve.maladie">
+                  <input type="text" class="form-control" id="inputMaladies" name="maladies" [(ngModel)]="eleve.maladies">
                 </div>
   
                 <div class="col-sm-4">
@@ -138,7 +138,7 @@
           Taille : {{ eleve?.taille}} <br>
                 Poid : {{ eleve?.poid }} <br>
                 Vaccination : {{ eleve?.vaccination }} <br>
-                Maladie : {{ eleve?.maladie }} <br>
+                Maladie : {{ eleve?.maladies }} <br>
                 Médicament : {{ eleve?.medicament }} <br>
         </div>
         
@@ -234,7 +234,7 @@
                 <div class="product-item-content">
                    
                     <div>
-                       <img src="data:image/jpg;base64,{{img.picByte}}" style="width: 500px; margin-left: 8%;">
+                       <img src="data:image/jpg;base64,{{img.picByte}}" style="width: fit-content; margin-left:28%; margin-top: 8%;">
                     </div>
                 </div>
             </div>
@@ -274,10 +274,10 @@
 </p-dialog>
     <div class="card" >
 
-      <form #dateForm="ngForm" (ngSubmit)="findDate(dateForm)" class="row g-3">
-        <input name="date" class="form-control search" type="date"  placeholder="yyyy-mm-dd" aria-label="Search" style="width: 70%;" ngModel>
+      <!--form #dateForm="ngForm" (ngSubmit)="findDate(dateForm)" class="row g-3">
+        <input name="date" class="form-control search" type="date"  placeholder="yyyy-MM-dd" aria-label="Search" style="width: 70%;" ngModel>
         <button class="btn-primary col-2"  type="submit" style="width: max-content;  border-radius: 4px;height: max-content; margin-top: 6%; ">Search</button>
-      </form>
+      </form-->
 
       <p-table [value]="eleve.factures" [paginator]="true" [rows]="10" sortMode="multiple">
         <ng-template pTemplate="header">

@@ -31,6 +31,10 @@ export class StockService {
     return  this.httpclient.get<Stock>(this.url+"/findStockById/"+id)
   }
 
+  public lessThanFive():Observable<any>{
+    return  this.httpclient.get<Stock[]>(this.url+"/findLessThanFive/")
+  }
+
 
  
 

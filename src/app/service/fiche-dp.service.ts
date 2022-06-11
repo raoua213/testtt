@@ -48,4 +48,8 @@ export class FicheDPService {
     return  this.httpclient.get<FicheDePaie>(this.url+"/findAllSalaires_Date/"+DateDb+"/"+dateF)
   }
 
+  public   CalculSomme(DateDb:any,DateF:any):Observable<any>{
+    return  this.httpclient.get<FicheDePaie>(this.url+"/CalculSomme/"+DateDb+"/"+DateF)
+  }
+
 }

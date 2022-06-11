@@ -56,6 +56,16 @@ export class EleveService {
     return  this.httpclient.get<any>(this.url+"/getClasseByIdEleve/"+id)
   }
 
+  public GetNbEleve():Observable<any>{
+    return this.httpclient.get<number>(this.url+"/NBEleve");
 
+  }
   
+  public statPaiement(DateDb:any):Observable<any>{
+    return  this.httpclient.get<number>(this.url+"/statPaiement/"+DateDb )
+  }
+
+  public statNotPaiement(DateDb:any):Observable<any>{
+    return  this.httpclient.get<number>(this.url+"/statNotPaiement/"+DateDb )
+  }
 }

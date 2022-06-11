@@ -21,6 +21,26 @@ margin-bottom: 0px;
   top: 10%;
 
 }
+.cl{
+ 
+margin-top: 1%;
+margin-left: 1%;
+margin-right: 1%;
+height: 88vh;
+width:96.5vw ;
+background-color: #aac8d627;
+
+}
+
+.con{
+  background-color: #aac8d627;
+ 
+
+ 
+}
+
+
+
 label{
  
   color: white;
@@ -53,17 +73,7 @@ dialog{
         transition: .7s;
         
       }
-      .cl{
-        display:grid;
-        gap: 2%;
-position: absolute;
-margin-top: 1%;
-margin-left: 0.5%;
-margin-right: 0.5%;
- height: 100%;
-    background-color: #aac8d627;
-
-      }
+      
       
       
      

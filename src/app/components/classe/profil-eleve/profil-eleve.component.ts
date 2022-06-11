@@ -58,11 +58,11 @@ export class ProfilEleveComponent implements OnInit {
   ];
    }
 
-  ngOnInit(): void {
+   ngOnInit() {
     this.primengConfig.ripple = true;
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.getElevebyid(this.id)
-    this.getAllActivity();
+     this.id =  this.activatedRoute.snapshot.paramMap.get('id');
+     this.getElevebyid(this.id)
+    
 
   }
   showBasicDialog() {
@@ -122,10 +122,14 @@ findDate(dateForm:NgForm){
         this.retrievedImage = 'data:image/jpg;base64,' + this.eleve.img;
 
         console.log(response)
+        this.getAllActivity(id);
       });
   }
   public updateEleve(addForms:NgForm){
     const uploadImageData = new FormData();
+
+    let imageBlob = this.dataURItoBlob(this.eleve.img);
+    this.selectedFile = new File([imageBlob], "foo.png", {type:"image/png"});
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
     let x = JSON.stringify(addForms.value);
     uploadImageData.append('eleve', x)
@@ -152,6 +156,10 @@ findDate(dateForm:NgForm){
     uploadImageData.append('eleve', x)
     this.albumService.AddAlbum(uploadImageData).subscribe(data=>{
     });
+    let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+      });
   }
   dataURItoBlob(dataURI:any) {
     const byteString = window.atob(dataURI);
@@ -162,6 +170,10 @@ findDate(dateForm:NgForm){
     }
     const blob = new Blob([int8Array], { type: 'image/png' });    
     return blob;
+    let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+      });
  }
 
   public onaddEvaluation(addForms: NgForm) {
@@ -180,6 +192,10 @@ findDate(dateForm:NgForm){
          addForms.reset();
        }
      );
+     let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+      });
     
      console.log(addForms.value);
      
@@ -187,8 +203,8 @@ findDate(dateForm:NgForm){
 
   }
 
-  getAllActivity(){
-    this.eleveService.FindClasseByEleveId(this.id).subscribe(data=>{
+  getAllActivity(id:number){
+    this.eleveService.FindClasseByEleveId(id).subscribe(data=>{
       
       this.actviteService.FindActiviteByIdClasse(data).subscribe(data=>{
         console.log(data)

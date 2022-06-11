@@ -18,8 +18,8 @@ export class MouvementService {
 
   }
 
-  public AddMouvement(classe:Mouvement):Observable<any>{
-    return this.httpclient.post(this.url+"/addMouvement",classe);
+  public AddMouvement(mouv:Mouvement):Observable<any>{
+    return this.httpclient.post(this.url+"/addMouvement",mouv);
   }
 
   public updateMouvement( classe:Mouvement): Observable<any> {
@@ -34,5 +34,9 @@ export class MouvementService {
 
   public FindMouvementById(id:any):Observable<any>{
     return  this.httpclient.get<Mouvement>(this.url+"/findMouvementById/"+id)
+  }
+
+  public findAllMouvement_Date(DateDb:any,dateF:any):Observable<any>{
+    return  this.httpclient.get<Mouvement>(this.url+"/AllMouvementDuMois/"+DateDb+"/"+dateF)
   }
 }

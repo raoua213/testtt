@@ -242,6 +242,10 @@ showBasicDialog() {
       addForms.reset();
        }
      );
+     let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+      });
    
 
   }
@@ -256,10 +260,7 @@ showBasicDialog() {
         console.log(error);
       }
     );
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-    this.router.navigate([currentUrl]);
-    });
+   
   }
   onChangeSelect(e:any){
     console.log(e.target.value)

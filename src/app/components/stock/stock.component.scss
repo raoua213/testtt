@@ -1,9 +1,4 @@
-label{
-    background: skyblue;
-    color: white;
-    padding: .5em 1em;
-    border-radius: 4px;
-  }
+
   @keyframes appear {
     0%{
       opacity: 0;
@@ -108,4 +103,7 @@ height: fit-content;
 .submit{
   margin-left: 93.5%;
 
+}
+.card{
+  margin-top: 1%;
 }

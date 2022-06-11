@@ -29,6 +29,33 @@ curr = new Date();
   saveAllPresences(){
     for(let j=0;j<this.employees.length;j++){
       let list=this.employees[j].presences;
+      
+      //let A = formatDate(Date(),"yyyy-MM-dd","en");;
+      let A = new Date();
+      console.log(this.week)
+      console.log(A.getTime())
+      let t =false;
+      let w=0;
+      while( t === false){
+        
+        let index = list.findIndex((x: { date: any; }) => x.date==this.week[w]);
+        let dw = new Date(this.week[w]);
+        console.log(dw.getTime());
+        console.log(A.getTime());
+        if(dw.getTime() > A.getTime()){
+            
+          t=true;
+        }
+        else if(index==-1 ){
+          list.push({idPP:0,date:this.week[w],etat:false})
+          
+          
+        }
+          
+        w++
+        
+      }
+      console.log(list);
     
       for(let i=0;i<list.length;i++){
         list[i].presence={idPersonnel:this.employees[j].idPersonnel}
@@ -142,7 +169,8 @@ curr = new Date();
     }else{
     this.employees[index].presences[index2].etat= e.target.checked
   }
-    console.log(this.employees[index])
+    //console.log(this.employees[index])
+    //console.log(this.employees)
   }
 
   public presenceClick(elem:any,value:any){

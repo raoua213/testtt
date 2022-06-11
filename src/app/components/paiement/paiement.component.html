@@ -34,7 +34,7 @@
                     <dialog>
                       <!--start-->
                 
-                      <label for="toggle3" class="close" style="float: right;">X</label>
+                      <label for="toggle3" class="close" style="float: right;" (click)="closeModal()">X</label>
                       <form #addForm="ngForm" class="row g-3">
                 
                         <div class="col-sm-6 ">
@@ -44,7 +44,7 @@
                         
                         <div class="col-sm-6 ">
                           <label for="todate"> jusqu'a</label>
-                          <input type="date" name="to_date" class="form-control" id="todate" placeholder="To Date" value="{{ newDate }}" required>
+                          <input type="date" name="to_date" class="form-control" [(ngModel)]="facture.to_date" id="todate" placeholder="To Date" value="{{ newDate }}" required>
                         </div>
                         <div class="col-sm-12">
                           <label for="montant">Montant</label>
@@ -65,5 +65,9 @@
     </div>
     <div class="stat">
 <h3 style="margin:2%"> Statistiques</h3>
+<div class="card1">
+       
+  <p-chart type="bar" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+</div>
     </div>
 </div>

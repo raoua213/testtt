@@ -1,4 +1,5 @@
 <app-dashboard></app-dashboard>
+<p-toast></p-toast>
 <div class="two">
 
 	
@@ -73,7 +74,7 @@
 
 
 
-<p-toast></p-toast>
+
 
 <div class="card">
    
@@ -83,35 +84,42 @@
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
-                <h5 class="m-0">Manage Products</h5>
-                <button pButton pRipple label="Ajout" icon="pi pi-plus" class="p-button-success mr-2" (click)="showBasicDialog()"></button>
+               
+                <button pButton pRipple label="Ajout" icon="pi pi-plus" class="p-button-info mr-2" (click)="showBasicDialog()"></button>
                <p-dialog  [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
-                <form #addForm="ngForm" (ngSubmit)="onAddArticle(addForm)">
+                <form #addForm="ngForm"  class="row g-3"(ngSubmit)="onAddArticle(addForm)">
                     <input type="hidden" [(ngModel)]="article.idArticle" name="idArticle">
-                    <div class="col-md-6">
-                        <label for="categorie"  >Categorie</label>
+
+                    
+
+                    <div class="col-md-3">
+                        <label for="categorie" class="form-label" >Categorie</label>
                         <input type="text" [(ngModel)]="article.categorie" name="categorie" class="form-control" id="categorie" placeholder="Categorie" required>
                       </div>
-                    <div class="col-md-6">
-                      <label for="labelle"  >Labelle</label>
+                    <div class="col-md-3">
+                      <label for="labelle" class="form-label" >Labelle</label>
                         <input type="text" [(ngModel)]="article.labelle" name="labelle" class="form-control" id="labelle" placeholder="nom" required>
                       </div>
 
-                      <div class="col-md-6">
-                        <label for="quantite"> Quantite</label>
+                      <div class="col-md-4">
+                        <label for="quantite" class="form-label"> Quantite</label>
                           <input type="number" [(ngModel)]="article.quantite" name="quantite" class="form-control" id="quantite" placeholder="quantite" required>
                         </div>
 
-                      <div class="col-md-6">
-                      <label for="prix"  >Prix</label>
+                      <div class="col-md-4">
+                      <label for="prix"  class="form-label">Prix</label>
                       <input type="number" [(ngModel)]="article.prix" name="prix" class="form-control" id="prix" placeholder="prix" required>
                     </div>
 
                    
                   <div class="col-md-12">
-                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Ajout Article</button>
+                    <button type="submit" class="btn btn-primary">Ajout Article</button>
                   </div>
                 </form>  
+                <div *ngFor="let article of listeCA">
+                    <p> {{article.labelle}}</p>
+
+                </div>
                </p-dialog>
                 <!--span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
@@ -134,6 +142,33 @@
 
                 </th>
             </tr>
+            <p-dialog  [(visible)]="displayBasic3" [style]="{width: '50vw'}" [baseZIndex]="10000">
+                <form #Forms="ngForm"  class="row g-3" (ngSubmit)="addMouvement(Forms)">
+                    <input type="hidden" [(ngModel)]="article.idArticle" name="idArticle">
+
+                    <div class="col-md-10">
+                        <label for="inputmouvement" class="form-label">Mouvement</label>
+                        <select id="inputmouvement" class="form-select" class="form-control" name="mouvement" ngModel>
+                        <option selected>Choisir</option>
+                        <option>Entrée</option>
+                        <option>Sortie</option>
+                        </select>
+                      </div>
+                    <div class="col-md-3">
+                      <label for="quantite" class="form-label" >Quantite</label>
+                        <input type="number" ngModel name="quantite" class="form-control" id="quantite" placeholder="quantite" required>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="dateCon" class="form-label"> Date</label>
+                          <input type="date" ngModel name="dateCon" class="form-control" id="dateCon" placeholder="date" required>
+                        </div>
+
+                  <div class="col-md-12">
+                    <button   type="submit" class="btn btn-primary">Ajout Mouvement</button>
+                  </div>
+                </form> 
+            </p-dialog>
         </ng-template>
         <ng-template pTemplate="body" let-article>
             <tr>
@@ -148,11 +183,13 @@
                 <td>{{article.prix | currency:'Dt'}}</td>
                 <td><span [class]="'product-badge status-' + (article.inventoryStatus ? article.inventoryStatus.toLowerCase() : '')">{{article.inventoryStatus}}</span></td>
                 <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="showBasicModal2(article)"></button>
-                    
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteArticle(article.idArticle)"></button>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-info mr-2" (click)="showBasicModal2(article)"></button>
+                    <button pButton pRipple icon="bi bi-bar-chart-line" class="p-button-rounded p-button-info mr-2" (click)="showBasicModal3(article)"></button>
+
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-info" (click)="deleteArticle(article.idArticle)"></button>
                 </td>
             </tr>
+            
         </ng-template>
         <ng-template pTemplate="summary">
             <div class="flex align-items-center justify-content-between">
