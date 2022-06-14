@@ -28,12 +28,6 @@ export class PresenceEleveService {
     return this.httpclient.delete(this.url+"/deletePresenceEleveByID"+id)
   }
 
-  public FindEleveByEtat(etat:boolean):Observable<any>{
-    return  this.httpclient.get<PresenceEleve>(this.url+"findByEtat"+etat)
-  }
-
-  public FindEleveByEtat_classe(etat:boolean,id:number):Observable<any>{
-    return  this.httpclient.get<PresenceEleve>(this.url+"findByEtat_Classe"+etat+id)
-  }
+  
 
 }

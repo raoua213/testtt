@@ -15,22 +15,14 @@
 .wrapper {
     max-width: 350px;
  margin-top:7%;
-    margin-left: 40%;
+    margin-left: 30%;
     padding: 40px 30px 30px 30px;
     background-color: #ecf0f3;
     border-radius: 15px;
     overflow-y: hidden;
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
 }
-.container{
-    display: grid;
-  grid-template-columns: 1700px ;
-  gap: 1%;
- height: 80vh;
- margin-left: 1%;
- width: 100%;
 
-}
 
 .logo {
     width: 80px;
@@ -81,7 +73,7 @@
 
 .wrapper .p-btn {
     box-shadow: none;
-    width: 100%;
+    
     height: 40px;
     margin-left: 15%;
     color: #fff;
@@ -95,6 +87,16 @@
     background-color: #039BE5;
 }
 
+.container{
+    display: grid;
+    grid-template-columns: 1700px ;
+    background-color: #aac8d627;
+    height: 98vh;
+    width:800vw ;
+margin-left: 15%;
+  
+  }
+ 
 .wrapper a {
     text-decoration: none;
     font-size: 0.8rem;
