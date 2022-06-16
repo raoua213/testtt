@@ -3,19 +3,21 @@
 
 <div class="cl">
     <div class="card1">
-       
+       <h2>Charte des revenues</h2>
         <p-chart type="bar" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
     </div>
 
     <div class="two">
         <div class="twostat">
             <div class="stat">
+              <h2>Charte des taux d'absence</h2>
                 <p-chart type="pie" [data]="data" [options]="chartOptions"  [style]="{'width': '2%'}"></p-chart>
             </div>
            
         </div>
     </div>
         <div class="tab">
+          <h2> Article avec une quantité réduite</h2>
         <p-table  [value]="listStock" [paginator]="true" [rows]="9" sortMode="multiple">
             <ng-template pTemplate="header">
               <tr style="font-family:'Mukta', sans-serif; font-size: large;">

@@ -147,20 +147,15 @@ this.getStatElevesP();
             datasets: [{
                 label: 'Payé',
                 backgroundColor: [
-                    '#EC407A',
-                    '#AB47BC',
-                    '#42A5F5',
-                    '#7E57C2',
-                    '#66BB6A',
-                    '#FFCA28',
-                    '#26A69A'
+                    '#00800055',
+                    
                 ],
                 yAxisID: 'y',
                 //data: [65, 59, 80, 81, 56, 55, 10]
                 data: listPaiement
             }, {
                 label: 'Non Payé',
-                backgroundColor: '#78909C',
+                backgroundColor: '#FE000055',
                 yAxisID: 'y1',
                 //data: [28, 48, 40, 19, 86, 27, 90]
                 data: listNotPaymant

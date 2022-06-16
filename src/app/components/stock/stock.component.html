@@ -136,7 +136,7 @@
                 <th pSortableColumn="labelle">libellé <p-sortIcon field="labelle"></p-sortIcon></th>
                 <th pSortableColumn="quantite">Quantite <p-sortIcon field="quantite"></p-sortIcon></th>
                 <th pSortableColumn="prix">Prix <p-sortIcon field="prix"></p-sortIcon></th>
-                <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
+                
                 <th pSortableColumn="inventoryStatus">Status <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
                 <th>
 
@@ -181,7 +181,7 @@
                 <td>{{article.quantite}}</td>
                 
                 <td>{{article.prix | currency:'Dt'}}</td>
-                <td><span [class]="'product-badge status-' + (article.inventoryStatus ? article.inventoryStatus.toLowerCase() : '')">{{article.inventoryStatus}}</span></td>
+                
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-info mr-2" (click)="showBasicModal2(article)"></button>
                     <button pButton pRipple icon="bi bi-bar-chart-line" class="p-button-rounded p-button-info mr-2" (click)="showBasicModal3(article)"></button>

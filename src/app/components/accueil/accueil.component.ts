@@ -295,14 +295,14 @@ getDarkTheme() {
                 datasets: [{
                     label: 'Entrée',
                     backgroundColor: [
-                        'rgb(0,0,255)'
+                        '#00800055'
                     ],
                     yAxisID: 'y',
                     //data: [0, 200, 2000, 6000, 56, 55, 10,1500,2000,3000]
                     data: listPaymant
                 }, {
                     label: 'Sortie',
-                    backgroundColor: '	#FFFFFF',
+                    backgroundColor: '#FE000055',
                     yAxisID: 'y1',
                     //data: [28, 48, 40, 19, 86, 27, 90,50,30,40,70]
                     data:  listSalleries
@@ -357,12 +357,12 @@ async getPresenceEmployee(){
         present=data2
         console.log(present)
         this.data = {
-            labels: ['A','B'],
+            labels: ['Absence','Présence'],
             datasets: [
                 {
                     data: [absent, present],
                     backgroundColor: [
-                        "#42A5F5",
+                        "#FE000055",
                         "#66BB6A",
                         
                     ],
